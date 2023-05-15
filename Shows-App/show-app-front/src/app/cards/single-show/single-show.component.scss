@@ -1,0 +1,68 @@
+.container {
+  align-self: center;
+  text-align: center;
+
+  padding-top: 3rem;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* Some basic CSS overrides */
+
+img {
+  height: 400px;
+  width: 250px;
+  border-radius: 25px;
+  align-self: center;
+  align-content: center;
+
+  box-shadow: 5px 5px 6px #5934ff;
+  -moz-box-shadow: 5px 5px 6px #5934ff;
+  -webkit-box-shadow: 5px 5px 6px #5934ff;
+  -khtml-box-shadow: 5px 5px 6px #5934ff;
+}
+
+.box1 {
+  /* height: 200px; */
+  align-self: center;
+
+  grid-column-start: 2;
+  grid-column-end: 5;
+  /* grid-row-start: 1;
+    grid-row-end: 3; */
+}
+
+.box2 {
+  align-self: center;
+  grid-column-start: 6;
+  grid-column-end: 7;
+}
+
+.box3 {
+  /* height: 200px; */
+  align-self: center;
+
+  grid-column-start: 8;
+  grid-column-end: 11;
+}
+
+.container2 {
+  display: grid;
+  align-content: center;
+
+  align-self: center;
+  text-align: center;
+
+  /* height: 600px; */
+
+  /* align-items: center; */
+  grid-template-columns: repeat(11, 1fr);
+  /* grid-row: 2 60px; */
+  grid-auto-rows: 550px;
+}

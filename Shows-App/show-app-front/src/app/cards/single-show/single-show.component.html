@@ -1,0 +1,43 @@
+<div class="container2">
+
+  <div class="box1">
+    <div class="profile-image ">
+      <img src="https://assets.codepen.io/285131/neongirl.jpg" />
+    </div>
+  </div>
+
+  <div class="box2">
+
+    <div>
+
+      <h2>{{showTitle}}</h2>
+      <br>
+      <!-- <h4>{{shortAboutShow}}</h4> -->
+      <span *ngFor="let item of list">⭐</span>
+    </div>
+    <br>
+
+    <div>
+      <p>
+        {{myShowReview}}
+      </p>
+      <textarea *ngIf="isTextArea" name="" id="" cols="30" rows="10"></textarea>
+      <br>
+      <button (click)="onEditReview()" *ngIf="canEdit">Edit</button>
+    </div>
+
+    <div>
+      <br>
+      <br>
+      <h4>Seasons</h4>
+      <div>
+        <button>{{number}}</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Edit need to be only for the logged in user but anyone can see your progress and compare -->
+
+
+</div>

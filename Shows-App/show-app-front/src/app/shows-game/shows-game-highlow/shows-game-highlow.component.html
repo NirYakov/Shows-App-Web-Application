@@ -1,0 +1,48 @@
+<div class="scores">
+  <div>
+
+    <h3 class="propJello"> <span class="underlined underline-clip">Max score : {{maxScore}} </span></h3>
+  </div>
+
+  <div>
+
+    <h3 class="propJello"> <span class="underlined underline-overflow">Score : {{score}}</span></h3>
+  </div>
+  <button *ngIf="!gameOver" (click)="onChangeTheMedia()">{{media}}</button>
+  <button *ngIf="gameOver" (click)="newGame()"> Play Again</button>
+</div>
+
+
+<div class="container">
+
+  <div class="box1">
+
+    <h2 class=""> {{firstTitle}}</h2>
+    <img [src]="firstImg" alt="">
+    <div class="miniContainer">
+      <h3> Rating ★ {{rating}}</h3>
+    </div>
+  </div>
+
+  <div class="box2">
+    <h4 class="propJello"><span>Vs</span></h4>
+  </div>
+  <!-- btnSpace -->
+  <div class="box3">
+    <h2 class=""> {{secondTitle}}</h2>
+
+    <img [src]="secondImg" alt="">
+    <div class="miniContainer">
+
+      <!-- <h3> Your Rating Is : {{rating2}}</h3> -->
+
+      <!-- <button class="btnSpace" (click)="onClickChoseAction()"> Higher</button> -->
+      <button class="btnSpace" (click)="onClickShowsAction(GameAnswer.higher)"> Higher</button>
+      <button class="btnSpace" (click)="onClickShowsAction(GameAnswer.lower)"> Lower</button>
+
+    </div>
+  </div>
+
+
+
+</div>
