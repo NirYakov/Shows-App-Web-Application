@@ -8,8 +8,11 @@
 
     <h3 class="propJello"> <span class="underlined underline-overflow">Score : {{score}}</span></h3>
   </div>
-  <button *ngIf="!gameOver" (click)="onChangeTheMedia()">{{media}}</button>
-  <button *ngIf="gameOver" (click)="newGame()"> Play Again</button>
+  <button mat-stroked-button *ngIf="!gameOver" (click)="onChangeTheMedia()">{{media}}</button>
+  <button mat-stroked-button *ngIf="gameOver" (click)="newGame()"
+    style="width: 140px; height: 120px; font-size: xx-large;">
+    Play
+    Again</button>
 </div>
 
 
@@ -25,7 +28,8 @@
   </div>
 
   <div class="box2">
-    <h4 class="propJello"><span>Vs</span></h4>
+    <h4 *ngIf="!gameOver" class="propJello"><span>Vs</span></h4>
+    <h1 *ngIf="gameOver" class="propJello" style="color: red;"><span>GAME OVER</span></h1>
   </div>
   <!-- btnSpace -->
   <div class="box3">
@@ -37,8 +41,12 @@
       <!-- <h3> Your Rating Is : {{rating2}}</h3> -->
 
       <!-- <button class="btnSpace" (click)="onClickChoseAction()"> Higher</button> -->
-      <button class="btnSpace" (click)="onClickShowsAction(GameAnswer.higher)"> Higher</button>
-      <button class="btnSpace" (click)="onClickShowsAction(GameAnswer.lower)"> Lower</button>
+      <button mat-raised-button color="primary" class="btnSpace" [disabled]="gameOver"
+        (click)="onClickShowsAction(GameAnswer.higher)">
+        Higher</button>
+      <button mat-raised-button color="warn" class="btnSpace" [disabled]="gameOver"
+        (click)="onClickShowsAction(GameAnswer.lower)">
+        Lower</button>
 
     </div>
   </div>
