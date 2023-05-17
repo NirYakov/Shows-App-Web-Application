@@ -1,0 +1,35 @@
+<div class="main-div marginPadding">
+
+  <mat-card style="border-radius: 1rem;" class="innerCard">
+    <mat-card-header>
+      <!-- <h4>Resource URL:</h4>
+      <p>Showing: {{clip.shortUri}}</p> -->
+
+      <mat-card-title style="font-size: 2rem;">
+        {{show.title}}
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        <!-- <a style="cursor: pointer;" (click)="onClickNameClip(clip)"> -->
+        <a style="cursor: pointer;" style="font-size: 1rem;">
+          {{"~ "+show.title}}
+        </a>
+      </mat-card-subtitle>
+
+      <mat-card-subtitle style="font-size: 1rem;">
+        ⭐ {{show.rating}} 📺 🎬
+      </mat-card-subtitle>
+
+    </mat-card-header>
+
+
+    <div class="centerIt">
+      <mat-card-content>
+
+        <img [src]="show.img" alt="">
+
+      </mat-card-content>
+    </div>
+
+  </mat-card>
+</div>

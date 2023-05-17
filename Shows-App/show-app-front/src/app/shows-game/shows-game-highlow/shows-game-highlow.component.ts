@@ -79,6 +79,13 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    // trun off to work without server!
+    // this.initGameShow();
+
+  }
+
+  initGameShow() {
+
     this.nextShowsGame();
 
     this.showsGameService.getShows(this.media);

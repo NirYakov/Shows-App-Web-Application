@@ -21,6 +21,7 @@ import { SingleShowComponent } from './cards/single-show/single-show.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from "./error/error.component";
+import { ClipCardComponent } from './all-shows/clip-card/clip-card.component';
 
 
 
@@ -32,6 +33,8 @@ import { ErrorComponent } from "./error/error.component";
     ShowsGameHighlowComponent,
     SingleShowComponent,
     ErrorComponent,
+    ClipCardComponent,
+
   ],
   imports: [
     BrowserModule,

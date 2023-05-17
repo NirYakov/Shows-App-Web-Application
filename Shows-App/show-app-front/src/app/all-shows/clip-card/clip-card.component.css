@@ -1,0 +1,47 @@
+.centerIt {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 1rem; */
+
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+
+.main-div {
+  /* height: 70vh; */
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+
+.innerCard {
+  background: #1cd8d2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #93edc7,
+    #1cd8d2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #93edc7,
+    #1cd8d2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+img {
+  height: 500px;
+  width: 350px;
+  border-radius: 25px;
+
+  box-shadow: 5px 5px 12px #3d3d3d;
+  -moz-box-shadow: 5px 5px 12px #3d3d3d;
+  -webkit-box-shadow: 5px 5px 12px #3d3d3d;
+  -khtml-box-shadow: 5px 5px 12px #3d3d3d;
+}
+
+.marginPadding {
+  padding: 2rem;
+}
