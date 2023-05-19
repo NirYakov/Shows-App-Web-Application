@@ -11,7 +11,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { HeaderComponent } from './header/header.component';
@@ -22,7 +22,10 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from "./error/error.component";
 import { ClipCardComponent } from './all-shows/clip-card/clip-card.component';
-
+import { CardShowComponent } from './cards/cardShow/cardShow.component';
+import { ClipCreateComponent } from './all-shows/clip-create/clip-create.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -34,6 +37,9 @@ import { ClipCardComponent } from './all-shows/clip-card/clip-card.component';
     SingleShowComponent,
     ErrorComponent,
     ClipCardComponent,
+    CardShowComponent,
+    ClipCreateComponent,
+
 
   ],
   imports: [
@@ -49,6 +55,10 @@ import { ClipCardComponent } from './all-shows/clip-card/clip-card.component';
     HttpClientModule,
     AuthModule,
     FormsModule,
+    MatOptionModule,
+    MatIconModule,
+
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

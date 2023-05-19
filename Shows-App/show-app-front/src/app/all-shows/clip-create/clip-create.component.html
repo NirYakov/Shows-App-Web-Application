@@ -1,50 +1,108 @@
 <div class="main-div">
 
-  <div style="background-color: azure;">
+  <div style="background-color: azure;" class="innerDiv">
     <mat-card color="primary">
 
-      <!-- later chage back to origin color or something like that -->
-      <!-- <form> -->
+      <h2>
+        Search Show
+      </h2>
 
-      <mat-form-field class="example-form-field" appearance="outline">
+      <form action="">
 
-        <mat-label>Youtube link</mat-label>
-        <input matInput type="text" [(ngModel)]="link">
-        <button *ngIf="link" matSuffix mat-icon-button aria-label="Clear" (click)="link=''">
-          <mat-icon>close</mat-icon>
-        </button>
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Fill form field</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Placeholder">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+        </p>
 
-      </mat-form-field>
 
-      <p>Value: {{link}}</p>
+        <p>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Outline form field</mat-label>
+            <input matInput placeholder="Breaking Bad" [value]="inputValue">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+        </p>
 
-      <div>
 
-        <mat-form-field>
-          <mat-label>Favorite category</mat-label>
-          <mat-select [(ngModel)]="selectedValue" name="All *">
-            <mat-option *ngFor="let cate of setCategoryies" [value]="cate">
-              {{cate}}
-            </mat-option>
-          </mat-select>
+        <p> input : {{inputValue}}</p>
+
+
+        <h4>New / Search category</h4>
+
+
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Favorite food</mat-label>
+          <input matInput placeholder="Category" value="">
         </mat-form-field>
-        <p> Selected category: {{selectedValue}} </p>
+
+      </form>
+
+      <br>
+      <br>
+      <br>
+      <h4>
+        My Review
+      </h4>
+
+      <textarea [value]="textAreaValue">
+
+      </textarea>
+      <p>{{textAreaValue}}</p>
+
+      <br>
+      <br>
+      <h4>My Rating</h4>
+      <span>
+        <button mat-fab disabled style="font-size: x-large; background-color: greenyellow;">⭐</button>
+        <button mat-flat-button>⭐</button>
+        <button>⭐</button>
+        <button>⭐</button>
+        <button>⭐</button>
+
+      </span>
+
+
+      <div class="example-button-container">
+        <button mat-mini-fab aria-label="Example icon button with a home icon">
+          <mat-icon style="color: red; background-color: aquamarine;" color="red">star</mat-icon>
+        </button>
       </div>
 
 
-      <div>
-        <br>
-        <p body-1> Preview</p>
-        <br>
-        <iframe class="e2e-iframe-trusted-src" class="" [src]="youtubeUrl(link)"></iframe>
-      </div>
+      <br>
+      <br>
+
+      <button mat-flat-button> SAVE</button>
 
       <br>
-      <button mat-stroked-button color="primary" type="button" (click)="AddNewClip()">Add New Clip</button>
+      <br>
 
-      <!-- </form> -->
+
+
+      <button mat-flat-button>Show Preview</button>
+      <h3> Preview </h3>
 
       <br>
+
+
+
+
+      <app-single-show>
+
+      </app-single-show>
 
     </mat-card>
   </div>

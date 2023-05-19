@@ -19,6 +19,10 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   subCategories!: Subscription;
 
+
+  textAreaValue: string = "";
+  inputValue: string = "";
+
   constructor(private clipsService: ClipsService, private route: ActivatedRoute) {
 
   }
