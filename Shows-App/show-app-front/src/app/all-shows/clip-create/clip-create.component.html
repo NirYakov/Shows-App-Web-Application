@@ -1,109 +1,105 @@
-<div class="main-div">
+<div>
 
-  <div style="background-color: azure;" class="innerDiv">
-    <mat-card color="primary">
+  <div class="main-div">
 
-      <h2>
-        Search Show
-      </h2>
+    <div style="background-color: azure;" class="innerDiv">
+      <mat-card color="primary">
 
-      <form action="">
+        <h2>
+          Search Show
+        </h2>
 
-        <p>
-          <mat-form-field appearance="fill">
-            <mat-label>Fill form field</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
-            <input matInput placeholder="Placeholder">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-        </p>
+        <form action="">
+
+          <p>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Outline form field</mat-label>
+              <input matInput placeholder="Breaking Bad" [value]="inputValue">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+          </p>
+
+          <div>
+
+            <button type="button" (click)="fillDataResults()">Search Show</button>
+
+            <br>
+            <br>
 
 
-        <p>
+            <h3 *ngFor="let item of fakeSearchRsults"> results: {{item}}</h3>
+
+          </div>
+
+          <p> input : {{inputValue}}</p>
+
+
+          <h4>New / Search category</h4>
+
+
           <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Outline form field</mat-label>
-            <input matInput placeholder="Breaking Bad" [value]="inputValue">
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
+            <mat-label>Favorite food</mat-label>
+            <input matInput placeholder="Category" value="">
           </mat-form-field>
-        </p>
 
+        </form>
 
-        <p> input : {{inputValue}}</p>
+        <br>
+        <br>
+        <br>
+        <h4>
+          My Review
+        </h4>
 
-
-        <h4>New / Search category</h4>
-
-
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Favorite food</mat-label>
-          <input matInput placeholder="Category" value="">
-        </mat-form-field>
-
-      </form>
-
-      <br>
-      <br>
-      <br>
-      <h4>
-        My Review
-      </h4>
-
-      <textarea [value]="textAreaValue">
+        <textarea [value]="textAreaValue">
 
       </textarea>
-      <p>{{textAreaValue}}</p>
+        <p>{{textAreaValue}}</p>
 
-      <br>
-      <br>
-      <h4>My Rating</h4>
-      <span>
-        <button mat-fab disabled style="font-size: x-large; background-color: greenyellow;">⭐</button>
-        <button mat-flat-button>⭐</button>
-        <button>⭐</button>
-        <button>⭐</button>
-        <button>⭐</button>
+        <br>
+        <br>
+        <h4>My Rating</h4>
+        <span>
+          <button mat-fab disabled style="font-size: x-large; background-color: greenyellow;">⭐</button>
+          <button mat-flat-button>⭐</button>
+          <button>⭐</button>
+          <button>⭐</button>
+          <button>⭐</button>
 
-      </span>
-
-
-      <div class="example-button-container">
-        <button mat-mini-fab aria-label="Example icon button with a home icon">
-          <mat-icon style="color: red; background-color: aquamarine;" color="red">star</mat-icon>
-        </button>
-      </div>
+        </span>
 
 
-      <br>
-      <br>
-
-      <button mat-flat-button> SAVE</button>
-
-      <br>
-      <br>
+        <div class="example-button-container">
+          <button mat-mini-fab aria-label="Example icon button with a home icon">
+            <mat-icon style="color: red; background-color: aquamarine;" color="red">star</mat-icon>
+          </button>
+        </div>
 
 
+        <br>
+        <br>
 
-      <button mat-flat-button>Show Preview</button>
-      <h3> Preview </h3>
+        <button mat-flat-button> SAVE</button>
 
-      <br>
+        <br>
+        <br>
 
 
 
+        <button mat-flat-button>Show Preview</button>
+        <h3> Preview </h3>
 
-      <app-single-show>
+        <br>
 
-      </app-single-show>
 
-    </mat-card>
+
+
+        <app-single-show>
+
+        </app-single-show>
+
+      </mat-card>
+    </div>
   </div>
 </div>

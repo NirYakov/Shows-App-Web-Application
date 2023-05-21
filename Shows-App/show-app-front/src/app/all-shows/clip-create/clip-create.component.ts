@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ClipsService } from '../clips.service';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -23,7 +24,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
   textAreaValue: string = "";
   inputValue: string = "";
 
-  constructor(private clipsService: ClipsService, private route: ActivatedRoute) {
+  constructor(private clipsService: ClipsService, private route: ActivatedRoute, private http: HttpClient) {
 
   }
 
@@ -61,5 +62,30 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     else {
       console.log("Not have Clip Value");
     }
+  }
+
+
+
+  /////// Some tests
+
+  fakeSearchRsults: (string)[] = [];
+
+  fillDataResults() {
+
+    const searchShow = "inception 21";
+
+    this.http.get<any>(`http://localhost:3000/api/test/search/${searchShow}`).subscribe(
+      {
+        next: result => {
+          this.fakeSearchRsults = result.responseApi.results.map(show => show.title);
+        },
+        error: error => {
+          this.fakeSearchRsults = ["Breaking bad", "The Blacklist", "Rick And Morty", "Inception"];
+        }
+      }
+    );
+
+    this.fakeSearchRsults = ["Breaking bad", "The Blacklist", "Rick And Morty", "Inception"];
+
   }
 }

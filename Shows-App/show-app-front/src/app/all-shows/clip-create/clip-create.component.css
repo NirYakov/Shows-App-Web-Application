@@ -7,10 +7,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* height: 200px; */
 }
 
 .innerDiv {
-  width: 600px;
+  /*
   height: 600px;
+  */
+
   margin: 2rem;
+  width: 800px;
 }

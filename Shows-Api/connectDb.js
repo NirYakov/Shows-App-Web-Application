@@ -14,8 +14,9 @@ module.exports = function connectToMyMongo() {
 
             if (config) {
                 process.env.ApiKey = config.ApiKey;
-                process.env.DbString = config.DbString;
-                // console.log(process.env.ApiKey, process.env.DbString);
+                process.env.DbString = config.MONGO_ATLAS_PW;
+                process.env.DbUser = config.DbUser;
+                // console.log(process.env.ApiKey, process.env.DbString, process.env.DbUser);
 
             }
         }
@@ -25,7 +26,13 @@ module.exports = function connectToMyMongo() {
 
     }
 
-    const uri = `mongodb+srv://Nir:${process.env.MONGO_ATLAS_PW}@cluster0.tcpdrjy.mongodb.net/Testt`;
+
+    console.log(process.env.ApiKey, process.env.DbString, process.env.DbUser);
+
+    const uri = `mongodb+srv://${process.env.DbUser}:${process.env.DbString}@cluster0-shows-app.ljiuw6y.mongodb.net/TesttDatabase?retryWrites=true&w=majority`
+
+    console.log(uri);
+
     mongoose.connect(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true,

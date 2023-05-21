@@ -2,24 +2,15 @@ const jwt = require("jsonwebtoken");
 
 const middleWareJwt = (req, res, next) => {
     try {
-        const myParams = req.params;
-        const myBody = req.body;
-        const myQuery = req.query;
-        const myHeaders = req.headers;
-
-        console.log(myParams);
-        console.log(myBody);
-        console.log(myQuery);
-        console.log(myHeaders);
-
-
+        const token = req.headers.authorization.split(" ")[1];
+        const decodedToken = jwt.verify(token, process.env.JWT_KEY);
+        req.userData = { email: decodedToken.email, userId: decodedToken.userId };
         next();
     }
     catch (error) {
-        res.status(401).json({
-            message: "You Are Not authenticated!"
-        });
-    }
+        res.status(401).json({ message: "You Are Not authenticated!" });
+    };
+
 }
 
 
