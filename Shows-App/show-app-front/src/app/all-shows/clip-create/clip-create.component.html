@@ -11,37 +11,67 @@
 
         <form action="">
 
+          <!-- style="border-radius: 1rem;" -->
           <p>
-            <mat-form-field class="example-full-width" appearance="outline">
+            <mat-form-field class="example-full-width" style="width: 400px;" appearance="outline">
               <mat-label>Outline form field</mat-label>
-              <input matInput placeholder="Breaking Bad" [value]="inputValue">
-              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <input [formControl]="searchShowForm" matInput placeholder="Breaking Bad">
+              <button *ngIf="searchShowForm.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="clearValueFunc()">
+                <mat-icon *ngIf="(searchShowForm.value !== '')">close</mat-icon>
+              </button>
+              <mat-icon matSuffix *ngIf="(searchShowForm.value === '')">sentiment_very_satisfied</mat-icon>
               <mat-hint>Hint</mat-hint>
             </mat-form-field>
           </p>
 
+
+
           <div>
 
-            <button type="button" (click)="fillDataResults()">Search Show</button>
+            <h2>{{searchShowForm.value}}</h2>
+
+            <button mat-stroked-button type="button" (click)="fillDataResults()">Search Show</button>
 
             <br>
             <br>
 
 
-            <h3 *ngFor="let item of fakeSearchRsults"> results: {{item}}</h3>
+            <!-- <h3 *ngFor="let item of fakeSearchRsults"> results: {{item}}</h3> -->
 
+
+            <div class="main-div">
+
+              <div *ngFor="let item of fakeSearchRsults" style="margin: 1rem;">
+
+                <mat-card class="example-card" style="border-radius: 1rem;">
+                  <mat-card-header>
+                    <mat-card-title>{{item}}</mat-card-title>
+                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    <mat-card-subtitle>Rating ⭐</mat-card-subtitle>
+                  </mat-card-header>
+                  <img mat-card-image class=""
+                    src="https://m.media-amazon.com/images/M/MV5BZjYzZDgzMmYtYjY5Zi00YTk1LThhMDYtNjFlNzM4MTZhYzgyXkEyXkFqcGdeQXVyMTE5NDQ1MzQ3._V1_Ratio0.7910_AL_.jpg"
+                    alt="Photo of a Shiba Inu">
+
+                  <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                alt="Photo of a Shiba Inu">
+              -->
+                  <mat-card-content>
+
+                  </mat-card-content>
+                  <mat-card-actions style="justify-content: center;">
+                    <button mat-button>PICK ME</button>
+                  </mat-card-actions>
+                </mat-card>
+
+              </div>
+
+
+
+            </div>
           </div>
 
-          <p> input : {{inputValue}}</p>
-
-
-          <h4>New / Search category</h4>
-
-
-          <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Favorite food</mat-label>
-            <input matInput placeholder="Category" value="">
-          </mat-form-field>
 
         </form>
 
@@ -52,35 +82,60 @@
           My Review
         </h4>
 
-        <textarea [value]="textAreaValue">
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea [formControl]="myReviewText" matInput maxlength="256"
+            placeholder="Ex. I need help with..."></textarea>
+          <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
+          <mat-hint align="end">{{myReviewText.value.length}} / 256</mat-hint>
+        </mat-form-field>
 
-      </textarea>
-        <p>{{textAreaValue}}</p>
+
+        <p>{{myReviewText.value}}</p>
 
         <br>
-        <br>
+
         <h4>My Rating</h4>
-        <span>
+
+        <!-- <span>
           <button mat-fab disabled style="font-size: x-large; background-color: greenyellow;">⭐</button>
           <button mat-flat-button>⭐</button>
+          <button style="font-size: x-large; background-color: greenyellow;">⭐</button>
           <button>⭐</button>
-          <button>⭐</button>
-          <button>⭐</button>
+          <button mat-flat-button style="opacity: 0.4;">⭐</button>
 
-        </span>
+        </span> -->
 
-
-        <div class="example-button-container">
+        <!-- <div class="example-button-container">
           <button mat-mini-fab aria-label="Example icon button with a home icon">
             <mat-icon style="color: red; background-color: aquamarine;" color="red">star</mat-icon>
           </button>
+        </div> -->
+
+        <div>
+
+
+          <span>
+            <button *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i], }" mat-flat-button
+              style="font-size: large; " (click)="onStarClick(i)">⭐</button>
+
+            <!-- <button mat-flat-button style="font-size: large; " class="opacityStar" (click)="onStarClick()">⭐</button>
+            <button mat-flat-button style="font-size: large; " class="opacityStar" (click)="onStarClick()">⭐</button>
+            <button mat-flat-button style="font-size: large; " class="opacityStar" (click)="onStarClick()">⭐</button>
+            <button mat-flat-button style="font-size: large; " class="opacityStar" (click)="onStarClick()">⭐</button> -->
+
+          </span>
+
         </div>
 
 
+
+
+
         <br>
         <br>
 
-        <button mat-flat-button> SAVE</button>
+        <button mat-flat-button class="colorHeader"> SAVE</button>
 
         <br>
         <br>
@@ -103,3 +158,5 @@
     </div>
   </div>
 </div>
+
+<!-- <app-clip-card [show]="myShow" style="margin: 2rem;"> </app-clip-card> -->

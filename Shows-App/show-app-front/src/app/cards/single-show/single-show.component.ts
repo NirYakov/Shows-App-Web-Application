@@ -23,8 +23,14 @@ export class SingleShowComponent implements OnInit {
   ngOnInit() {
   }
 
+
   onEditReview() {
     this.isTextArea = !this.isTextArea;
+
+    //this.myShowReview = this.textareaData;
+
+    this.myShowReview = ` //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowReview //this.myShowRe`;
+
   }
 
 

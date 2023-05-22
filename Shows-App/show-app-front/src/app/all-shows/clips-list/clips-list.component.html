@@ -41,7 +41,7 @@
 
   <!-- <div style="margin: 0 auto; width: 656px; text-align: center;"> -->
 
-  <div class="allin">
+  <!-- <div class="allin">
 
 
     <form class="example-form">
@@ -62,7 +62,7 @@
 
     <button mat-stroked-button (click)="clearSearchClip()" style="padding: 1.7rem; margin-top: -1.4rem;">Clear</button>
 
-  </div>
+  </div> -->
 
 
 
@@ -72,7 +72,8 @@
   <!--  -->
 
   <div *ngFor=" let clip of clipResultsSearch" style="margin: 1rem;">
-    <app-clip-card [clip]="clip"></app-clip-card>
+    <app-clip-card></app-clip-card>
+    <!-- <app-clip-card [clip]="clip"></app-clip-card> -->
   </div>
 
   <!--  -->
@@ -91,8 +92,9 @@
 
 
     <!-- <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%" *ngFor="let clip of showClips" class="example-card mycards"> -->
-    <div *ngFor="let clip of showClips" style="margin: 1rem;">
-      <app-clip-card [clip]="clip"></app-clip-card>
+    <div *ngFor="let clip1 of showClips" style="margin: 1rem;">
+      <app-clip-card></app-clip-card>
+      <!-- <app-clip-card [clip]="clip"></app-clip-card> -->
     </div>
 
 

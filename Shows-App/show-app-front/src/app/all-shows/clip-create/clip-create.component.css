@@ -18,3 +18,65 @@
   margin: 2rem;
   width: 800px;
 }
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.opacityStar {
+  opacity: 0.4;
+}
+
+.reddd {
+  background-color: greenyellow;
+  margin: 4rem;
+}
+
+/*                      */
+/*                      */
+/*                      */
+
+.example-card {
+  max-width: 200px;
+}
+
+.roundclass {
+  border-radius: 0.5rem;
+}
+
+.main-div {
+  /* height: 70vh; */
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+
+img {
+  /* height: 500px; */
+  width: 200px;
+  border-radius: 25px;
+}
+
+.colorHeader {
+  background: #1cd8d2; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #93edc7,
+    #1cd8d2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #93edc7,
+    #1cd8d2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  font-size: xx-large;
+  border-radius: 1rem;
+}

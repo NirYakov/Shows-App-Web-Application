@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ClipsService } from '../clips.service';
 import { HttpClient } from '@angular/common/http';
+import { FormControl, Validators } from '@angular/forms';
+
 
 
 
@@ -24,6 +26,9 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
   textAreaValue: string = "";
   inputValue: string = "";
 
+  searchShowForm: FormControl;
+  myReviewText: FormControl;
+
   constructor(private clipsService: ClipsService, private route: ActivatedRoute, private http: HttpClient) {
 
   }
@@ -42,6 +47,9 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.searchShowForm = new FormControl('', { validators: [Validators.required] });
+    this.myReviewText = new FormControl('', { validators: [] });
+
     this.subCategories = this.clipsService.getCategoryUpdateListener().subscribe(cate => {
       this.setCategoryies = cate;
     });
@@ -49,6 +57,29 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     const routId = this.route.snapshot.params['id'];
     this.clipsService.getClips(routId);
   }
+
+  stars = [false, false, false, false, false];
+
+
+  onStarClick(idx) {
+
+    if (idx === 0 && this.stars[1] === false) {
+      this.stars[0] = false;
+      return;
+    }
+
+
+    for (let i = 0; i < this.stars.length; i++) {
+      if (i <= idx) {
+        this.stars[i] = true;
+
+      } else {
+        this.stars[i] = false;
+
+      }
+    }
+  }
+
 
 
   AddNewClip() {
@@ -63,6 +94,16 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
       console.log("Not have Clip Value");
     }
   }
+
+
+  clearValueFunc() {
+
+    this.searchShowForm.setValue('');
+
+  }
+
+
+  value = 'Clear me';
 
 
 
@@ -88,4 +129,13 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     this.fakeSearchRsults = ["Breaking bad", "The Blacklist", "Rick And Morty", "Inception"];
 
   }
+
+
+
+  myShow = {
+    title: "Breaking Bad",
+    img: "https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_Ratio0.6716_AL_.jpg",
+    rating: 9.4,
+  };
+
 }
