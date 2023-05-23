@@ -31,7 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { ClipsListComponent } from './all-shows/clips-list/clips-list.component';
+import { ShowsListComponent } from './all-shows/shows-list/shows-list.component';
 
 
 @NgModule({
@@ -45,7 +45,7 @@ import { ClipsListComponent } from './all-shows/clips-list/clips-list.component'
     ClipCardComponent,
     CardShowComponent,
     ClipCreateComponent,
-    ClipsListComponent
+    ShowsListComponent,
 
 
   ],

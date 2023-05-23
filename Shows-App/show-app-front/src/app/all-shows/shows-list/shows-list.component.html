@@ -1,0 +1,68 @@
+<div style="justify-content: center;  display: flex;">
+
+  <h2>Hey</h2>
+
+
+  <br>
+  <br>
+  <br>
+
+  <div>
+
+    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' : buttonSelected === buttonAll}"
+      (click)="onClickType(buttonAll)">
+      All
+    </button>
+    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' :  buttonSelected === buttonMovie }"
+      (click)="onClickType(buttonMovie)"> Movies </button>
+    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' :  buttonSelected === buttonTv}"
+      (click)="onClickType(buttonTv)"> Tv's </button>
+
+    <span style="width: 20px; height: 20px; border-radius: 0.5rem; color: blueviolet;"> 📺 🎬 🍿 </span>
+
+
+    <button mat-stroked-button class="paddingButtons" [routerLink]="'/addnewshow'" (click)="onAddShowClicked()">
+      Add Show</button>
+
+    <br>
+    <!-- <br> -->
+
+    <!-- <div style="justify-content: center; display: flex;">
+
+      <button mat-stroked-button class="paddingButtons" (click)="onClickType(buttonTv)">
+        Tv's </button>
+
+    </div> -->
+
+  </div>
+</div>
+
+
+<div>
+
+
+
+  <div class="main-div">
+
+    <div *ngFor="let item of shows" style="margin: 1rem;">
+
+      <mat-card class="example-card" style="border-radius: 1rem;">
+        <mat-card-header>
+          <mat-card-title>{{item.title}}</mat-card-title>
+          <mat-card-subtitle>{{item.title}}</mat-card-subtitle>
+          <mat-card-subtitle>Rating ⭐ {{item.rating}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image class="" [src]="item.img" [alt]="item.title">
+        <mat-card-content>
+
+        </mat-card-content>
+        <mat-card-actions style="justify-content: center;">
+          <button mat-button>PICK ME</button>
+        </mat-card-actions>
+      </mat-card>
+
+    </div>
+
+  </div>
+</div>
+<h2>Bye</h2>

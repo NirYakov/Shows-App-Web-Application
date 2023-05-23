@@ -1,11 +1,11 @@
 <mat-toolbar class="colorHeader">
   <span>
-    <a routerLink="/">Shows App</a>
+    <a routerLinkActive="mat-accent" routerLink="/">Shows App</a>
   </span>
   <span class="spacer"></span>
   <ul>
     <li>
-      <a mat-button routerLink="/create" routerLinkActive="mat-accent">Shows Game</a>
+      <a mat-button routerLink="/game" routerLinkActive="mat-accent">Shows Game</a>
     </li>
     <li>
       <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
@@ -15,6 +15,10 @@
     </li>
     <li>
       <button mat-button>Logout</button>
+    </li>
+
+    <li>
+      <button routerLink="/myshows" routerLinkActive="mat-accent" mat-button>My Shows</button>
     </li>
 
 

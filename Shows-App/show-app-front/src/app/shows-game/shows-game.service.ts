@@ -3,7 +3,7 @@ import { environment } from "../../environments/environment";
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subject, map, take } from 'rxjs';
-import { Show } from './shows-game-highlow/show.model';
+import { ShowGame } from './shows-game-highlow/showGame.model';
 
 const BACKEND_URL = environment.apiUrl + "/showsgame/";
 
@@ -22,8 +22,8 @@ interface ShowGet {
 })
 export class ShowsGameService {
 
-  private shows: Show[] = [];
-  private showsUpdated = new Subject<{ shows: Show[] }>();
+  private shows: ShowGame[] = [];
+  private showsUpdated = new Subject<{ shows: ShowGame[] }>();
 
   constructor(private http: HttpClient, private router: Router) { }
 

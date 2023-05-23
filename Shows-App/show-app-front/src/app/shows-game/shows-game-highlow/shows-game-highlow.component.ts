@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Show } from './show.model';
+import { ShowGame } from './showGame.model';
 import { ShowsGameService } from '../shows-game.service';
 
 
@@ -18,7 +18,7 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
 
   GameAnswer: typeof GameAnswer = GameAnswer;
 
-  shows: Show[] = [
+  shows: ShowGame[] = [
     {
       title: "Rick and Morty",
       img: "https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_Ratio0.6716_AL_.jpg",
@@ -93,7 +93,7 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
     this.showsSub = this.showsGameService
       .getShowUpdateListener()
       // .subscribe((showsData: { shows: Show[] }) => {
-      .subscribe((showsData: { shows: Show[] }) => {
+      .subscribe((showsData: { shows: ShowGame[] }) => {
         this.shows = showsData.shows;
 
 
@@ -112,7 +112,7 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
   }
 
   testingWithoutSameNextRatings() {
-    const skipsShows: Show[] = [];
+    const skipsShows: ShowGame[] = [];
 
     let k = 0;
     skipsShows.push(this.shows[0]);
@@ -153,7 +153,7 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.showsSub.unsubscribe();
+    //  this.showsSub.unsubscribe();
   }
 
   // indexes: number[] = []; // if i want to do random without any repet (data must be unique)
