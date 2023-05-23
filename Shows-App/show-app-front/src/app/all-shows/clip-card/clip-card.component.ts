@@ -8,8 +8,6 @@ import { ShowGame } from 'src/app/shows-game/shows-game-highlow/showGame.model';
 })
 export class ClipCardComponent implements OnInit {
 
-  baseUriYt = "https://www.youtube.com/embed/";
-
   @Input() show: ShowGame =
     {
       title: "Rick and Morty",

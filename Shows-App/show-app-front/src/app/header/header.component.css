@@ -29,4 +29,9 @@ ul {
     #93edc7,
     #1cd8d2
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  box-shadow: 0px 2px 40px #5934ff;
+  -moz-box-shadow: 0px 2px 40px #5934ff;
+  -webkit-box-shadow: 0px 2px 40px #5934ff;
+  -khtml-box-shadow: 0px 2px 40px #5934ff;
 }

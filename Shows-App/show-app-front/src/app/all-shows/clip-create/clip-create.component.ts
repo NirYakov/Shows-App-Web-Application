@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { ClipsService } from '../clips.service';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
+import { ShowsService } from '../shows.service';
+import { Show } from '../show.model';
 
 
 
@@ -24,7 +26,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
   searchShowForm: FormControl;
   myReviewText: FormControl;
 
-  constructor(private clipsService: ClipsService, private route: ActivatedRoute, private http: HttpClient) {
+  constructor(private clipsService: ClipsService, private route: ActivatedRoute, private http: HttpClient, private showsService: ShowsService) {
 
   }
   ngOnDestroy(): void {
@@ -37,12 +39,20 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
     this.searchShowForm = new FormControl('', { validators: [Validators.required] });
     this.myReviewText = new FormControl('', { validators: [] });
+
+
+
+
   }
 
   stars = [false, false, false, false, false];
 
 
   onStarClick(idx) {
+    if (idx === 0 && this.stars[0] === false) {
+      this.stars[0] = true;
+      return;
+    }
 
     if (idx === 0 && this.stars[1] === false) {
       this.stars[0] = false;
@@ -75,7 +85,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   /////// Some tests
 
-  fakeSearchRsults: (string)[] = [];
+  fakeSearchRsults: Show[];
 
   fillDataResults() {
 
@@ -84,16 +94,33 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     this.http.get<any>(`http://localhost:3000/api/test/search/${searchShow}`).subscribe(
       {
         next: result => {
-          this.fakeSearchRsults = result.responseApi.results.map(show => show.title);
+          this.fakeSearchRsults = result.responseApi.results;
         },
         error: error => {
-          this.fakeSearchRsults = ["Breaking bad", "The Blacklist", "Rick And Morty", "Inception"];
+          // error
+
+          /////////////// fake fill data
+
+          this.fakeSearchRsults = this.showsService.getAllShows();
         }
       }
     );
 
-    this.fakeSearchRsults = ["Breaking bad", "The Blacklist", "Rick And Morty", "Inception"];
+  }
 
+  pickedShow: Show = null;
+
+  onPickShow(show: Show) {
+
+    const pickedShow = this.fakeSearchRsults.find(aryShow => show.title === aryShow.title);
+
+    if (pickedShow) {
+      this.fakeSearchRsults = [];
+      console.log(pickedShow);
+
+      this.pickedShow = pickedShow;
+
+    }
   }
 
 

@@ -32,6 +32,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShowsListComponent } from './all-shows/shows-list/shows-list.component';
+import { SingleShowViewComponent } from './all-shows/single-show-view/single-show-view.component';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { ShowsListComponent } from './all-shows/shows-list/shows-list.component'
     CardShowComponent,
     ClipCreateComponent,
     ShowsListComponent,
-
+    SingleShowViewComponent,
 
   ],
   imports: [

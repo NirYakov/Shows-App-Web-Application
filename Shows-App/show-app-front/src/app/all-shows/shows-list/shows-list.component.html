@@ -46,13 +46,15 @@
 
     <div *ngFor="let item of shows" style="margin: 1rem;">
 
-      <mat-card class="example-card" style="border-radius: 1rem;">
+      <mat-card class="example-card purple-shadow" style="border-radius: 1rem;">
         <mat-card-header>
           <mat-card-title>{{item.title}}</mat-card-title>
           <mat-card-subtitle>{{item.title}}</mat-card-subtitle>
           <mat-card-subtitle>Rating ⭐ {{item.rating}}</mat-card-subtitle>
+          <div></div>
         </mat-card-header>
-        <img mat-card-image class="" [src]="item.img" [alt]="item.title">
+        <img mat-card-image class="green-shadow" style="margin-top: 0.5rem; margin-bottom: 0rem;" [src]="item.img"
+          [alt]="item.title">
         <mat-card-content>
 
         </mat-card-content>

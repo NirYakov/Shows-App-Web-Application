@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+// ClipCardComponent
+
 @Component({
   selector: 'app-single-show-view',
   templateUrl: './single-show-view.component.html',
@@ -8,6 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class SingleShowViewComponent implements OnInit {
 
   constructor() { }
+
+  visibleHalfMoon = true;
+
+  onClickStar() {
+
+    console.log("Starrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
+
+    this.visibleHalfMoon = !this.visibleHalfMoon;
+
+  }
 
   ngOnInit() {
   }

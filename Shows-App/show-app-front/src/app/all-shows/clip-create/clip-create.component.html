@@ -46,23 +46,41 @@
 
                 <mat-card class="example-card" style="border-radius: 1rem;">
                   <mat-card-header>
-                    <mat-card-title>{{item}}</mat-card-title>
+                    <mat-card-title>{{item.title}}</mat-card-title>
                     <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-                    <mat-card-subtitle>Rating ⭐</mat-card-subtitle>
+                    <mat-card-subtitle>Rating ⭐ {{item.rating}}</mat-card-subtitle>
                   </mat-card-header>
-                  <img mat-card-image class=""
-                    src="https://m.media-amazon.com/images/M/MV5BZjYzZDgzMmYtYjY5Zi00YTk1LThhMDYtNjFlNzM4MTZhYzgyXkEyXkFqcGdeQXVyMTE5NDQ1MzQ3._V1_Ratio0.7910_AL_.jpg"
-                    alt="Photo of a Shiba Inu">
+                  <img mat-card-image class="" [src]="item.img" alt="Photo of a Shiba Inu"
+                    style="margin-top: 0.5rem; margin-bottom: 0rem;">
                   <mat-card-content>
 
                   </mat-card-content>
                   <mat-card-actions style="justify-content: center;">
-                    <button mat-button>PICK ME</button>
+                    <button mat-button (click)="onPickShow(item)">PICK ME</button>
                   </mat-card-actions>
                 </mat-card>
 
               </div>
 
+              <div *ngIf="pickedShow !== null" style="margin: 1rem;">
+
+                <mat-card class="example-card" style="border-radius: 1rem;">
+                  <mat-card-header>
+                    <mat-card-title>{{pickedShow.title}}</mat-card-title>
+                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    <mat-card-subtitle>Rating ⭐ {{pickedShow.rating}}</mat-card-subtitle>
+                  </mat-card-header>
+                  <img mat-card-image class="" [src]="pickedShow.img" alt="Photo of a Shiba Inu"
+                    style="margin-top: 0.5rem; margin-bottom: 0rem;">
+                  <mat-card-content>
+
+                  </mat-card-content>
+                  <mat-card-actions style="justify-content: center;">
+                    <button mat-button (click)="onPickShow(pickedShow)">PICK ME</button>
+                  </mat-card-actions>
+                </mat-card>
+
+              </div>
 
 
             </div>
@@ -112,13 +130,13 @@
 
 
           <span>
-            <button *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i], }" mat-flat-button
-              style="font-size: large; " (click)="onStarClick(i)">⭐</button>
 
-            <!-- <button mat-flat-button style="font-size: large; " class="opacityStar" (click)="onStarClick()">⭐</button>
-            <button mat-flat-button style="font-size: large; " class="opacityStar" (click)="onStarClick()">⭐</button>
-            <button mat-flat-button style="font-size: large; " class="opacityStar" (click)="onStarClick()">⭐</button>
-            <button mat-flat-button style="font-size: large; " class="opacityStar" (click)="onStarClick()">⭐</button> -->
+            <span *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i], }" mat-flat-button
+              (click)="onStarClick(i)" class="stars-class">⭐</span>
+            <span class="stars-class">🌗</span>
+
+
+
 
           </span>
 
@@ -131,7 +149,13 @@
         <br>
         <br>
 
-        <button mat-flat-button class="colorHeader"> SAVE</button>
+        <!-- mat-flat-button -->
+        <!-- mat-stroked-button -->
+        <div style=" justify-content: center; display: flex;">
+          <button mat-raised-button class="colorHeader" style="width: 400px;">
+            SAVE</button>
+        </div>
+
 
         <br>
         <br>
