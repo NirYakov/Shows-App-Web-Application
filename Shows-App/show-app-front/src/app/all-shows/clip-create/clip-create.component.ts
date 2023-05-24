@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ClipsService } from '../clips.service';
 import { HttpClient } from '@angular/common/http';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ShowsService } from '../shows.service';
 import { Show } from '../show.model';
 
@@ -33,15 +33,17 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     // throw new Error('Method not implemented.');
   }
 
-
+  form: FormGroup;
 
   ngOnInit() {
 
+    // this.form = new FormGroup({
+    //   // searchShowForm: new FormControl('', { validators: [Validators.required] }),
+    //   // myReviewText: new FormControl('', { validators: [] }),
+    // });
+
     this.searchShowForm = new FormControl('', { validators: [Validators.required] });
     this.myReviewText = new FormControl('', { validators: [] });
-
-
-
 
   }
 
@@ -121,6 +123,16 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
       this.pickedShow = pickedShow;
 
     }
+  }
+
+  onSave() {
+
+    if (!this.form.valid) {
+      console.log("Form Not Valid");
+      return;
+    }
+
+    console.log("Form Valid");
   }
 
 

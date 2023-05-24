@@ -9,11 +9,12 @@
           Search Show
         </h2>
 
-        <form action="">
+        <form>
+          <!-- <form [formGroup]="form"> -->
 
           <!-- style="border-radius: 1rem;" -->
           <p>
-            <mat-form-field class="example-full-width" style="width: 400px;" appearance="outline">
+            <mat-form-field class="example-full-width" style="width: 400px; " appearance="outline">
               <mat-label>Outline form field</mat-label>
               <input [formControl]="searchShowForm" matInput placeholder="Breaking Bad">
               <button *ngIf="searchShowForm.value" matSuffix mat-icon-button aria-label="Clear"
@@ -87,31 +88,30 @@
           </div>
 
 
-        </form>
 
-        <br>
-        <br>
-        <br>
-        <h4>
-          My Review
-        </h4>
+          <br>
+          <br>
+          <br>
+          <h4>
+            My Review
+          </h4>
 
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Message</mat-label>
-          <textarea [formControl]="myReviewText" matInput maxlength="256"
-            placeholder="Ex. I need help with..."></textarea>
-          <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
-          <mat-hint align="end">{{myReviewText.value.length}} / 256</mat-hint>
-        </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Message</mat-label>
+            <textarea formControlName="myReviewText" matInput maxlength="256"
+              placeholder="Ex. I need help with..."></textarea>
+            <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
+            <mat-hint align="end">{{myReviewText.value.length}} / 256</mat-hint>
+          </mat-form-field>
 
 
-        <p>{{myReviewText.value}}</p>
+          <p>{{myReviewText.value}}</p>
 
-        <br>
+          <br>
 
-        <h4>My Rating</h4>
+          <h4>My Rating</h4>
 
-        <!-- <span>
+          <!-- <span>
           <button mat-fab disabled style="font-size: x-large; background-color: greenyellow;">⭐</button>
           <button mat-flat-button>⭐</button>
           <button style="font-size: x-large; background-color: greenyellow;">⭐</button>
@@ -120,46 +120,47 @@
 
         </span> -->
 
-        <!-- <div class="example-button-container">
+          <!-- <div class="example-button-container">
           <button mat-mini-fab aria-label="Example icon button with a home icon">
             <mat-icon style="color: red; background-color: aquamarine;" color="red">star</mat-icon>
           </button>
         </div> -->
 
-        <div>
+          <div>
 
 
-          <span>
+            <span>
 
-            <span *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i], }" mat-flat-button
-              (click)="onStarClick(i)" class="stars-class">⭐</span>
-            <span class="stars-class">🌗</span>
-
-
-
-
-          </span>
-
-        </div>
+              <span *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i], }" mat-flat-button
+                (click)="onStarClick(i)" class="stars-class">⭐</span>
+              <span class="stars-class">🌗</span>
 
 
 
 
+            </span>
 
-        <br>
-        <br>
-
-        <!-- mat-flat-button -->
-        <!-- mat-stroked-button -->
-        <div style=" justify-content: center; display: flex;">
-          <button mat-raised-button class="colorHeader" style="width: 400px;">
-            SAVE</button>
-        </div>
+          </div>
 
 
-        <br>
-        <br>
 
+
+
+          <br>
+          <br>
+
+          <!-- mat-flat-button -->
+          <!-- mat-stroked-button -->
+          <div style=" justify-content: center; display: flex;">
+            <button mat-raised-button class="colorHeader" style="width: 400px;" type="button" (click)="onSave()">
+              SAVE</button>
+          </div>
+
+
+          <br>
+          <br>
+
+        </form>
 
 
         <button mat-flat-button>Show Preview</button>
@@ -170,9 +171,9 @@
 
 
 
-        <app-single-show>
+        <!-- <app-single-show>
 
-        </app-single-show>
+        </app-single-show> -->
 
       </mat-card>
     </div>
