@@ -9,7 +9,6 @@ import { Show } from '../show.model';
 
 
 
-
 @Component({
   selector: 'app-clip-create',
   templateUrl: './clip-create.component.html',
@@ -23,8 +22,8 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
   textAreaValue: string = "";
   inputValue: string = "";
 
-  searchShowForm: FormControl;
-  myReviewText: FormControl;
+  // searchShowForm: FormControl;
+  // myReviewText: FormControl;
 
   constructor(private clipsService: ClipsService, private route: ActivatedRoute, private http: HttpClient, private showsService: ShowsService) {
 
@@ -37,13 +36,14 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    // this.form = new FormGroup({
-    //   // searchShowForm: new FormControl('', { validators: [Validators.required] }),
-    //   // myReviewText: new FormControl('', { validators: [] }),
-    // });
+    this.form = new FormGroup({
+      searchShowForm: new FormControl('', { validators: [Validators.required] }),
+      myReviewText: new FormControl('', { validators: [] }),
+    });
 
-    this.searchShowForm = new FormControl('', { validators: [Validators.required] });
-    this.myReviewText = new FormControl('', { validators: [] });
+
+    // this.searchShowForm = new FormControl('', { validators: [Validators.required] });
+    // this.myReviewText = new FormControl('', { validators: [] });
 
   }
 
@@ -76,7 +76,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   clearValueFunc() {
 
-    this.searchShowForm.setValue('');
+    // this.searchShowForm.setValue('');
 
   }
 
@@ -129,10 +129,12 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
     if (!this.form.valid) {
       console.log("Form Not Valid");
+      console.log(this.form.value);
       return;
     }
 
     console.log("Form Valid");
+    console.log(this.form.value);
   }
 
 
