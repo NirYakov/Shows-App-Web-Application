@@ -49,8 +49,11 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   stars = [false, false, false, false, false];
 
+  starsNumber = 0;
 
-  onStarClick(idx) {
+  onStarClick(idx: number) {
+    this.starsNumber = idx;
+
     if (idx === 0 && this.stars[0] === false) {
       this.stars[0] = true;
       return;
@@ -127,7 +130,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   onSave() {
 
-    if (!this.form.valid) {
+    if (!this.pickedShow) {
       console.log("Form Not Valid");
       console.log(this.form.value);
       return;
@@ -135,14 +138,11 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
     console.log("Form Valid");
     console.log(this.form.value);
+    console.log(this.pickedShow);
+
+    console.log("my rating stars:", this.starsNumber);
+
+    this.showsService.addPickedShow(this.pickedShow);
   }
-
-
-
-  myShow = {
-    title: "Breaking Bad",
-    img: "https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_Ratio0.6716_AL_.jpg",
-    rating: 9.4,
-  };
 
 }

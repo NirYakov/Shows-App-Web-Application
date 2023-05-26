@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { ShowGame } from '../shows-game/shows-game-highlow/showGame.model';
 import { Show } from './show.model';
 
 @Injectable(
@@ -33,46 +32,59 @@ export class ShowsService implements OnInit {
 
   }
 
+  addPickedShow(show: Show) {
+
+    this.showsStaticData.push(show);
+
+  }
+
 
 
 
   showsStaticData: Show[] = [
     {
-      title: "Rick and Morty",
-      img: "https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_Ratio0.6716_AL_.jpg",
-      rating: 9.1,
+      title: "Mr. Bean",
+      img: "https://m.media-amazon.com/images/M/MV5BMGNhODY0ZjktYjY2ZS00MGNkLTg2ZTUtMGEwNGRlMmY3ZjQ4XkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_Ratio0.6716_AL_.jpg",
+      rating: 8.5,
       type: "tv"
     },
     {
-      title: "Better Call Saul",
-      img: "https://m.media-amazon.com/images/M/MV5BZDA4YmE0OTYtMmRmNS00Mzk2LTlhM2MtNjk4NzBjZGE1MmIyXkEyXkFqcGdeQXVyMTMzNDExODE5._V1_Ratio0.6716_AL_.jpg",
-      rating: 8.9,
-      type: "movie"
+      title: "The Offer",
+      img: "https://m.media-amazon.com/images/M/MV5BMzU1YWU3ZWItYTA4Yy00M2Q0LTkzZTQtYzFmNzVlZTg1ZTQwXkEyXkFqcGdeQXVyMTM1MTE1NDMx._V1_Ratio0.6716_AL_.jpg",
+      rating: 8.5,
+      type: "tv"
+    },
+    {
+      title: "Deadwood",
+      img: "https://m.media-amazon.com/images/M/MV5BNDJhMjUzMDYtNzc4MS00Nzk2LTkyMGQtN2M5NTczYTZmYmY5XkEyXkFqcGdeQXVyMzU3MTc5OTE@._V1_Ratio0.6716_AL_.jpg",
+      rating: 8.6,
+      type: "tv"
+    },
+    {
+      title: "This Is Us",
+      img: "https://m.media-amazon.com/images/M/MV5BNzYxYWY3YzctZjRiNS00MTViLTk5OTYtZDEyNzAwNGE5ODY0XkEyXkFqcGdeQXVyODUxOTU0OTg@._V1_Ratio0.6716_AL_.jpg",
+      rating: 8.6,
+      type: "tv"
+    },
 
-    },
+
     {
-      title: "Breaking Bad",
-      img: "https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_Ratio0.6716_AL_.jpg",
-      rating: 9.4,
-      type: "tv"
-    },
-    {
-      title: "Peaky Blinders",
-      img: "https://m.media-amazon.com/images/M/MV5BZjYzZDgzMmYtYjY5Zi00YTk1LThhMDYtNjFlNzM4MTZhYzgyXkEyXkFqcGdeQXVyMTE5NDQ1MzQ3._V1_Ratio0.7910_AL_.jpg",
-      rating: 8.7,
-      type: "tv"
-    },
-    {
-      title: "Friends",
-      img: "https://m.media-amazon.com/images/M/MV5BNDVkYjU0MzctMWRmZi00NTkxLTgwZWEtOWVhYjZlYjllYmU4XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_Ratio0.6716_AL_.jpg",
+      title: "The Good, the Bad and the Ugly",
+      img: "https://m.media-amazon.com/images/M/MV5BNjJlYmNkZGItM2NhYy00MjlmLTk5NmQtNjg1NmM2ODU4OTMwXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_Ratio0.6716_AL_.jpg",
       rating: 8.8,
-      type: "tv"
+      type: "movie"
     },
     {
-      title: "Seinfeld",
-      img: "https://m.media-amazon.com/images/M/MV5BZjZjMzQ2ZmUtZWEyZC00NWJiLWFjM2UtMzhmYzZmZDcxMzllXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_Ratio0.7015_AL_.jpg",
-      rating: 8.9,
-      type: "tv"
+      title: "Forrest Gump",
+      img: "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_Ratio0.6716_AL_.jpg",
+      rating: 8.8,
+      type: "movie"
+    },
+    {
+      title: "Fight Club",
+      img: "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_Ratio0.6716_AL_.jpg",
+      rating: 8.7,
+      type: "movie"
     },
 
   ];
