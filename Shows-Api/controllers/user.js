@@ -39,6 +39,8 @@ exports.userLogin = (req, res, next) => {
             return bcrypt.compare(req.body.password, user.password);
         })
         .then(result => {
+            console.log("result", result);
+
             if (!result) {
                 if (res.statusCode)
                     res.status(401).json({
@@ -58,6 +60,7 @@ exports.userLogin = (req, res, next) => {
             });
         }).catch(error => {
 
+            console.log(" fetched User ? ", fetchedUser);
             console.log(" Error Occured!");
             res.status(400).json({ error })
         });

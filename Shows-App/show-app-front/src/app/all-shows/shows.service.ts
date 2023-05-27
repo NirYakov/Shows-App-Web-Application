@@ -1,28 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Show } from './show.model';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+
+const BACKEND_URL = environment.apiUrl + "/shows/";
 
 @Injectable(
   {
     providedIn: 'root'
   }
 )
-export class ShowsService implements OnInit {
+export class ShowsService {
 
   shows: Show[];
 
 
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit(): void {
-
-
-  }
+  constructor(private http: HttpClient, private router: Router) { }
 
 
   getAllShows() {
-    console.log("ShowsService ShowsService ShowsService");
+    // console.log("ShowsService ShowsService ShowsService");
+
+
 
     this.shows = [...this.showsStaticData];
     console.log("init shows : ", this.shows);
@@ -32,10 +33,29 @@ export class ShowsService implements OnInit {
 
   }
 
+
+
   addPickedShow(show: Show) {
 
     this.showsStaticData.push(show);
+    this.router.navigate(["/"]);
 
+    const showData = show;
+
+    this.http
+      .post<{ message: string; show: Show }>(
+        BACKEND_URL,
+        showData
+      )
+      .subscribe(
+        {
+          next: responseData => {
+            this.router.navigate(["/"]);
+          },
+          error: error => {
+            console.log("error on the add show.");
+          }
+        });
   }
 
 

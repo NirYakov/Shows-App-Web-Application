@@ -7,30 +7,30 @@
     <li>
       <a mat-button routerLink="/game" routerLinkActive="mat-accent">Shows Game</a>
     </li>
-    <li>
+    <li *ngIf="!userIsAuthenticated">
       <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
     </li>
-    <li>
+    <li *ngIf="!userIsAuthenticated">
       <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
     </li>
-    <li>
-      <button mat-button>Logout</button>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
     </li>
 
     <li>
-      <button routerLink="/myshows" routerLinkActive="mat-accent" mat-button>My Shows</button>
+      <a routerLink=" /myshows" routerLinkActive="mat-accent" mat-button>My Shows</a>
     </li>
 
     <li>
-      <button routerLink="/testtcomnponent" routerLinkActive="mat-accent" mat-button>test single </button>
+      <a routerLink="/testtcomnponent" routerLinkActive="mat-accent" mat-button>test single </a>
     </li>
 
     <li>
-      <button routerLink="/testtcomnponent22" routerLinkActive="mat-accent" mat-button>test single 22 </button>
+      <a routerLink="/testtcomnponent22" routerLinkActive="mat-accent" mat-button>test single 22 </a>
     </li>
 
     <li>
-      <button routerLink="/testtcomnponent44" routerLinkActive="mat-accent" mat-button>test single 44 </button>
+      <a routerLink="/testtcomnponent44" routerLinkActive="mat-accent" mat-button>test single 44 </a>
     </li>
 
     <li>

@@ -1,3 +1,9 @@
+<h2>TESTING</h2>
+
+<button (click)="onClickTest()">Test Auth Try</button>
+<p>{{answerString}}</p>
+<br>
+
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
@@ -14,4 +20,4 @@
   </form>
 </mat-card>
 
-<h2>TESTING</h2>
+<h2>TESTING END</h2>
