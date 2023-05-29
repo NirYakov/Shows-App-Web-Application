@@ -24,6 +24,9 @@ img {
   width: 260px;
   border-radius: 25px;
 
+  border-style: solid;
+  border-color: #ffe261;
+
   // box-shadow: 5px 5px 6px #ccc;
   // -moz-box-shadow: 5px 5px 6px #ccc;
   // -webkit-box-shadow: 5px 5px 6px #ccc;
@@ -110,10 +113,15 @@ body {
   background: hsl(210 30% 24%);
 }
 
+// h1 {
+//   font-size: clamp(3rem, 15vmin, 8rem);
+//   font-family: sans-serif;
+//   color: hsl(0 0% 98%);
+// }
+
 h1 {
-  font-size: clamp(3rem, 15vmin, 8rem);
+  font-size: 2rem;
   font-family: sans-serif;
-  color: hsl(0 0% 98%);
 }
 
 .underlined {
@@ -208,7 +216,27 @@ html {
   box-shadow: 0px 0px 12px violet;
   -moz-box-shadow: 0px 0px 9px violet;
   -webkit-box-shadow: 0px 0px 30px violet;
-  -khtml-box-shadow: 0px 0px 9px #violet;
+  -khtml-box-shadow: 0px 0px 9px violet;
 
   // padding: 0.1rem;
+}
+
+.yellowShadow {
+  border-style: solid;
+
+  border-radius: 2rem;
+  padding: 0.5rem;
+  /* border-color: red ; */
+  /* border-width: 1rem; */
+
+  /* border: rgba(175, 6, 6, 0.705); */
+
+  width: 200px;
+
+  color: black;
+
+  box-shadow: 1px 1px 6px #ffe261;
+  -moz-box-shadow: 1px 1px 6px #ffe261;
+  -webkit-box-shadow: 1px 1px 6px #ffe261;
+  -khtml-box-shadow: 1px 1px 6px #ffe261;
 }

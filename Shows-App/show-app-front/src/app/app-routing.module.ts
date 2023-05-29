@@ -25,6 +25,7 @@ const routes: Routes = [
 
   { path: "myshows", component: ShowsListComponent }, // gurd
 
+  { path: "myshows/:showname", component: SingleShowViewComponent },
 
   { path: "addnewshow", component: ClipCreateComponent }, // gurd
 

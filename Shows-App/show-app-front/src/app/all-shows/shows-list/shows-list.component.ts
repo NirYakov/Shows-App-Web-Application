@@ -27,11 +27,40 @@ export class ShowsListComponent implements OnInit {
   ngOnInit(): void {
     //    throw new Error('Method not implemented.');
     console.log("On init");
-    this.getAllShow();
+    // this.fillAllShows();
+    this.initShows();
 
     console.log(this.shows);
 
     console.log("showService? : ", this.showService);
+
+
+  }
+
+
+  initShows() {
+    this.shows = this.showService.shows;
+
+  }
+
+  numberToNumEmoji(rating: number) {
+
+    const mapNumToNumEmoji = {
+      0: '0️⃣',
+      1: '1️⃣',
+      2: '2️⃣',
+      3: '3️⃣',
+      4: '4️⃣',
+      5: ' 5️⃣'
+    }
+
+    return mapNumToNumEmoji[rating];
+  }
+
+  moveToSingle(show: Show) {
+
+
+    this.showService.moveToSinglePage(show);
 
   }
 
@@ -54,7 +83,7 @@ export class ShowsListComponent implements OnInit {
 
   }
 
-  getAllShow() {
+  fillAllShows() {
     this.shows = this.showsOrigin = this.showService.getAllShows();
     console.log(this.shows);
     console.log(this.showService.getAllShows());

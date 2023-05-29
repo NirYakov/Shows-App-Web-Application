@@ -106,7 +106,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
           /////////////// fake fill data
 
-          this.fakeSearchRsults = this.showsService.getAllShows();
+          this.fakeSearchRsults = this.showsService.showsStaticData;
         }
       }
     );
@@ -142,7 +142,25 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
     console.log("my rating stars:", this.starsNumber);
 
-    this.showsService.addPickedShow(this.pickedShow);
+    let showStars = 0
+
+    for (let i = this.stars.length - 1; i >= 0; i--) {
+      if (this.stars[i]) {
+        showStars = i + 1;
+        break;
+      }
+    }
+
+
+
+    console.log("my SHOW STARS rating stars:", showStars);
+
+    const myShow = { ...this.pickedShow };
+
+    myShow.review = this.form.value.myReviewText;
+    myShow.rating = showStars;
+
+    this.showsService.addPickedShow(myShow);
   }
 
 }

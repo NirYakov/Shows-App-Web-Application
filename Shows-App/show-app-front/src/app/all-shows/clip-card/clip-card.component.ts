@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ShowGame } from 'src/app/shows-game/shows-game-highlow/showGame.model';
+import { Show } from '../show.model';
+import { ShowsService } from '../shows.service';
 
 @Component({
   selector: 'app-clip-card',
@@ -8,6 +10,8 @@ import { ShowGame } from 'src/app/shows-game/shows-game-highlow/showGame.model';
 })
 export class ClipCardComponent implements OnInit {
 
+  stars = [];
+
   @Input() show: ShowGame =
     {
       title: "Rick and Morty",
@@ -15,9 +19,22 @@ export class ClipCardComponent implements OnInit {
       rating: 9.1,
     };
 
-  constructor() { }
+  constructor(private showsService: ShowsService) { }
 
   ngOnInit() {
+    const pickedShow = this.showsService.pickedShow;
+
+    if (pickedShow) {
+      this.show = pickedShow;
+    }
+
+    this.stars = Array.from({ length: Math.floor(this.show.rating) }, (_, i) => i + 1);
+
+    console.log(this.stars);
+    console.log(this.show.rating);
+
   }
+
+
 
 }

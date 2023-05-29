@@ -65,3 +65,21 @@ img {
   margin: 0.5rem;
   cursor: pointer;
 }
+
+.yellowShadow {
+  border-style: solid;
+
+  border-radius: 2rem;
+  padding: 0.5rem;
+  /* border-color: red ; */
+  /* border-width: 1rem; */
+
+  /* border: rgba(175, 6, 6, 0.705); */
+
+  color: blueviolet;
+
+  box-shadow: 1px 1px 6px #ffe261;
+  -moz-box-shadow: 1px 1px 6px #ffe261;
+  -webkit-box-shadow: 1px 1px 6px #ffe261;
+  -khtml-box-shadow: 1px 1px 6px #ffe261;
+}

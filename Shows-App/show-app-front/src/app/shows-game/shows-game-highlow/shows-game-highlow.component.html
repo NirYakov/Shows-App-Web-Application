@@ -8,11 +8,13 @@
 
     <h3 class="propJello"> <span class="underlined underline-overflow">Score : {{score}}</span></h3>
   </div>
-  <button mat-stroked-button *ngIf="!gameOver" (click)="onChangeTheMedia()">{{media}}</button>
+  <button mat-stroked-button *ngIf="!gameOver" (click)="onChangeTheMedia()"
+    style="font-size: large; text-align: center;">{{media}}</button>
   <button mat-stroked-button *ngIf="gameOver" (click)="newGame()"
-    style="width: 140px; height: 120px; font-size: xx-large;">
+    style="width: 140px; height: 120px; font-size: x-large; text-align: center;">
     Play
-    Again</button>
+    Again
+  </button>
 </div>
 
 
@@ -20,20 +22,22 @@
 
   <div class="box1">
 
-    <h2 class=""> {{firstTitle}}</h2>
+    <h1 class=""> {{firstTitle}}</h1>
     <img [src]="firstImg" alt="" class="green-shadow">
     <div class="miniContainer">
-      <h3> Rating ★ {{rating}}</h3>
+      <div style="display: flex; justify-content: center;">
+        <h2 class="yellowShadow"> Rating ★ {{rating}}</h2>
+      </div>
     </div>
   </div>
 
   <div class="box2">
     <h4 *ngIf="!gameOver" class="propJello"><span>Vs</span></h4>
-    <h1 *ngIf="gameOver" class="propJello" style="color: red;"><span>GAME OVER</span></h1>
+    <h1 *ngIf="gameOver" class="propJello" style="color: red; font-size: 2.5rem;"><span>GAME OVER</span></h1>
   </div>
   <!-- btnSpace -->
   <div class="box3">
-    <h2 class=""> {{secondTitle}}</h2>
+    <h1 class=""> {{secondTitle}}</h1>
 
 
 
