@@ -50,7 +50,8 @@
         <mat-card-header>
           <mat-card-title>{{item.title}}</mat-card-title>
           <mat-card-subtitle>{{item.title}}</mat-card-subtitle>
-          <mat-card-subtitle> {{item.rating}} {{numberToNumEmoji(item.rating)}} ⭐ </mat-card-subtitle>
+          <!-- <mat-card-subtitle> {{item.rating}} {{numberToNumEmoji(item.rating)}} ⭐ </mat-card-subtitle> -->
+          <mat-card-subtitle> {{item.rating}} {{numberToNumEmoji(item.rating)}} </mat-card-subtitle>
           <div></div>
         </mat-card-header>
         <img mat-card-image class="green-shadow" style="margin-top: 0.5rem; margin-bottom: 0rem;" [src]="item.img"

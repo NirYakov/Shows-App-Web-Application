@@ -39,19 +39,18 @@ export class ShowsListComponent implements OnInit {
 
 
   initShows() {
-    this.shows = this.showService.shows;
-
+    this.shows = this.showsOrigin = this.showService.getAllShows();
   }
 
   numberToNumEmoji(rating: number) {
 
     const mapNumToNumEmoji = {
       0: '0️⃣',
-      1: '1️⃣',
-      2: '2️⃣',
-      3: '3️⃣',
-      4: '4️⃣',
-      5: ' 5️⃣'
+      1: '1️⃣ ⭐',
+      2: '2️⃣ ⭐ ⭐',
+      3: '3️⃣ ⭐ ⭐ ⭐',
+      4: '4️⃣ ⭐ ⭐ ⭐ ⭐',
+      5: '5️⃣ ⭐ ⭐ ⭐ ⭐ ⭐'
     }
 
     return mapNumToNumEmoji[rating];

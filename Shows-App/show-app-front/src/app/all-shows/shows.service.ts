@@ -25,12 +25,12 @@ export class ShowsService {
 
 
 
-    // this.shows = [...this.showsStaticData];
+    this.shows = [...this.showsStaticData];
+
     // console.log("init shows : ", this.shows);
     // console.log("init shows : ", this.showsStaticData);
 
     return this.shows;
-
   }
 
   moveToSinglePage(show: Show) {

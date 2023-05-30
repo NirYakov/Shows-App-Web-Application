@@ -1,7 +1,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
-  gap: 10px;
+  /* gap: 2px; */
   /* background-color: #2196f3; */
   padding: 10px;
 }
@@ -71,7 +71,7 @@ img {
 
   border-radius: 2rem;
   padding: 0.5rem;
-  /* border-color: red ; */
+  /* border-color: red; */
   /* border-width: 1rem; */
 
   /* border: rgba(175, 6, 6, 0.705); */

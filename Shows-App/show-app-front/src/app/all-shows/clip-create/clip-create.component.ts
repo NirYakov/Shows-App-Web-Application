@@ -160,6 +160,8 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     myShow.review = this.form.value.myReviewText;
     myShow.rating = showStars;
 
+    console.log(myShow);
+
     this.showsService.addPickedShow(myShow);
   }
 
