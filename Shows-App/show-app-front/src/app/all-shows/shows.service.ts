@@ -17,15 +17,22 @@ export class ShowsService {
   pickedShow: Show;
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    this.myInitToDel();
 
+  }
+
+
+  myInitToDel() {
+    this.shows = [...this.showsStaticData];
+  }
 
   getAllShows() {
     // console.log("ShowsService ShowsService ShowsService");
 
 
 
-    this.shows = [...this.showsStaticData];
+    // this.shows = [...this.showsStaticData];
 
     // console.log("init shows : ", this.shows);
     // console.log("init shows : ", this.showsStaticData);

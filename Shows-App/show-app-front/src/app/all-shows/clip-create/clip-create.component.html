@@ -49,7 +49,7 @@
                 <mat-card class="example-card" style="border-radius: 1rem;">
                   <mat-card-header>
                     <mat-card-title>{{item.title}}</mat-card-title>
-                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    <mat-card-subtitle>{{item.review}}</mat-card-subtitle>
                     <mat-card-subtitle>Rating ⭐ {{item.rating}}</mat-card-subtitle>
                   </mat-card-header>
                   <img mat-card-image class="" [src]="item.img" [alt]="item.title"
@@ -69,7 +69,7 @@
                 <mat-card class="example-card" style="border-radius: 1rem;">
                   <mat-card-header>
                     <mat-card-title>{{pickedShow.title}}</mat-card-title>
-                    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    <mat-card-subtitle>{{pickedShow.review}}</mat-card-subtitle>
                     <mat-card-subtitle>Rating ⭐ {{pickedShow.rating}}</mat-card-subtitle>
                   </mat-card-header>
                   <img mat-card-image class="" [src]="pickedShow.img" [alt]="pickedShow.title"

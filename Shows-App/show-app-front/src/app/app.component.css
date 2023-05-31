@@ -4,7 +4,7 @@ main {
   margin: auto;
 }
 
-.footer {
+/* .footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -13,6 +13,8 @@ main {
   color: rgb(9, 2, 24);
   text-align: center;
   margin: 0px;
-}
+
+  margin-top: 4rem;
+} */
 
 /* background-color: blueviolet; */

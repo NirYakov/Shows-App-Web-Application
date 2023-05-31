@@ -99,7 +99,18 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     this.http.get<any>(`http://localhost:3000/api/test/search/${searchShow}`).subscribe(
       {
         next: result => {
-          this.fakeSearchRsults = result.responseApi.results;
+          this.fakeSearchRsults = result.responseApi.results.map(show => {
+            console.log(show);
+            return {
+              title: show.title,
+              rating: show.imDbRating,
+              img: show.image,
+              type: "tv",
+              review: show.description,
+              seasons: show.seasons,
+              minutes: show.minutes
+            };
+          });
         },
         error: error => {
           // error

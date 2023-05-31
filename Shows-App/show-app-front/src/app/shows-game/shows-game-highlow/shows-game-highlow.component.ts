@@ -19,11 +19,7 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
   GameAnswer: typeof GameAnswer = GameAnswer;
 
   shows: ShowGame[] = [
-    {
-      title: "Rick and Morty",
-      img: "https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_Ratio0.6716_AL_.jpg",
-      rating: 9.1,
-    },
+
     {
       title: "Better Call Saul",
       img: "https://m.media-amazon.com/images/M/MV5BZDA4YmE0OTYtMmRmNS00Mzk2LTlhM2MtNjk4NzBjZGE1MmIyXkEyXkFqcGdeQXVyMTMzNDExODE5._V1_Ratio0.6716_AL_.jpg",
@@ -50,6 +46,11 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
       title: "Seinfeld",
       img: "https://m.media-amazon.com/images/M/MV5BZjZjMzQ2ZmUtZWEyZC00NWJiLWFjM2UtMzhmYzZmZDcxMzllXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_Ratio0.7015_AL_.jpg",
       rating: 8.9,
+    },
+    {
+      title: "Rick and Morty",
+      img: "https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_Ratio0.6716_AL_.jpg",
+      rating: 9.1,
     },
 
   ];

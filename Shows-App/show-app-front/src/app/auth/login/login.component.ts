@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      // username: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern(`([A-Za-z0-9\-\_]+)`)]),
     });
   }
 
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     this.isLoading = true;
-    this.authService.login(this.form.value.email, this.form.value.password);
+    this.authService.login(this.form.value.email, this.form.value.username, this.form.value.password);
   }
 
   ngOnDestroy(): void {
