@@ -1,6 +1,9 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
+  /* gap: 200px; */
+  /* box-sizing: border-box; */
+  /* grid-template-columns: auto auto; */
   /* gap: 2px; */
   /* background-color: #2196f3; */
   padding: 10px;
