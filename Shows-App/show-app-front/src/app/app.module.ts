@@ -33,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShowsListComponent } from './all-shows/shows-list/shows-list.component';
 import { SingleShowViewComponent } from './all-shows/single-show-view/single-show-view.component';
+import { FriendsSearchComponent } from './friends/friends-search/friends-search.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { SingleShowViewComponent } from './all-shows/single-show-view/single-sho
     ClipCreateComponent,
     ShowsListComponent,
     SingleShowViewComponent,
+    FriendsSearchComponent
 
   ],
   imports: [

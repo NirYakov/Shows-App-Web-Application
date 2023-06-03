@@ -1,0 +1,22 @@
+<div style="background-color: brown;">
+
+
+  <mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (ngSubmit)="onLogin()" *ngIf="!isLoading" [formGroup]="form">
+      <mat-form-field>
+        <input matInput name="email" type="email" placeholder="Email" formControlName="email">
+        <mat-error *ngIf="form.invalid">Please enter a valid email.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput name="username" type="text" placeholder="Username" formControlName="username">
+        <mat-error *ngIf="form.invalid">Please enter a valid email.</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Login</button>
+    </form>
+  </mat-card>
+  <p>AAAAAAAAAAAAAAA</p>
+
+</div>
