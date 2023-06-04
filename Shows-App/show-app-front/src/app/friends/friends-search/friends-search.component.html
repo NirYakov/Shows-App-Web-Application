@@ -1,22 +1,55 @@
 <div style="background-color: brown;">
 
+  <div *ngIf="!friendFound">
+    <h1> Search Friend</h1>
+    <mat-card>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+      <form (ngSubmit)="onLogin()" *ngIf="!isLoading" [formGroup]="form">
+        <mat-form-field>
+          <input matInput name="email" type="email" placeholder="Email" formControlName="email">
+          <mat-error *ngIf="form.invalid">Please enter a valid email.</mat-error>
+        </mat-form-field>
 
-  <mat-card>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <form (ngSubmit)="onLogin()" *ngIf="!isLoading" [formGroup]="form">
-      <mat-form-field>
-        <input matInput name="email" type="email" placeholder="Email" formControlName="email">
-        <mat-error *ngIf="form.invalid">Please enter a valid email.</mat-error>
-      </mat-form-field>
+        <mat-form-field>
+          <input matInput name="username" type="text" placeholder="Username" formControlName="username">
+          <mat-error *ngIf="form.invalid">Please enter a valid username (letters, numbers, -, _) min 4
+            chars.</mat-error>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput name="username" type="text" placeholder="Username" formControlName="username">
-        <mat-error *ngIf="form.invalid">Please enter a valid email.</mat-error>
-      </mat-form-field>
+        <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Login</button>
+      </form>
+    </mat-card>
+    <p>AAAAAAAAAAAAAAA</p>
 
-      <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Login</button>
-    </form>
-  </mat-card>
-  <p>AAAAAAAAAAAAAAA</p>
+  </div>
+
+  <div *ngIf="friendFound">
+
+    <div style="display: flex; justify-content: center; padding: 2rem;">
+      <mat-card style="padding: 2rem;">
+
+        <span style="display: flex; justify-content: center;">
+
+          <img [src]=" minchProfilePic" alt="" style=" width: 100px; height: 100px;">
+          <span style="margin: 1rem;">
+            <h2>{{friendName}}</h2>
+            <div style="display: flex; justify-content: end;">
+              <button mat-stroked-button (click)="fillFriend()">Add</button>
+            </div>
+          </span>
+
+        </span>
+
+
+      </mat-card>
+    </div>
+
+
+
+
+  </div>
+
+
+
 
 </div>

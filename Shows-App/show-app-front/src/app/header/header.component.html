@@ -16,7 +16,6 @@
     <li *ngIf="userIsAuthenticated">
       <button mat-button (click)="onLogout()">Logout</button>
     </li>
-
     <li>
       <a routerLink="/myshows" routerLinkActive="mat-accent" mat-button>My Shows</a>
     </li>
@@ -38,5 +37,11 @@
     </li>
 
   </ul>
+
+  <div *ngIf="userIsAuthenticated" style="margin: 1rem;">
+
+    <img [src]="usernamePicLink" alt="micah seed=Felix2-_" style="width: 50px; height: 50px">
+  </div>
+
 </mat-toolbar>
 <div style="margin-bottom: 2rem;"></div>

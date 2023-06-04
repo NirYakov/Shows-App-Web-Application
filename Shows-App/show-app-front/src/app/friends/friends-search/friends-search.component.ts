@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { FriendsService } from '../friends.service';
 
 @Component({
   selector: 'app-friends-search',
@@ -10,10 +11,16 @@ import { Subscription } from 'rxjs';
 export class FriendsSearchComponent implements OnInit, OnDestroy {
 
   isLoading = false;
-  private authStatusSub: Subscription;
+  // private authStatusSub: Subscription;
   form: FormGroup;
 
-  constructor() { }
+  friendFound = true;
+
+  friendName = "Friend_Name_-15";
+
+  minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=Felix2-_`;
+
+  constructor(private friendsService: FriendsService) { }
 
   ngOnInit() {
     // this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
@@ -28,6 +35,10 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
     });
   }
 
+
+  fillFriend() {
+    this.minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=${this.friendName}`;
+  }
 
   onLogin() {
 
@@ -44,7 +55,7 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.authStatusSub.unsubscribe();
+    //    this.authStatusSub.unsubscribe();
   }
 
 }

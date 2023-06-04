@@ -14,7 +14,8 @@ export class AuthService {
   private token: string;
   private tokenTimer: any;
   private userId: string;
-  private authStatusListener = new Subject<boolean>();
+  private authStatusListener = new Subject<{ isAuthenticated: boolean, username: string }>();
+  private username: string;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -30,6 +31,10 @@ export class AuthService {
     return this.userId;
   }
 
+  getUsername() {
+    return this.username;
+  }
+
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
   }
@@ -42,7 +47,7 @@ export class AuthService {
         this.router.navigate(["/"]);
       },
       error => {
-        this.authStatusListener.next(false);
+        this.authStatusListener.next({ isAuthenticated: false, username: "" });
       }
     );
   }
@@ -51,7 +56,7 @@ export class AuthService {
     const authData: AuthData = { email: email, username: username, password: password };
     console.log(BACKEND_URL + "login");
     this.http
-      .post<{ token: string; expiresIn: number; userId: string }>(
+      .post<{ token: string; expiresIn: number; userId: string, username: string }>(
         BACKEND_URL + "login",
         authData
       )
@@ -64,18 +69,19 @@ export class AuthService {
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
             this.userId = response.userId;
-            this.authStatusListener.next(true);
+            this.username = response.username;
+            this.authStatusListener.next({ isAuthenticated: true, username: this.username });
             const now = new Date();
             const expirationDate = new Date(
               now.getTime() + expiresInDuration * 1000
             );
             console.log(expirationDate);
-            this.saveAuthData(token, expirationDate, this.userId);
+            this.saveAuthData(token, expirationDate, this.userId, this.username);
             this.router.navigate(["/"]);
           }
         },
         error => {
-          this.authStatusListener.next(false);
+          this.authStatusListener.next({ isAuthenticated: false, username: "" });
         }
       );
   }
@@ -91,16 +97,18 @@ export class AuthService {
       this.token = authInformation.token;
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
+      this.username = authInformation.username;
       this.setAuthTimer(expiresIn / 1000);
-      this.authStatusListener.next(true);
+      this.authStatusListener.next({ isAuthenticated: true, username: this.username });
     }
   }
 
   logout() {
     this.token = null;
     this.isAuthenticated = false;
-    this.authStatusListener.next(false);
+    this.authStatusListener.next({ isAuthenticated: false, username: "" });
     this.userId = null;
+    this.username = null;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(["/"]);
@@ -113,29 +121,33 @@ export class AuthService {
     }, duration * 1000);
   }
 
-  private saveAuthData(token: string, expirationDate: Date, userId: string) {
+  private saveAuthData(token: string, expirationDate: Date, userId: string, username: string) {
     localStorage.setItem("token", token);
     localStorage.setItem("expiration", expirationDate.toISOString());
     localStorage.setItem("userId", userId);
+    localStorage.setItem("username", username);
   }
 
   private clearAuthData() {
     localStorage.removeItem("token");
     localStorage.removeItem("expiration");
     localStorage.removeItem("userId");
+    localStorage.removeItem("username");
   }
 
   private getAuthData() {
     const token = localStorage.getItem("token");
     const expirationDate = localStorage.getItem("expiration");
     const userId = localStorage.getItem("userId");
+    const username = localStorage.getItem("username");
     if (!token || !expirationDate) {
       return null;
     }
     return {
       token: token,
       expirationDate: new Date(expirationDate),
-      userId: userId
+      userId: userId,
+      username: username
     };
   }
 }
