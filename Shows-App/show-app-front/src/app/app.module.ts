@@ -34,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShowsListComponent } from './all-shows/shows-list/shows-list.component';
 import { SingleShowViewComponent } from './all-shows/single-show-view/single-show-view.component';
 import { FriendsSearchComponent } from './friends/friends-search/friends-search.component';
+import { FriendCardComponent } from './friends/friend-card/friend-card.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { FriendsSearchComponent } from './friends/friends-search/friends-search.
     ClipCreateComponent,
     ShowsListComponent,
     SingleShowViewComponent,
-    FriendsSearchComponent
+    FriendsSearchComponent,
+    FriendCardComponent,
 
   ],
   imports: [
