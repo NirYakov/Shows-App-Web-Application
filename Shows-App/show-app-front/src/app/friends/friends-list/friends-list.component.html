@@ -1,3 +1,9 @@
-<p>
-  friends-list works!
-</p>
+<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+  <span *ngFor=" let friend of friends">
+    <!-- <span style="width: 600px;"> -->
+    <!-- </span> -->
+
+    <app-friend-card [friend]="friend"></app-friend-card>
+
+  </span>
+</div>

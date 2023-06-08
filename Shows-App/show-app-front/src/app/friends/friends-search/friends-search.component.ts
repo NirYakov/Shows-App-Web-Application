@@ -58,4 +58,10 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
     //    this.authStatusSub.unsubscribe();
   }
 
+  clickFunc(str: string) {
+
+    console.log("LOLLLL " + str);
+
+  }
+
 }

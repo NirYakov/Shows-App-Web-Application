@@ -11,8 +11,15 @@ export class FriendCardComponent implements OnInit {
 
   @Input() friend: string = this.friendName;
 
+  @Input() clickedFunc = (str: string) => {
+
+    console.log("Hellowwwwww ");
+
+  };
+
 
   minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=Felix2-_`;
+
 
 
   constructor() { }
@@ -20,13 +27,14 @@ export class FriendCardComponent implements OnInit {
   ngOnInit() {
   }
 
-  index: number;
+  index: number = 0;
 
 
   fillFriend() {
     this.minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=${this.friend}${this.index}`;
     this.index++;
     console.log("clicked fillFriend()", this.minchProfilePic);
+    this.clickedFunc(`${this.friend}${this.index}`);
   }
 
 }
