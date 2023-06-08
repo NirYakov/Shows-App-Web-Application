@@ -42,13 +42,15 @@ exports.testingPollOnlyXTimes = async (req, res, next) => {
 exports.TestExternalApis = async (req, res, next) => {
 
 
-    const iUseApi = false;
+    // const iUseApi = false;
+    const iUseApi = true;
 
     if (iUseApi) {
 
         let responseApi = "none";
 
-        const searchShow = "inception 2010";
+        // const searchShow = "inception 2010";
+        const searchShow = req.params.searchShow;
 
         const urlApi = `https://imdb-api.com/en/API/Search/${process.env.ApiKey}/${searchShow}`;
 

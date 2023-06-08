@@ -94,7 +94,10 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   fillDataResults() {
 
-    const searchShow = "inception 21";
+    // const searchShow = "inception 21";
+    const searchShow = this.form.get("searchShowForm").value;
+
+    console.log("Search Show : ", searchShow);
 
     this.http.get<any>(`http://localhost:3000/api/test/search/${searchShow}`).subscribe(
       {
@@ -117,7 +120,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
           /////////////// fake fill data
 
-          this.fakeSearchRsults = this.showsService.showsStaticData;
+          //  this.fakeSearchRsults = this.showsService.showsStaticData;
         }
       }
     );

@@ -1,9 +1,29 @@
-<div style="display: flex; justify-content: center; flex-wrap: wrap;">
-  <span *ngFor=" let friend of friends">
-    <!-- <span style="width: 600px;"> -->
-    <!-- </span> -->
+<div>
 
-    <app-friend-card [friend]="friend"></app-friend-card>
+  <div style="display: flex; justify-content: center;">
 
-  </span>
+    <button mat-stroked-button routerLink="/searchfriend" style="font-size: large; margin: 1rem; padding: 2rem;">
+      Search and add new friend
+    </button>
+
+
+  </div>
+
+  <!-- <div style="display: flex; justify-content: center;">
+    <h2>Search friend in my friends </h2>
+    <br>
+    <input>
+  </div> -->
+
+
+  <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+
+    <div *ngFor=" let friend of friends">
+      <!-- <span style="width: 600px;"> -->
+      <!-- </span> -->
+
+      <app-friend-card [friend]="friend"></app-friend-card>
+
+    </div>
+  </div>
 </div>

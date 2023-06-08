@@ -24,7 +24,7 @@ export class ShowsService {
 
 
   myInitToDel() {
-    this.shows = [...this.showsStaticData];
+    // this.shows = [...this.showsStaticData];
   }
 
   getAllShows() {
@@ -64,7 +64,7 @@ export class ShowsService {
       .subscribe(
         {
           next: responseData => {
-            this.router.navigate(["/"]);
+            // this.router.navigate(["/"]);
           },
           error: error => {
             console.log("error on the add show.");

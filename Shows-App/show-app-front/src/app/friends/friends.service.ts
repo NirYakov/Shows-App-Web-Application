@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/auth.service';
+import { Subject } from 'rxjs';
 
 
 const BACKEND_URL = environment.apiUrl + "/friends/";
@@ -11,19 +13,49 @@ const BACKEND_URL = environment.apiUrl + "/friends/";
 })
 export class FriendsService {
 
-  constructor(private http: HttpClient) { }
+  myUserName = localStorage.getItem("username");
+  friends: string[] = [];
 
-  searchFriend(username: string) {
+  private searchfriendStatusListener = new Subject<boolean>();
 
-    const url = BACKEND_URL + `/${username}`;
+  constructor(private http: HttpClient, private authService: AuthService) { }
+
+  getSearchStatusListener() {
+    return this.searchfriendStatusListener.asObservable();
+  }
+
+  getAllFriends() {
+    const url = BACKEND_URL + `${this.myUserName}`;
     console.log(url);
     this.http.get(url).subscribe(
       {
-        next: result => { console.log("Friend Found :)"); },
-        error: error => { console.log("Error !!!") },
+        // next: result => { console.log("Friend Found :)", result); },
+        // error: error => { console.log("Error !!!", error); },
       });
 
-
   }
+
+
+  searchFriend(username: string) {
+
+    // const myUserName = localStorage.getItem("username");
+
+    if (this.myUserName !== username) {
+
+
+      const url = BACKEND_URL + `search/${username}`;
+      console.log(url);
+      this.http.get(url).subscribe(
+        {
+          next: result => { console.log("Friend Found :)", result); this.searchfriendStatusListener.next(true); },
+          error: error => { console.log("Error !!!", error); },
+        });
+
+    } else {
+
+      console.log("Its you ...  -_+");
+    }
+
+  } // of({});
 
 }

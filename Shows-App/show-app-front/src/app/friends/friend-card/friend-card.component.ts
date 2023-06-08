@@ -25,6 +25,7 @@ export class FriendCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.fillFriend();
   }
 
   index: number = 0;

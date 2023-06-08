@@ -11,22 +11,28 @@ import { FriendsService } from '../friends.service';
 export class FriendsSearchComponent implements OnInit, OnDestroy {
 
   isLoading = false;
-  // private authStatusSub: Subscription;
+  private searchStatusSub: Subscription;
   form: FormGroup;
 
-  friendFound = true;
+  friendFound = false;
 
-  friendName = "Friend_Name_-15";
+  friendName = "Friend_Name_-15"; // | 15 chars |
 
   minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=Felix2-_`;
 
   constructor(private friendsService: FriendsService) { }
 
   ngOnInit() {
-    // this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-    //   authStatus => {
-    //     this.isLoading = false;
-    //   });
+    this.searchStatusSub = this.friendsService.getSearchStatusListener().subscribe(
+      searchStatus => {
+        this.isLoading = false;
+
+        this.friendFound = searchStatus;
+
+        this.fillFriend();
+      });
+
+
 
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -46,6 +52,15 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
     console.log("this.form.get(email).valid", this.form.get("email").valid);
     console.log("this.form.get(username).valid", this.form.get("username").valid);
 
+    if (this.form.get("username").valid) {
+      const friendUsername = this.form.get("username").value;
+      this.friendsService.searchFriend(friendUsername);
+      // this.friendFound = true;
+      this.friendName = friendUsername;
+
+      // console.log("this.friendFound : ", this.friendFound);
+    }
+
     if (!this.form.valid) {
       return;
     }
@@ -55,7 +70,7 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    //    this.authStatusSub.unsubscribe();
+    this.searchStatusSub.unsubscribe();
   }
 
   clickFunc(str: string) {

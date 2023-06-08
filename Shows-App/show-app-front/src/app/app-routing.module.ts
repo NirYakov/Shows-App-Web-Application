@@ -9,6 +9,8 @@ import { SingleShowViewComponent } from "./all-shows/single-show-view/single-sho
 import { ShowCardComponent } from "./all-shows/show-card/show-card.component";
 import { CardShowComponent } from "./cards/cardShow/cardShow.component";
 import { ClipCardComponent } from "./all-shows/clip-card/clip-card.component";
+import { FriendsListComponent } from "./friends/friends-list/friends-list.component";
+import { FriendsSearchComponent } from "./friends/friends-search/friends-search.component";
 
 const routes: Routes = [
 
@@ -23,11 +25,15 @@ const routes: Routes = [
   { path: "testtcomnponent44", component: SingleShowViewComponent },
 
 
-  { path: "myshows", component: ShowsListComponent }, // gurd
+  { path: "myshows", component: ShowsListComponent, canActivate: [AuthGuard] }, // gurd
 
   { path: "myshows/:showname", component: SingleShowViewComponent },
 
-  { path: "addnewshow", component: ClipCreateComponent }, // gurd
+  { path: "myfriends", component: FriendsListComponent, canActivate: [AuthGuard] }, // gurd
+
+  { path: "searchfriend", component: FriendsSearchComponent, canActivate: [AuthGuard] }, // gurd
+
+  { path: "addnewshow", component: ClipCreateComponent, canActivate: [AuthGuard] }, // gurd
 
   { path: "auth", loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
   // { path: '404', },

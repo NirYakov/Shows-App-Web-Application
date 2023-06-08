@@ -9,12 +9,12 @@ const myTestMiddleware = (req, res, next) => {
         const myFullUrl = req.originalUrl;
 
 
-        console.log(myParams);
-        console.log(myBody);
-        console.log(myQuery);
-        console.log(myHeaders);
-        console.log(myLastUrl);
-        console.log(myFullUrl);
+        console.log(" params ", myParams);
+        console.log(" body ", myBody);
+        console.log(" query ", myQuery);
+        console.log(" headers ", myHeaders);
+        console.log(" lastUrl ", myLastUrl);
+        console.log(" fullUrl ", myFullUrl);
 
         //  console.log(req);
 

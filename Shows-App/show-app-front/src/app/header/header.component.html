@@ -19,8 +19,11 @@
     <li>
       <a routerLink="/myshows" routerLinkActive="mat-accent" mat-button>My Shows</a>
     </li>
-
     <li>
+      <a routerLink="/myfriends" routerLinkActive="mat-accent" mat-button>My Friends</a>
+    </li>
+
+    <!-- <li>
       <a routerLink="/testtcomnponent" routerLinkActive="mat-accent" mat-button>test single </a>
     </li>
 
@@ -34,13 +37,16 @@
 
     <li>
       <a mat-button routerLink="/single" routerLinkActive="mat-accent" style="color: yellow;">Single</a>
-    </li>
+    </li> -->
 
   </ul>
 
   <div *ngIf="userIsAuthenticated" style="margin: 1rem;">
 
-    <img [src]="usernamePicLink" alt="micah seed=Felix2-_" style="width: 50px; height: 50px">
+    <a routerLink="/">
+      <img [src]="usernamePicLink" [alt]=" this.usernamePicLink" style="width: 50px; height: 50px; margin-top: 10px;">
+    </a>
+
   </div>
 
 </mat-toolbar>

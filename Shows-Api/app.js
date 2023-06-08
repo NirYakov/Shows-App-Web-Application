@@ -6,6 +6,7 @@ const showsGameRoutes = require("./routes/showsGame");
 const testingRoutes = require("./routes/testing");
 const userRoutes = require("./routes/user");
 const showsRoutes = require("./routes/shows");
+const friendsRoutes = require("./routes/friends");
 const configToEnv = require("./configToEnv");
 
 
@@ -54,6 +55,9 @@ app.use("/api/test", testingRoutes);
 
 
 app.use("/api/user", userRoutes);
+
+
+app.use("/api/friends", friendsRoutes);
 
 
 

@@ -22,6 +22,8 @@ exports.CreateUserShow = async (req, res, next) => {
 
     const urlApi = `https://imdb-api.com/en/API/Search/${process.env.ApiKey}/${searchShow}`;
 
+    console.log("Here in the Create user show ");
+
     // console.log(urlApi);
 
     // req from rate api
