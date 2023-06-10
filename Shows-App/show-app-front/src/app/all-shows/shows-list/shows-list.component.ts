@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ShowsService } from '../shows.service';
 import { Show } from '../show.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shows-list',
   templateUrl: './shows-list.component.html',
   styleUrls: ['./shows-list.component.css']
 })
-export class ShowsListComponent implements OnInit {
+export class ShowsListComponent implements OnInit, OnDestroy {
 
   showsOrigin: Show[];
 
@@ -19,7 +20,13 @@ export class ShowsListComponent implements OnInit {
 
   shows: Show[];
 
+  private showsStatusSub: Subscription;
+
   constructor(public showService: ShowsService) { }
+
+  ngOnDestroy(): void {
+    this.showsStatusSub.unsubscribe();
+  }
   // constructor(public showService: ClipsService) { }
   // constructor() { }
 
@@ -28,11 +35,24 @@ export class ShowsListComponent implements OnInit {
     //    throw new Error('Method not implemented.');
     console.log("On init");
     // this.fillAllShows();
-    this.initShows();
+    // this.initShows();
 
     console.log(this.shows);
 
     console.log("showService? : ", this.showService);
+
+    ////////////////////////////////////////////////////////////////
+
+
+    this.showsStatusSub = this.showService.getShowsStatusListener().subscribe(results => {
+      this.shows = this.showsOrigin = results;
+      console.log(" in the listener ", results);
+    });
+
+
+    this.showService.getAllShows();
+
+
 
 
   }

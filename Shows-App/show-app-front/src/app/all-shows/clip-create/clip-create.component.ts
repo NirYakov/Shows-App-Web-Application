@@ -120,6 +120,8 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
           /////////////// fake fill data
 
+          console.log(error);
+
           //  this.fakeSearchRsults = this.showsService.showsStaticData;
         }
       }

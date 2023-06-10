@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
+const showSchema = mongoose.Schema({
 
     // email: { type: String, required: true, uniqueValidator: true },
     // password: { type: String, required: true },
@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
     title: { type: String, required: true },
     img: { type: String, required: true },
     rating: { type: Number, required: true },
-    review: { type: String, required: true },
+    review: { type: String, required: false },
     type: { type: String, required: true },
     seasons: { type: Number, required: false },
     minutes: { type: Number, required: false },
@@ -26,4 +26,4 @@ const userSchema = mongoose.Schema({
 
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Show", showSchema);

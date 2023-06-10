@@ -14,7 +14,7 @@ const BACKEND_URL = environment.apiUrl + "/friends/";
 export class FriendsService {
 
   myUserName = localStorage.getItem("username");
-  friends: string[] = [];
+  friends: { friendUsername: string, friendId: string }[] = [];
 
   private searchfriendStatusListener = new Subject<boolean>();
 
@@ -32,6 +32,14 @@ export class FriendsService {
         // next: result => { console.log("Friend Found :)", result); },
         // error: error => { console.log("Error !!!", error); },
       });
+
+  }
+
+  addfriend(friendUsername: string) {
+    // some port call and then back with { friendUsername : <name> , friendId : <Id> }
+    this.friends.push({ friendUsername: friendUsername, friendId: "101" });
+
+    console.log(this.friends);
 
   }
 

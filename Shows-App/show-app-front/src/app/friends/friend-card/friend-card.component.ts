@@ -30,12 +30,17 @@ export class FriendCardComponent implements OnInit {
 
   index: number = 0;
 
-
   fillFriend() {
-    this.minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=${this.friend}${this.index}`;
-    this.index++;
+    this.minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=${this.friend}`;
     console.log("clicked fillFriend()", this.minchProfilePic);
-    this.clickedFunc(`${this.friend}${this.index}`);
+    this.clickedFunc(this.friend);
   }
+
+  // fillFriend() {
+  //   this.minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=${this.friend}${this.index}`;
+  //   this.index++;
+  //   console.log("clicked fillFriend()", this.minchProfilePic);
+  //   this.clickedFunc(`${this.friend}${this.index}`);
+  // }
 
 }

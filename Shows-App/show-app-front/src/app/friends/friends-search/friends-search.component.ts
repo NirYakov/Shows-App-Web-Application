@@ -76,6 +76,8 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
   clickFunc(str: string) {
 
     console.log("LOLLLL " + str);
+    this.friendsService.addfriend(str);
+
 
   }
 

@@ -3,6 +3,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { Show } from './show.model';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 const BACKEND_URL = environment.apiUrl + "/shows/";
 
@@ -16,15 +17,21 @@ export class ShowsService {
   shows: Show[] = [];
   pickedShow: Show;
 
+  private showsStatusListener = new Subject<Show[]>();
 
   constructor(private http: HttpClient, private router: Router) {
-    this.myInitToDel();
+    // this.myInitToDel();
 
   }
 
 
   myInitToDel() {
     // this.shows = [...this.showsStaticData];
+    this.getAllShows();
+  }
+
+  getShowsStatusListener() {
+    return this.showsStatusListener.asObservable();
   }
 
   getAllShows() {
@@ -36,6 +43,24 @@ export class ShowsService {
 
     // console.log("init shows : ", this.shows);
     // console.log("init shows : ", this.showsStaticData);
+
+    console.log(BACKEND_URL);
+
+    this.http
+      .get<{ message: string; shows: Show[] }>(
+        BACKEND_URL)
+      .subscribe(
+        {
+          next: responseData => {
+            // this.router.navigate(["/"]);
+            console.log(responseData);
+            this.shows = responseData.shows;
+            this.showsStatusListener.next(this.shows);
+          },
+          error: error => {
+            console.log(error);
+          }
+        });
 
     return this.shows;
   }
@@ -65,6 +90,7 @@ export class ShowsService {
         {
           next: responseData => {
             // this.router.navigate(["/"]);
+            console.log(responseData);
           },
           error: error => {
             console.log("error on the add show.");
