@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-friend-card',
@@ -11,11 +11,19 @@ export class FriendCardComponent implements OnInit {
 
   @Input() friend: string = this.friendName;
 
-  @Input() clickedFunc = (str: string) => {
+  // @Input() clickedFunc = (str: string) => {
 
-    console.log("Hellowwwwww ");
+  //   console.log("Hellowwwwww ");
 
-  };
+  // };
+
+  @Output() onSuggest: EventEmitter<string> = new EventEmitter();
+
+  suggestionWasClicked(clickedEntry: string): void {
+    this.onSuggest.emit(clickedEntry);
+  }
+
+  @Input() buttonLabel: string = "Pick";
 
 
   minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=Felix2-_`;
@@ -33,7 +41,7 @@ export class FriendCardComponent implements OnInit {
   fillFriend() {
     this.minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=${this.friend}`;
     console.log("clicked fillFriend()", this.minchProfilePic);
-    this.clickedFunc(this.friend);
+    // this.clickedFunc(this.friend);
   }
 
   // fillFriend() {

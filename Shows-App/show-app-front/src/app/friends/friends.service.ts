@@ -3,6 +3,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 const BACKEND_URL = environment.apiUrl + "/friends/";
@@ -18,7 +19,7 @@ export class FriendsService {
 
   private searchfriendStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
   getSearchStatusListener() {
     return this.searchfriendStatusListener.asObservable();
@@ -40,6 +41,10 @@ export class FriendsService {
     this.friends.push({ friendUsername: friendUsername, friendId: "101" });
 
     console.log(this.friends);
+    this.router.navigate(["/myfriends"]);
+  }
+
+  goToFriendShows(friendUsername: string) {
 
   }
 

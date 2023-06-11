@@ -78,7 +78,6 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
     console.log("LOLLLL " + str);
     this.friendsService.addfriend(str);
 
-
   }
 
 }
