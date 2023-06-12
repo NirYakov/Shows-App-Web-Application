@@ -1,5 +1,13 @@
 <h2>TESTING</h2>
 
+<div *ngFor="let i of ary">
+  test {{i}} ++
+
+  {{ convertDateLocal(i) }}
+
+  {{ "test" + i }}
+</div>
+
 <button (click)="onClickTest()">Test Auth Try</button>
 <p>{{answerString}}</p>
 <br>

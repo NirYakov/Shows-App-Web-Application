@@ -17,6 +17,19 @@ export class MyTestComponent implements OnInit {
   ngOnInit() {
   }
 
+  ary = [2, 5];
+
+  convertDateLocal(convertDate: number) {
+    console.log("🚀 , convertDate", convertDate);
+    console.log(this.ary.length);
+    const str = `test + ${convertDate} + ${Date.now().toString()}`;
+    // return "test" + convertDate + Date.now();
+
+    return "test" + convertDate + "|" + convertDate * convertDate * convertDate;
+    //   return str;
+  }
+
+
   answerString = "";
 
   onClickTest() {

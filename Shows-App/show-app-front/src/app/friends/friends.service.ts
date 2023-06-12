@@ -28,11 +28,11 @@ export class FriendsService {
   getAllFriends() {
     const url = BACKEND_URL + `${this.myUserName}`;
     console.log(url);
-    this.http.get(url).subscribe(
-      {
-        // next: result => { console.log("Friend Found :)", result); },
-        // error: error => { console.log("Error !!!", error); },
-      });
+    // this.http.get(url).subscribe(
+    //   {
+    //     // next: result => { console.log("Friend Found :)", result); },
+    //     // error: error => { console.log("Error !!!", error); },
+    //   });
 
   }
 
@@ -41,6 +41,13 @@ export class FriendsService {
     this.friends.push({ friendUsername: friendUsername, friendId: "101" });
 
     console.log(this.friends);
+
+    this.http.post(BACKEND_URL + friendUsername, { friendName: friendUsername, friendId: "the friend id" }).subscribe({
+      next: response => { console.log(response); },
+      error: error => { console.log(error); },
+    });
+
+
     this.router.navigate(["/myfriends"]);
   }
 
