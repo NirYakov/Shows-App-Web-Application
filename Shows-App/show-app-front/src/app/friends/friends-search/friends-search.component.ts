@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FriendsService } from '../friends.service';
+import { Friend } from '../friend';
 
 @Component({
   selector: 'app-friends-search',
@@ -18,6 +19,8 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
 
   friendName = "Friend_Name_-15"; // | 15 chars |
 
+  friend: Friend = { friendUsername: this.friendName, friendId: "" };
+
   minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=Felix2-_`;
 
   constructor(private friendsService: FriendsService) { }
@@ -26,8 +29,9 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
     this.searchStatusSub = this.friendsService.getSearchStatusListener().subscribe(
       searchStatus => {
         this.isLoading = false;
-
-        this.friendFound = searchStatus;
+        // { friendId: result.friendId, found: result.found }
+        this.friendFound = searchStatus.found;
+        this.friend = { friendUsername: this.friendName, friendId: searchStatus.friendId };
 
         this.fillFriend();
       });
@@ -54,9 +58,13 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
 
     if (this.form.get("username").valid) {
       const friendUsername = this.form.get("username").value;
-      this.friendsService.searchFriend(friendUsername);
-      // this.friendFound = true;
       this.friendName = friendUsername;
+
+      this.friendsService.searchFriend(friendUsername);
+
+      // this.friendFound = true;
+
+
 
       // console.log("this.friendFound : ", this.friendFound);
     }
@@ -73,10 +81,10 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
     this.searchStatusSub.unsubscribe();
   }
 
-  clickFunc(str: string) {
+  addFriend(str: string) {
 
-    console.log("LOLLLL " + str);
-    this.friendsService.addfriend(str);
+    // console.log("LOLLLL " + str);
+    this.friendsService.addFriend(this.friend);
 
   }
 

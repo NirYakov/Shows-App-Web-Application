@@ -9,11 +9,13 @@ const checkAuth = require("../middleware/check-auth");
 
 
 
-router.get("/search/:friendname", checkAuth, myTestMiddleware, FriendController.SearchFindUser);
+router.get("/search/:friendname", checkAuth, FriendController.SearchFindUser);
 
-router.post("/:friendname", checkAuth, myTestMiddleware, FriendController.AddFriend);
+router.post("/:friendname", checkAuth, FriendController.AddFriend);
 
-router.get("", checkAuth, myTestMiddleware, FriendController.GetFriends);
+router.get("", checkAuth, FriendController.GetFriends);
+
+router.get("/:friendId", checkAuth, FriendController.GetFriendsShows);
 
 // router.get("/:friendname", myTestMiddleware, FriendController.SearchFindUser);
 

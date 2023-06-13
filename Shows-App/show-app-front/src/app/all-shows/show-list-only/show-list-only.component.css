@@ -1,0 +1,46 @@
+.example-card {
+  max-width: 300px;
+  /* max-height: 500px; */
+}
+
+.main-div {
+  /* height: 70vh; */
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+
+img {
+  height: 400px;
+  width: 300px;
+  border-radius: 25px;
+}
+
+.purple-shadow {
+  /* box-shadow: 1px 1px 9px #5934ff; */
+
+  /* blueviolet  goldenrod */
+
+  box-shadow: 1px 1px 9px blueviolet;
+  -moz-box-shadow: 1px 1px 9px blueviolet;
+  -webkit-box-shadow: 1px 1px 9px blueviolet;
+  -khtml-box-shadow: 1px 1px 9px blueviolet;
+}
+
+.green-shadow {
+  /* border-style: solid; */
+  border: #1cd8d2;
+
+  border-style: solid;
+  /* border-color: #ffe261; */
+  border-width: 1px;
+
+  /*
+  box-shadow: 0px 0px 9px #1cd8d2;
+  -moz-box-shadow: 0px 0px 9px #1cd8d2;
+  -webkit-box-shadow: 0px 0px 9px #1cd8d2;
+  -khtml-box-shadow: 0px 0px 9px #1cd8d2; */
+
+  /* padding: 0.1rem; */
+}

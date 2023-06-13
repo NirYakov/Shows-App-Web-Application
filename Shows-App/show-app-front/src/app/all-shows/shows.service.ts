@@ -61,8 +61,6 @@ export class ShowsService {
             console.log(error);
           }
         });
-
-    return this.shows;
   }
 
   moveToSinglePage(show: Show) {

@@ -25,7 +25,7 @@
 
   <div *ngIf="friendFound">
 
-    <app-friend-card [friend]="friendName" (onSuggest)="clickFunc(friendName)" buttonLabel="Add"></app-friend-card>
+    <app-friend-card [friend]="friendName" (onSuggest)="addFriend(friendName)" buttonLabel="Add"></app-friend-card>
 
 
   </div>

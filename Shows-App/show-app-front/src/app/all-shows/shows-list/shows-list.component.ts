@@ -59,7 +59,7 @@ export class ShowsListComponent implements OnInit, OnDestroy {
 
 
   initShows() {
-    this.shows = this.showsOrigin = this.showService.getAllShows();
+    this.showService.getAllShows();
   }
 
   numberToNumEmoji(rating: number) {
@@ -103,7 +103,7 @@ export class ShowsListComponent implements OnInit, OnDestroy {
   }
 
   fillAllShows() {
-    this.shows = this.showsOrigin = this.showService.getAllShows();
+    this.showService.getAllShows();
     console.log(this.shows);
     console.log(this.showService.getAllShows());
 

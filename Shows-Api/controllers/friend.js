@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const Friend = require("../models/friend");
-const user = require("../models/user");
+const Shows = require("../models/show");
 
 
 
@@ -16,10 +16,13 @@ exports.SearchFindUser = async (req, res, next) => {
     // console.log(friend);
     // const friend = "";
 
+    console.log("That is the frined idddd ", friend._id);
+
     if (friend) {
         res.status(200).json({
             message: "Found Friend :)",
-            found: true
+            found: true,
+            friendId: friend._id
         });
     } else {
         res.status(400).json({
@@ -34,9 +37,12 @@ exports.SearchFindUser = async (req, res, next) => {
 
 exports.AddFriend = async (req, res, next) => {
 
-    const friendname = req.params.friendname;
+    const friendUsername = req.params.friendname;
 
     const usernameId = req.userData.userId;
+
+    const friendId = req.body.friendId;
+
     // const friend = await friends.findOne({ username: friendname });
 
     // if (friend) {
@@ -55,7 +61,7 @@ exports.AddFriend = async (req, res, next) => {
     if (userHaveInitFriends) {
         console.log("Here and created");
         // here inject my code to add more friend to this user .!!
-        userHaveInitFriends.friends.push({ friendUsername: friendname, friendId: "Just an iddd" });
+        userHaveInitFriends.friends.push({ friendUsername, friendId });
         userHaveInitFriends.save().then(result => {
             res.status(200).json({
                 message: "Already created row . added to friendslist.",
@@ -72,21 +78,29 @@ exports.AddFriend = async (req, res, next) => {
         return;
     }
 
-    const friend = new Friend({ usernameId: usernameId, friends: [{ friendUsername: friendname, friendId: "Just an iddd" }] });
+    try {
+        const friend = new Friend({ usernameId: usernameId, friends: [{ friendUsername, friendId }] });
 
-    friend.save().then(result => {
-        res.status(201).json(
-            {
-                message: "success",
-                result
+        friend.save().then(result => {
+            res.status(201).json(
+                {
+                    message: "success",
+                    result
+                });
+        }).catch(error => {
+            res.status(400).json({
+                message: "error in save friend",
+                error
             });
-    }).catch(error => {
-        res.status(400).json({
+        });
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
             message: "error in save friend",
             error
         });
-    });
-
+    }
 }
 
 
@@ -116,3 +130,35 @@ exports.GetFriends = async (req, res, next) => {
     }
 
 }
+
+
+exports.GetFriendsShows = async (req, res, next) => {
+    try {
+
+        console.log("Here in friend shows and more");
+
+        const friendId = req.params.friendId;
+
+        const userFriendsShows = await Shows.find({ creator: friendId });
+
+        if (userFriendsShows) {
+            res.status(200).json({
+                message: "Found user friends.",
+                shows: userFriendsShows
+            });
+        } else {
+            res.status(401).json({
+                message: "No friends to share",
+                error: "No friends to share"
+            });
+
+        }
+    } catch (error) {
+        res.status(401).json({
+            message: "No friends to share",
+            error: error
+        });
+    }
+
+}
+
