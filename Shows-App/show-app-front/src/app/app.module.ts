@@ -36,6 +36,7 @@ import { SingleShowViewComponent } from './all-shows/single-show-view/single-sho
 import { FriendsSearchComponent } from './friends/friends-search/friends-search.component';
 import { FriendCardComponent } from './friends/friend-card/friend-card.component';
 import { FriendsListComponent } from './friends/friends-list/friends-list.component';
+import { FriendsShowsListComponent } from './friends/friends-shows-list/friends-shows-list.component';
 
 
 @NgModule({
@@ -54,6 +55,8 @@ import { FriendsListComponent } from './friends/friends-list/friends-list.compon
     FriendsSearchComponent,
     FriendCardComponent,
     FriendsListComponent,
+    FriendsShowsListComponent,
+
 
   ],
   imports: [

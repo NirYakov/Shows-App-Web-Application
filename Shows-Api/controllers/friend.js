@@ -77,7 +77,7 @@ exports.AddFriend = async (req, res, next) => {
     friend.save().then(result => {
         res.status(201).json(
             {
-                message: "sacssece",
+                message: "success",
                 result
             });
     }).catch(error => {
@@ -91,9 +91,28 @@ exports.AddFriend = async (req, res, next) => {
 
 
 exports.GetFriends = async (req, res, next) => {
+    try {
+        const usernameId = req.userData.userId;
 
+        const userFriends = await Friend.findOne({ usernameId });
 
-    const userHaveInitFriends = await Friend.findOne({ usernameId });
+        if (userFriends) {
+            res.status(200).json({
+                message: "Found user friends.",
+                friends: userFriends.friends
+            });
+        } else {
+            res.status(401).json({
+                message: "No friends to share",
+                error: "No friends to share"
+            });
 
+        }
+    } catch (error) {
+        res.status(401).json({
+            message: "No friends to share",
+            error: error
+        });
+    }
 
 }

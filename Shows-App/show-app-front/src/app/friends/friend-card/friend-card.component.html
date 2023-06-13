@@ -1,12 +1,14 @@
-<div style="display: flex; justify-content: center; padding: 2rem;">
-  <mat-card style="padding: 2rem;">
-
+<div style="display: flex; justify-content: center; padding: 2rem;  border: 1rem; border-color: brown;">
+  <!-- background-color: blueviolet; -->
+  <mat-card style="padding: 2rem;" class="cardBorder">
+    <!-- border: 1rem; border-color: brown; -->
     <span style="display: flex; justify-content: center;">
 
       <img [src]=" minchProfilePic" alt="" style=" width: 100px; height: 100px;">
+      <!-- class="cardBorder" -->
       <span style="margin: 1rem;">
         <h2 style="min-width: 15ch;">{{friend}}</h2>
-        <div style="display: flex; justify-content: end;">
+        <div style="display: flex; justify-content: end;" *ngIf="buttonEnabled">
           <button mat-stroked-button (click)=" suggestionWasClicked(friendName) ">{{buttonLabel}}</button>
         </div>
       </span>

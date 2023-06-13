@@ -36,10 +36,12 @@ img {
 .purple-shadow {
   /* box-shadow: 1px 1px 9px #5934ff; */
 
-  box-shadow: 1px 1px 9px blueviolet;
-  -moz-box-shadow: 1px 1px 9px blueviolet;
-  -webkit-box-shadow: 1px 1px 9px blueviolet;
-  -khtml-box-shadow: 1px 1px 9px blueviolet;
+  /* blueviolet */
+
+  box-shadow: 1px 1px 9px goldenrod;
+  -moz-box-shadow: 1px 1px 9px goldenrod;
+  -webkit-box-shadow: 1px 1px 9px goldenrod;
+  -khtml-box-shadow: 1px 1px 9px goldenrod;
 }
 
 .green-shadow {

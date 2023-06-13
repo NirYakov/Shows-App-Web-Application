@@ -10,12 +10,7 @@ export class FriendCardComponent implements OnInit {
   friendName = "Friend_Name_-15";
 
   @Input() friend: string = this.friendName;
-
-  // @Input() clickedFunc = (str: string) => {
-
-  //   console.log("Hellowwwwww ");
-
-  // };
+  @Input() buttonEnabled: boolean = true;
 
   @Output() onSuggest: EventEmitter<string> = new EventEmitter();
 

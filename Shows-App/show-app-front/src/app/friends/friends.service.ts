@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { Friend } from './friend';
 
 
 const BACKEND_URL = environment.apiUrl + "/friends/";
@@ -18,6 +19,9 @@ export class FriendsService {
   friends: { friendUsername: string, friendId: string }[] = [];
 
   private searchfriendStatusListener = new Subject<boolean>();
+  private friendsStatusListener = new Subject<{ friendUsername: string, friendId: string }[]>();
+
+  pickedFriend: Friend = { friendUsername: " OnSug ", friendId: "#$56" };
 
   constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
@@ -25,14 +29,32 @@ export class FriendsService {
     return this.searchfriendStatusListener.asObservable();
   }
 
+  getFriendsStatusListener() {
+    return this.friendsStatusListener.asObservable();
+  }
+
+  pickFriend(myFriend: Friend) {
+    console.log(" Pick only mine friend");
+    this.pickedFriend = myFriend;
+    this.router.navigate([`/friend/${myFriend.friendUsername}`]);
+  }
+
   getAllFriends() {
-    const url = BACKEND_URL + `${this.myUserName}`;
+    const url = BACKEND_URL;
     console.log(url);
-    // this.http.get(url).subscribe(
-    //   {
-    //     // next: result => { console.log("Friend Found :)", result); },
-    //     // error: error => { console.log("Error !!!", error); },
-    //   });
+    this.http.get<{ message: string, friends: Friend[] }>(url).subscribe(
+      {
+        next: result => {
+          console.log("Friends Found :)", result);
+          this.friends = result.friends;
+          this.friendsStatusListener.next(this.friends);
+        },
+
+        error: error => {
+          console.log("Error !!!", error);
+
+        },
+      });
 
   }
 
