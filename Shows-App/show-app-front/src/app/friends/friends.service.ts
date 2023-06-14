@@ -139,5 +139,53 @@ export class FriendsService {
         });
   }
 
+  getJointFriendShows(friend: Friend) {
+
+    const friendId = friend.friendId;
+    console.log(friend);
+
+    const url = BACKEND_URL + 'joint/' + friendId;
+    console.log(url);
+
+    this.http
+      .get<{ message: string; shows: Show[] }>(
+        url)
+      .subscribe(
+        {
+          next: responseData => {
+            // this.router.navigate(["/"]);
+            console.log(responseData);
+            this.showsFriendStatusListener.next(responseData.shows);
+          },
+          error: error => {
+            console.log(error);
+          }
+        });
+  }
+
+  getDifferentFriendShows(friend: Friend) {
+
+    const friendId = friend.friendId;
+    console.log(friend);
+
+    const url = BACKEND_URL + 'different/' + friendId;
+    console.log(url);
+
+    this.http
+      .get<{ message: string; shows: Show[] }>(
+        url)
+      .subscribe(
+        {
+          next: responseData => {
+            // this.router.navigate(["/"]);
+            console.log(responseData);
+            this.showsFriendStatusListener.next(responseData.shows);
+          },
+          error: error => {
+            console.log(error);
+          }
+        });
+  }
+
 
 }

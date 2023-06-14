@@ -39,6 +39,19 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
 
   }
 
+  getAllFriendShows() {
+    this.friendService.getAllFriendShows(this.friend);
+  }
+
+  jointShows() {
+    this.friendService.getJointFriendShows(this.friend);
+  }
+
+  differentShows() {
+    this.friendService.getDifferentFriendShows(this.friend);
+  }
+
+
   ngOnDestroy(): void {
     this.friendShowsStatusSub.unsubscribe();
   }
