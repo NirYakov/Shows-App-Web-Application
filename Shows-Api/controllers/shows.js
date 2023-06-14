@@ -11,8 +11,6 @@ exports.GetUserShows = async (req, res, next) => {
 
     console.log({ creator: req.userData.userId });
 
-    let responseApi = "not implemented";
-
     console.log("ping back shows get");
 
     myShows.then(response => {
@@ -32,6 +30,49 @@ exports.GetUserShows = async (req, res, next) => {
     });
 
 }
+
+
+exports.SearchShows = async (req, res, next) => {
+
+    let responseApi = "none";
+
+    // const searchShow = "inception 2010";
+    const searchShow = req.params.searchShow;
+
+    const urlApi = `https://imdb-api.com/en/API/Search/${process.env.ApiKey}/${searchShow}`;
+
+    // console.log(urlApi);
+
+    // req from rate api
+    await axios({
+        method: 'get',
+        url: urlApi,
+    })
+        .then((response) => {
+            // rateCAN = response.data.rates.CAD;
+            // rateEuro = response.data.rates.EUR;
+
+            responseApi = response.data;
+
+            console.log("Response?");
+            console.log(responseApi);
+
+            res.status(200).json({
+                health: "Online ! :)",
+                responseApi
+            });
+
+
+        }).catch(e => {
+            console.log({
+                message: "oops :(",
+                error: e,
+            })
+        });
+
+
+}
+
 
 exports.CreateUserShow = async (req, res, next) => {
 

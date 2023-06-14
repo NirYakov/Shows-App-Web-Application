@@ -12,6 +12,8 @@ const router = express.Router();
 
 router.get("/", checkAuth, ShowsController.GetUserShows);
 
+router.get("/search/:searchShow", checkAuth, ShowsController.SearchShows);
+
 router.post("/", checkAuth, myTestMiddleware, ShowsController.CreateUserShow);
 
 router.put("/:id", ShowsController.UpdateUserShow);

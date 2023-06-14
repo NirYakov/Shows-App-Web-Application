@@ -99,7 +99,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
     console.log("Search Show : ", searchShow);
 
-    this.http.get<any>(`http://localhost:3000/api/test/search/${searchShow}`).subscribe(
+    this.http.get<{ health: string, responseApi: { results } }>(`http://localhost:3000/api/shows/search/${searchShow}`).subscribe(
       {
         next: result => {
           this.fakeSearchRsults = result.responseApi.results.map(show => {
@@ -111,7 +111,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
               type: "tv",
               review: show.description,
               seasons: show.seasons,
-              minutes: show.minutes
+              minutes: show.minutes,
             };
           });
         },

@@ -47,21 +47,16 @@ exports.userLogin = (req, res, next) => {
     let fetchedUser;
     User.findOne({ email: req.body.email })
         .then(user => {
-            console.log("Before the checks!");
             if (!user) {
                 res.status(401).json({
                     message: "Invalid authentication credentials!"
                 });
                 return false;
             }
-
-            console.log("Im here but how ? ", user);
             fetchedUser = user;
             return bcrypt.compare(req.body.password, user.password);
         })
         .then(result => {
-            console.log("result", result);
-
             if (!result) {
                 if (!res.statusCode)
                     res.status(401).json({
@@ -81,9 +76,6 @@ exports.userLogin = (req, res, next) => {
                 username: fetchedUser.username
             });
         }).catch(error => {
-
-            console.log(" fetched User ? ", fetchedUser);
-            console.log(" Error Occured!");
             res.status(400).json({ error });
         });
 }
