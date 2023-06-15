@@ -20,6 +20,8 @@ export class ShowsListComponent implements OnInit, OnDestroy {
 
   shows: Show[];
 
+  showsPicked: Show = null;
+
   private showsStatusSub: Subscription;
 
   constructor(public showService: ShowsService) { }
@@ -76,14 +78,23 @@ export class ShowsListComponent implements OnInit, OnDestroy {
     return mapNumToNumEmoji[rating];
   }
 
-  moveToSingle(show: Show) {
+  moveToSingle(showsPickedFromList: Show) {
 
 
-    this.showService.moveToSinglePage(show);
+    console.log("Here clicked on move to singleeee ");
+    console.log("Here clicked on move to singleeee ", this);
+    console.log("Here clicked on move to singleeee showshowshowshow ", this.showsPicked);
+    console.log("Here clicked on move to singleeee showshowshowshow ", showsPickedFromList);
+
+    // this.showService.moveToSinglePage(show);
 
   }
 
   onClickType(btnSelect: number) {
+
+    if (!this.showsOrigin || this.showsOrigin.length == 0) {
+      return;
+    }
 
     if (btnSelect === this.buttonAll && this.buttonSelected !== this.buttonAll) {
       this.shows = this.showsOrigin;
@@ -115,6 +126,5 @@ export class ShowsListComponent implements OnInit, OnDestroy {
 
     // this.router.navigateByUrl('/user');
   }
-
 
 }

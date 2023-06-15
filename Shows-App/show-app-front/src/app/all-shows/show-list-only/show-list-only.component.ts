@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Show } from '../show.model';
 
 @Component({
@@ -9,6 +9,13 @@ import { Show } from '../show.model';
 export class ShowListOnlyComponent implements OnInit {
 
   @Input() shows: Show[] = [];
+
+  @Output() onPickedShow: EventEmitter<Show> = new EventEmitter();
+
+  onPickedShowClicked(show: Show): void {
+    this.onPickedShow.emit(show);
+    console.log("Show list only ", show);
+  }
 
   constructor() { }
 
@@ -27,13 +34,5 @@ export class ShowListOnlyComponent implements OnInit {
     }
 
     return mapNumToNumEmoji[rating];
-  }
-
-
-  moveToSingle(show: Show) {
-
-
-    // this.showService.moveToSinglePage(show);
-
   }
 }

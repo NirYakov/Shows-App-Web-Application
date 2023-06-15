@@ -90,7 +90,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   /////// Some tests
 
-  fakeSearchRsults: Show[];
+  searchResults: Show[];
 
   fillDataResults() {
 
@@ -102,8 +102,7 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     this.http.get<{ health: string, responseApi: { results } }>(`http://localhost:3000/api/shows/search/${searchShow}`).subscribe(
       {
         next: result => {
-          this.fakeSearchRsults = result.responseApi.results.map(show => {
-            console.log(show);
+          this.searchResults = result.responseApi.results.map(show => {
             return {
               title: show.title,
               rating: show.imDbRating,
@@ -112,8 +111,11 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
               review: show.description,
               seasons: show.seasons,
               minutes: show.minutes,
+              apiId: show.id,
             };
           });
+
+          console.log(this.searchResults);
         },
         error: error => {
           // error
@@ -133,10 +135,10 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   onPickShow(show: Show) {
 
-    const pickedShow = this.fakeSearchRsults.find(aryShow => show.title === aryShow.title);
+    const pickedShow = this.searchResults.find(aryShow => show.apiId === aryShow.apiId);
 
     if (pickedShow) {
-      this.fakeSearchRsults = [];
+      this.searchResults = [];
       console.log(pickedShow);
 
       this.pickedShow = pickedShow;

@@ -6,4 +6,5 @@ export interface Show {
   review: string;
   seasons?: number;
   minutes?: number;
+  apiId: string;
 }

@@ -1,0 +1,33 @@
+.paddingButtons {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.clickButtonType {
+  background-color: rgb(130, 255, 203);
+  /* color: blueviolet; */
+  color: blueviolet;
+  border-radius: 1rem;
+}
+
+.clickButtonOpertion {
+  background-color: red;
+  /* color: blueviolet; */
+  color: white;
+  border-radius: 1rem;
+}
+
+/* ////////////////////////////////////////////////////////////// */
+
+/*
+ .paddingButtons {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.clickButton {
+  background-color: rgb(130, 255, 203);
+  color: blueviolet;
+  border-radius: 1rem;
+}
+*/

@@ -26,6 +26,8 @@ export class SignupComponent implements OnInit, OnDestroy {
       });
 
     this.form = new FormGroup({
+      // \w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)
+      // email: ['', Validators.required, Validators.pattern('\w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)')],
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
       username: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern(`([A-Za-z0-9\-\_]+)`)]),

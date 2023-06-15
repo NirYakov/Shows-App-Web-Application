@@ -1,13 +1,100 @@
-<p>
-  friends-shows-list works!
-</p>
+<!-- <div style="justify-content: center;  display: flex;">
 
-<h1> Here will be the friend shows !! @@ $$ && **</h1>
+  <p>
+    friends-shows-list works!
+  </p>
 
-<app-friend-card [buttonEnabled]="false" [friend]="friend.friendUsername"></app-friend-card>
+  <h1> Here will be the friend shows !! @@ $$ && **</h1>
 
-<button (click)="getAllFriendShows()"> Reset Friend Shows </button>
-<button (click)="jointShows()"> Joint Shows </button>
-<button (click)="differentShows()"> Different Shows </button>
+  <app-friend-card [buttonEnabled]="false" [friend]="friend.friendUsername"></app-friend-card>
+
+  <button (click)="getAllFriendShows()"> Reset Friend Shows </button>
+  <button (click)="jointShows()"> Joint Shows </button>
+  <button (click)="differentShows()"> Different Shows </button>
+
+
+  <div>
+
+
+    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' : buttonSelected === buttonAll}"
+      (click)="onClickType(buttonAll)">
+      All
+    </button>
+    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' :  buttonSelected === buttonMovie }"
+      (click)="onClickType(buttonMovie)"> Movies </button>
+    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' :  buttonSelected === buttonTv}"
+      (click)="onClickType(buttonTv)"> Tv's </button>
+
+  </div>
+
+  <span style="width: 20px; height: 20px; border-radius: 0.5rem; color: blueviolet;"> 📺 🎬 🍿 </span>
+
+
+</div> -->
+
+<div style="display:block;">
+  <h1>My Shows !! :)</h1>
+
+</div>
+
+<br>
+
+<h2>Hey</h2>
+
+<div style="justify-content: center;  display: flex;">
+
+  <div>
+    <button mat-stroked-button class="paddingButtons"
+      [ngClass]="{'clickButtonOpertion' :  buttonSelectedOpertion === buttonAllOpertion}" (click)="getAllFriendShows()">
+      All
+      Friend Shows </button>
+    <button mat-stroked-button class="paddingButtons"
+      [ngClass]="{'clickButtonOpertion' :  buttonSelectedOpertion === buttonJointOpertion}" (click)="jointShows()">
+      Joint Shows
+    </button>
+    <button mat-stroked-button class="paddingButtons"
+      [ngClass]="{'clickButtonOpertion' :  buttonSelectedOpertion === buttonDifferentOpertion}"
+      (click)="differentShows()">
+      Different Shows </button>
+  </div>
+
+
+</div>
+
+
+<div style="justify-content: center;  display: flex;">
+
+
+
+
+
+  <div>
+
+    <button mat-stroked-button class="paddingButtons"
+      [ngClass]="{'clickButtonType' : buttonSelectedTypes === buttonAll}" (click)="onClickType(buttonAll)">
+      All
+    </button>
+    <button mat-stroked-button class="paddingButtons"
+      [ngClass]="{'clickButtonType' :  buttonSelectedTypes === buttonMovie }" (click)="onClickType(buttonMovie)"> Movies
+    </button>
+    <button mat-stroked-button class="paddingButtons"
+      [ngClass]="{'clickButtonType' :  buttonSelectedTypes === buttonTv}" (click)="onClickType(buttonTv)"> Tv's
+    </button>
+
+    <span style="width: 20px; height: 20px; border-radius: 0.5rem; color: blueviolet;"> 📺 🎬 🍿 </span>
+
+    <!-- <br> -->
+
+    <!-- <div style="justify-content: center; display: flex;">
+
+      <button mat-stroked-button class="paddingButtons" (click)="onClickType(buttonTv)">
+        Tv's </button>
+
+    </div> -->
+
+  </div>
+</div>
+
+
 
 <app-show-list-only [shows]="shows"></app-show-list-only>

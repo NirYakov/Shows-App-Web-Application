@@ -76,41 +76,84 @@ exports.SearchShows = async (req, res, next) => {
 
 exports.CreateUserShow = async (req, res, next) => {
 
-    const newShow = new Show({
-        creator: req.userData.userId,
+    try {
 
-        title: req.body.title,
-        img: req.body.img,
-        rating: req.body.rating,
-        review: req.body.review,
-        type: req.body.type,
-        seasons: req.body.seasons,
-        minutes: req.body.minutes,
-    });
+        const apiId = req.body.apiId;
 
-    console.log("Here to be for add");
-    console.log(newShow);
+        const newShow = new Show({
+            creator: req.userData.userId,
 
-    newShow.save().then(response => {
+            title: req.body.title,
+            img: req.body.img,
+            rating: req.body.rating,
+            review: req.body.review,
+            type: req.body.type,
+            seasons: req.body.seasons,
+            minutes: req.body.minutes,
+            apiId: apiId,
+        });
 
-        console.log(" Pow here and well ? ");
 
-        res.status(201).json(
-            {
-                message: "show created!",
-                // response
-            });
+        console.log(req.body);
+        console.log("Here to be for add");
+        console.log(newShow);
 
-    }).catch(error => {
-        console.log(error);
+        // need the better api !!
 
-        res.status(401).json(
+        const urlApi = `https://imdb-api.com/en/API/Title/${process.env.ApiKey}/${apiId}`;
+
+
+
+        // console.log(urlApi);
+
+        // req from rate api
+        const showDataCall = await axios.get(urlApi);
+        const showData = showDataCall.data;
+
+        console.log("showData ", showData);
+
+        const answerType = showData.type === "Movie" ? 'movie' : 'tv';
+
+        newShow.type = answerType;
+
+        if (answerType === 'tv') {
+            const seasons = showData.tvSeriesInfo.seasons.length;
+            newShow.seasons = seasons;
+
+        } else {
+            const minutes = showData.runtimeMins;
+            newShow.minutes = minutes;
+        }
+
+        console.log(newShow);
+
+        newShow.save().then(response => {
+
+            console.log(" Pow here and well ? ");
+
+            res.status(201).json(
+                {
+                    message: "show created!",
+                    response
+                });
+
+        }).catch(error => {
+            console.log(error);
+
+            res.status(401).json(
+                {
+                    message: "error !!",
+                    error
+                });
+        });
+
+    } catch (error) {
+        res.status(500).json(
             {
                 message: "error !!",
                 error
             });
-    });
-
+    }
 
 }
 

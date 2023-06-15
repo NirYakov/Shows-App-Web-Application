@@ -14,7 +14,7 @@ const showSchema = mongoose.Schema({
     type: { type: String, required: true },
     seasons: { type: Number, required: false },
     minutes: { type: Number, required: false },
-
+    apiId: { type: String, required: true }
 
     // title: string;
     // rating: number;

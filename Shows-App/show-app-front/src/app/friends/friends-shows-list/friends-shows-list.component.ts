@@ -12,6 +12,26 @@ import { Subscription } from 'rxjs';
 export class FriendsShowsListComponent implements OnInit, OnDestroy {
 
 
+
+  showsOrigin: Show[];
+
+  buttonAll = 0;
+  buttonMovie = 1;
+  buttonTv = 2;
+
+  buttonSelectedTypes = 0;
+
+  // buttonSelected = 0;
+
+  buttonAllOpertion = 0;
+  buttonJointOpertion = 1;
+  buttonDifferentOpertion = 2;
+
+  buttonSelectedOpertion = 0;
+
+
+
+
   shows: Show[] = [];
 
   friend: Friend = { friendUsername: " On Sug ", friendId: "friendId" };
@@ -27,7 +47,7 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
 
     this.friendShowsStatusSub = this.friendService.getFriendShowsStatusListener().subscribe({
       next: showsResult => {
-        this.shows = showsResult;
+        this.showsOrigin = this.shows = showsResult;
       },
       error: error => {
         console.log(error);
@@ -41,19 +61,53 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
 
   getAllFriendShows() {
     this.friendService.getAllFriendShows(this.friend);
+    this.buttonSelectedOpertion = this.buttonAllOpertion;
+    this.buttonSelectedTypes = this.buttonAll;
   }
 
   jointShows() {
     this.friendService.getJointFriendShows(this.friend);
+    this.buttonSelectedOpertion = this.buttonJointOpertion;
+    this.buttonSelectedTypes = this.buttonAll;
   }
 
   differentShows() {
     this.friendService.getDifferentFriendShows(this.friend);
+    this.buttonSelectedOpertion = this.buttonDifferentOpertion;
+    this.buttonSelectedTypes = this.buttonAll;
   }
 
 
   ngOnDestroy(): void {
     this.friendShowsStatusSub.unsubscribe();
+  }
+
+
+  onClickType(btnSelect: number) {
+
+    if (!this.showsOrigin || this.showsOrigin.length == 0) {
+      return;
+    }
+
+    if (btnSelect === this.buttonAll && this.buttonSelectedTypes !== this.buttonAll) {
+      this.shows = this.showsOrigin;
+    }
+    else if (btnSelect === this.buttonMovie && this.buttonSelectedTypes !== this.buttonMovie) {
+      this.shows = this.showsOrigin.filter(show => show.type === "movie");
+
+    }
+    else if (btnSelect === this.buttonTv && this.buttonSelectedTypes !== this.buttonTv) {
+
+      this.shows = this.showsOrigin.filter(show => show.type === "tv");
+    }
+
+    this.buttonSelectedTypes = btnSelect;
+    // do stuff ....
+
+  }
+
+  onAddShowClicked() {
+    console.log("Clicked ... !! on add ... !!");
   }
 
 }

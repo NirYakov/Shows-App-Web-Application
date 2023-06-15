@@ -193,8 +193,8 @@ exports.GetJointShows = async (req, res, next) => {
 
 
         const jointShows = [];
-        myMap.forEach((value, key) => {
-            if (friendMap.has(key)) {
+        friendMap.forEach((value, key) => {
+            if (myMap.has(key)) {
                 jointShows.push(value);
             }
         });
