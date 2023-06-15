@@ -188,4 +188,9 @@ export class FriendsService {
   }
 
 
+  moveToSingleWithFriend(show: Show) {
+
+
+  }
+
 }

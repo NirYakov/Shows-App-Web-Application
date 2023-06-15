@@ -32,6 +32,7 @@ export class ClipCardComponent implements OnInit {
 
     console.log(this.stars);
     console.log(this.show.rating);
+    console.log(this.show);
 
   }
 

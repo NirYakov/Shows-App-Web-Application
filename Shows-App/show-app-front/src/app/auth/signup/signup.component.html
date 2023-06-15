@@ -3,20 +3,34 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (ngSubmit)="onSignup()" *ngIf="!isLoading" [formGroup]="form">
-    <mat-form-field>
-      <input matInput name="email" type="email" placeholder="Email" formControlName="email">
-      <mat-error *ngIf="form.invalid">Please enter a valid email.</mat-error>
-    </mat-form-field>
+    <div style="margin-bottom: 2rem;">
 
-    <mat-form-field>
-      <input matInput name="username" type="text" placeholder="Username" formControlName="username">
-      <mat-error *ngIf="form.invalid">Please enter a valid username (letters, numbers, -, _) min 4 chars.</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <input matInput name="email" type="email" placeholder="Email" formControlName="email">
+        <mat-error *ngIf="form.invalid">Please enter a valid email.</mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input type="password" name="password" matInput placeholder="Password" formControlName="password">
-      <mat-error *ngIf="form.invalid">Please enter a valid password.</mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <input matInput name="username" type="text" placeholder="Username" formControlName="username">
+        <mat-error *ngIf="form.invalid">Please enter a valid username (letters, numbers, -, _) min 4 chars.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="password" name="password" matInput placeholder="Password" formControlName="password">
+        <mat-error *ngIf="form.invalid">Please enter a valid password.</mat-error>
+        <mat-error *ngIf="form.invalid">Your password must have lower case, upper case and numeric
+          characters.</mat-error>
+
+        <!-- <div class="field-message" *ngIf="password.errors?.['passwordStrength']">
+        Your password must have lower case, upper case and numeric characters.
+      </div> -->
+
+        <!-- <div class="field-message" *ngIf="password.errors?.passwordStrength">
+        Your password must have lower case, upper case and numeric characters.
+      </div> -->
+
+      </mat-form-field>
+    </div>
     <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Signup</button>
   </form>
 </mat-card>
