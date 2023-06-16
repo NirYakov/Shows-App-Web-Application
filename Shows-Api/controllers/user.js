@@ -31,7 +31,9 @@ exports.createUser = async (req, res, next) => {
             .then(result => {
                 res.status(201).json({
                     message: "User created!",
-                    result: result
+                    email: result.email,
+                    username: result.username,
+                    // result: result,
                 });
             })
             .catch(err => {
@@ -45,30 +47,36 @@ exports.createUser = async (req, res, next) => {
 
 exports.userLogin = (req, res, next) => {
     let fetchedUser;
+    let isUserFound = false;
     User.findOne({ email: req.body.email })
         .then(user => {
+
             if (!user) {
                 res.status(401).json({
                     message: "Invalid authentication credentials!"
                 });
                 return false;
             }
+            isUserFound = true;
             fetchedUser = user;
             return bcrypt.compare(req.body.password, user.password);
         })
         .then(result => {
             if (!result) {
-                if (!res.statusCode)
+                if (isUserFound) {
                     res.status(401).json({
                         message: "Auth failed"
                     });
+                }
                 return res;
             }
+
             const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },
                 process.env.JWT_KEY,
                 { expiresIn: "1h" }
             );
+
             res.status(200).json({
                 token: token,
                 expiresIn: 3600,

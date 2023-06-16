@@ -42,14 +42,18 @@ export class AuthService {
   createUser(email: string, username: string, password: string) {
     const authData: AuthData = { email: email, username: username, password: password };
     console.log(authData);
-    this.http.post(BACKEND_URL + "signup", authData).subscribe(
-      () => {
-        this.router.navigate(["/"]);
+    this.http.post(BACKEND_URL + "signup", authData).subscribe({
+      next: res => {
+        console.log("next >>> res ", res);
       },
-      error => {
+      error: error => {
         this.authStatusListener.next({ isAuthenticated: false, username: "" });
+      },
+      complete: () => {
+        this.router.navigate(["/"]);
+        console.log("complete??");
       }
-    );
+    });
   }
 
   login(email: string, username: string, password: string) {
@@ -60,8 +64,8 @@ export class AuthService {
         BACKEND_URL + "login",
         authData
       )
-      .subscribe(
-        response => {
+      .subscribe({
+        next: response => {
           const token = response.token;
           this.token = token;
           if (token) {
@@ -78,11 +82,15 @@ export class AuthService {
             console.log(expirationDate);
             this.saveAuthData(token, expirationDate, this.userId, this.username);
             this.router.navigate(["/"]);
+
+            console.log("login Seccess ");
           }
         },
-        error => {
+        error: error => {
+          console.log("login error ", error);
           this.authStatusListener.next({ isAuthenticated: false, username: "" });
         }
+      }
       );
   }
 

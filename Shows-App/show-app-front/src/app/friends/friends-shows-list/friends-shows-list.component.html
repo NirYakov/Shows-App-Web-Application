@@ -32,14 +32,30 @@
 
 </div> -->
 
-<div style="display:block;">
-  <h1>My Shows !! :)</h1>
+<div style="justify-content: center;  display: flex; align-items: center; ">
+  <app-friend-card [buttonEnabled]="false" [friend]="friend.friendUsername"></app-friend-card>
+
+  <span>
+
+    <h1 *ngIf="actionWithBoth && buttonSelectedOpertion === buttonJointOpertion">
+      <<[ Joint ]>>
+    </h1>
+
+    <h1 *ngIf="actionWithBoth && buttonSelectedOpertion === buttonJointOpertion">
+      <<[ Boing ]>>
+    </h1>
+
+  </span>
+
+  <h1 *ngIf="actionWithBoth && buttonSelectedOpertion === buttonDifferentOpertion">
+    <<[ Different ]>>
+  </h1>
+
+  <app-friend-card *ngIf="actionWithBoth" [buttonEnabled]="false" [friend]="usernameIn"></app-friend-card>
 
 </div>
 
 <br>
-
-<h2>Hey</h2>
 
 <div style="justify-content: center;  display: flex;">
 

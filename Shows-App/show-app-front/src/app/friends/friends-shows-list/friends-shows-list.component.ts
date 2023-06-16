@@ -29,12 +29,14 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
 
   buttonSelectedOpertion = 0;
 
-
+  actionWithBoth = false;
 
 
   shows: Show[] = [];
 
   friend: Friend = { friendUsername: " On Sug ", friendId: "friendId" };
+
+  usernameIn: string = "";
 
   private friendShowsStatusSub: Subscription;
 
@@ -56,25 +58,28 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
     });
 
     this.friendService.getAllFriendShows(this.friend);
-
+    this.usernameIn = this.friendService.myUserName;
   }
 
   getAllFriendShows() {
-    this.friendService.getAllFriendShows(this.friend);
+    //this.friendService.getAllFriendShows(this.friend);
     this.buttonSelectedOpertion = this.buttonAllOpertion;
     this.buttonSelectedTypes = this.buttonAll;
+    this.actionWithBoth = false;
   }
 
   jointShows() {
-    this.friendService.getJointFriendShows(this.friend);
+    //this.friendService.getJointFriendShows(this.friend);
     this.buttonSelectedOpertion = this.buttonJointOpertion;
     this.buttonSelectedTypes = this.buttonAll;
+    this.actionWithBoth = true;
   }
 
   differentShows() {
-    this.friendService.getDifferentFriendShows(this.friend);
+    //this.friendService.getDifferentFriendShows(this.friend);
     this.buttonSelectedOpertion = this.buttonDifferentOpertion;
     this.buttonSelectedTypes = this.buttonAll;
+    this.actionWithBoth = true;
   }
 
 
@@ -114,7 +119,7 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
   moveToSingleWithFriend($event: Show) {
 
     const show = $event;
-    // this.showService.moveToSinglePage(show);
+    this.friendService.moveToSingleWithFriend(show);
 
   }
 

@@ -25,6 +25,7 @@ export class FriendsService {
   pickedFriend: Friend = { friendUsername: " OnSug ", friendId: "#$56" };
 
   friendShows: Show[] = [];
+  pickedShow: Show;
 
   private showsFriendStatusListener = new Subject<Show[]>();
 
@@ -189,6 +190,7 @@ export class FriendsService {
 
   moveToSingleWithFriend(show: Show) {
     const showId = show.apiId;
+    this.pickedShow = show;
     this.router.navigate([`friend/show/${showId}`]);
 
   }

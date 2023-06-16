@@ -26,6 +26,7 @@ export class SingleShowViewUserComponent implements OnInit {
     };
 
   constructor(private route: ActivatedRoute, private showsService: ShowsService) { }
+
   ngOnInit() {
     const showId = this.route.snapshot.paramMap.get('apiShowId');
     const foundShow = this.showsService.shows.find(show => show.apiId === showId);
