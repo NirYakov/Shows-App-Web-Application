@@ -26,16 +26,19 @@ export class SingleShowViewFriendComponent implements OnInit {
 
     };
 
-  userShow: Friend;
+  userActiveUsername: string = ""; //this.friendsService.pickedFriend.friendUsername;
 
   constructor(private route: ActivatedRoute, private friendsService: FriendsService) { }
 
   ngOnInit() {
+    this.userActiveUsername = this.friendsService.pickedFriend.friendUsername;
     this.SearchAndFoundShow();
-    this.userShow = this.friendsService.pickedFriend;
   }
 
   SearchAndFoundShow() {
+
+    console.log("SingleShowViewFriendComponent userActiveUsername", this.userActiveUsername);
+
     const showId = this.route.snapshot.paramMap.get('apiShowId');
     const foundInFriendShow = this.friendsService.friendShows.find(show => show.apiId === showId);
 
@@ -43,10 +46,13 @@ export class SingleShowViewFriendComponent implements OnInit {
 
     if (!foundInFriendShow) {
       // this.userShow = this.friendsService.pickedFriend;
-      this.userShow = { friendUsername: this.friendsService.myUserName, friendId: "n/a" };
+      this.userActiveUsername = this.friendsService.myUserName;
+      console.log(" !foundInFriendShow  !foundInFriendShow");
       // return;
     }
 
+    console.log("SingleShowViewFriendComponent userActiveUsername", this.userActiveUsername);
+    console.log("SingleShowViewFriendComponent foundInFriendShow", foundInFriendShow);
     // this.show = this.friendsService.show
   }
 

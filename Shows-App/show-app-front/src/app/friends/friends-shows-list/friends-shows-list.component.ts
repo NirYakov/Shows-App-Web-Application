@@ -34,7 +34,7 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
 
   shows: Show[] = [];
 
-  friend: Friend = { friendUsername: " On Sug ", friendId: "friendId" };
+  friend: Friend = { friendUsername: " OnSug ", friendId: "#$56" };
 
   usernameIn: string = "";
 
@@ -62,21 +62,21 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
   }
 
   getAllFriendShows() {
-    //this.friendService.getAllFriendShows(this.friend);
+    this.friendService.getAllFriendShows(this.friend);
     this.buttonSelectedOpertion = this.buttonAllOpertion;
     this.buttonSelectedTypes = this.buttonAll;
     this.actionWithBoth = false;
   }
 
   jointShows() {
-    //this.friendService.getJointFriendShows(this.friend);
+    this.friendService.getJointFriendShows(this.friend);
     this.buttonSelectedOpertion = this.buttonJointOpertion;
     this.buttonSelectedTypes = this.buttonAll;
     this.actionWithBoth = true;
   }
 
   differentShows() {
-    //this.friendService.getDifferentFriendShows(this.friend);
+    this.friendService.getDifferentFriendShows(this.friend);
     this.buttonSelectedOpertion = this.buttonDifferentOpertion;
     this.buttonSelectedTypes = this.buttonAll;
     this.actionWithBoth = true;
@@ -111,14 +111,11 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
 
   }
 
-  onAddShowClicked() {
-    console.log("Clicked ... !! on add ... !!");
-  }
-
   // can be with pic of the friend or the logged in user
   moveToSingleWithFriend($event: Show) {
 
     const show = $event;
+    // console.log("Show ", show);
     this.friendService.moveToSingleWithFriend(show);
 
   }

@@ -119,9 +119,10 @@ exports.GetFriends = async (req, res, next) => {
                 friends: userFriends.friends
             });
         } else {
-            res.status(401).json({
+            res.status(200).json({
                 message: "No friends to share",
-                error: "No friends to share"
+                friends: []
+                // error: "No friends to share",
             });
 
         }
