@@ -17,15 +17,52 @@ img {
   border-radius: 25px;
 }
 
+.paddingButtons {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.clickButton {
+  background-color: rgb(130, 255, 203);
+  /* color: blueviolet; */
+  color: blueviolet;
+  border-radius: 1rem;
+}
+
 .purple-shadow {
   /* box-shadow: 1px 1px 9px #5934ff; */
 
   /* blueviolet  goldenrod */
 
-  box-shadow: 1px 1px 9px blueviolet;
+  border: blueviolet;
+
+  border-style: solid;
+  /* border-color: #ffe261; */
+  border-width: 1px;
+
+  /* box-shadow: 1px 1px 9px blueviolet;
   -moz-box-shadow: 1px 1px 9px blueviolet;
   -webkit-box-shadow: 1px 1px 9px blueviolet;
-  -khtml-box-shadow: 1px 1px 9px blueviolet;
+  -khtml-box-shadow: 1px 1px 9px blueviolet; */
+}
+
+.gold-shadow {
+  /* box-shadow: 1px 1px 9px #5934ff; */
+
+  /* blueviolet  goldenrod */
+
+  border: gold;
+
+  border-style: solid;
+  /* border-color: #ffe261; */
+  border-width: 1px;
+
+  /*
+  box-shadow: 1px 1px 9px goldenrod;
+  -moz-box-shadow: 1px 1px 9px goldenrod;
+  -webkit-box-shadow: 1px 1px 9px goldenrod;
+  -khtml-box-shadow: 1px 1px 9px goldenrod;
+  */
 }
 
 .green-shadow {

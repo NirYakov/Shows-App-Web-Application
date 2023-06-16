@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ShowGame } from './showGame.model';
 import { ShowsGameService } from '../shows-game.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 enum GameAnswer {
@@ -76,12 +78,28 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
 
   index = 0;
 
-  constructor(private showsGameService: ShowsGameService) { }
+  constructor(private showsGameService: ShowsGameService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
 
     // trun off to work without server!
     // this.initGameShow();
+
+
+    // need to do it better with new landing page that
+    // will route nice
+    if (this.authService.getIsAuth()) {
+      const url = this.route.snapshot.routeConfig.path;
+      console.log("url ", url);
+      if (url.length === 0) {
+        this.router.navigate(["/myshows"]);
+      }
+    }
+
 
   }
 

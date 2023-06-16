@@ -1,15 +1,4 @@
-<div style="justify-content: center;  display: flex;">
-
-
-  <div style="display:block;">
-    <h1>My Shows !! :)</h1>
-
-  </div>
-
-  <br>
-
-  <h2>Hey</h2>
-
+<div style="display: flex; justify-content: center;">
   <div>
 
     <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' : buttonSelected === buttonAll}"
@@ -23,58 +12,11 @@
 
     <span style="width: 20px; height: 20px; border-radius: 0.5rem; color: blueviolet;"> 📺 🎬 🍿 </span>
 
-
     <button mat-stroked-button class="paddingButtons" [routerLink]="'/addnewshow'">
       Add Show</button>
-
-    <br>
-    <!-- <br> -->
-
-    <!-- <div style="justify-content: center; display: flex;">
-
-      <button mat-stroked-button class="paddingButtons" (click)="onClickType(buttonTv)">
-        Tv's </button>
-
-    </div> -->
 
   </div>
 </div>
 
 
 <app-show-list-only [shows]="shows" (onPickedShow)="moveToSingle($event)"></app-show-list-only>
-
-<h2>Bye2222</h2>
-
-
-
-
-<!--
-    <div class="main-div">
-
-      <div *ngFor="let item of shows" style="margin: 1rem;">
-
-        <mat-card class="example-card purple-shadow" style="border-radius: 1rem;">
-          <mat-card-header>
-            <mat-card-title>{{item.title}}</mat-card-title>
-            <mat-card-subtitle>{{item.title}}</mat-card-subtitle>
-            <mat-card-subtitle> {{item.rating}} {{numberToNumEmoji(item.rating)}} </mat-card-subtitle>
-            <div></div>
-          </mat-card-header>
-          <img mat-card-image class="green-shadow" style="margin-top: 0.5rem; margin-bottom: 0rem;" [src]="item.img"
-            [alt]="item.title">
-          <mat-card-content>
-
-          </mat-card-content>
-          <mat-card-actions style="justify-content: center;">
-            <button mat-button (click)="moveToSingle(item)">Details / need better word</button>
-
-
-
-          </mat-card-actions>
-        </mat-card>
-
-      </div>
-
-    </div>
-  </div>
-  <h2>Bye</h2> -->

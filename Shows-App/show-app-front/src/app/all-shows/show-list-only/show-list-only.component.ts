@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Show } from '../show.model';
 
 @Component({
@@ -12,15 +12,26 @@ export class ShowListOnlyComponent implements OnInit {
 
   @Output() onPickedShow: EventEmitter<Show> = new EventEmitter();
 
+  @Input() purple: boolean = true;
+
+  showsOrigin: Show[] = [];
+  lazyInitShowsOrigin = true;
+
+
+  buttonAll = 0;
+  buttonMovie = 1;
+  buttonTv = 2;
+
+  buttonSelected = 0;
+
   onPickedShowClicked(show: Show): void {
     this.onPickedShow.emit(show);
-    console.log("Show list only ", show);
+    // console.log("Show list only ", show);
   }
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   numberToNumEmoji(rating: number) {
 
@@ -35,4 +46,37 @@ export class ShowListOnlyComponent implements OnInit {
 
     return mapNumToNumEmoji[rating];
   }
+
+
+  onSortByTitle() {
+    this.shows.sort((showA, showB) => {
+      if (showA.title === showB.title) {
+        return 0;
+      }
+      return showA.title < showB.title ? -1 : 1;
+    }
+    );
+  }
+
+  onSortByRating() {
+    this.shows.sort((showA, showB) => {
+
+      if (showA.rating === showB.rating) {
+        if (showA.title === showB.title) {
+          return 0;
+        }
+
+        return showA.title < showB.title ? -1 : 1;
+      }
+
+      return showB.rating - showA.rating;
+    }
+    );
+  }
+
+  onReverse() {
+    this.shows.reverse();
+  }
+
+
 }

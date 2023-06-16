@@ -45,7 +45,8 @@ export class ShowsListComponent implements OnInit, OnDestroy {
 
 
     this.showsStatusSub = this.showService.getShowsStatusListener().subscribe(results => {
-      this.shows = this.showsOrigin = results;
+      this.showsOrigin = results;
+      this.shows = [...this.showsOrigin];
       console.log(" in the listener ", results);
     });
 
@@ -76,6 +77,7 @@ export class ShowsListComponent implements OnInit, OnDestroy {
     return mapNumToNumEmoji[rating];
   }
 
+
   moveToSingle($event: Show) {
 
     const show = $event;
@@ -90,7 +92,7 @@ export class ShowsListComponent implements OnInit, OnDestroy {
     }
 
     if (btnSelect === this.buttonAll && this.buttonSelected !== this.buttonAll) {
-      this.shows = this.showsOrigin;
+      this.shows = [...this.showsOrigin];
     }
     else if (btnSelect === this.buttonMovie && this.buttonSelected !== this.buttonMovie) {
       this.shows = this.showsOrigin.filter(show => show.type === "movie");
@@ -106,10 +108,34 @@ export class ShowsListComponent implements OnInit, OnDestroy {
 
   }
 
-  fillAllShows() {
-    this.showService.getAllShows();
-    console.log(this.shows);
-    console.log(this.showService.getAllShows());
-
+  onSortByTitle() {
+    this.shows.sort((showA, showB) => {
+      if (showA.title === showB.title) {
+        return 0;
+      }
+      return showA.title < showB.title ? -1 : 1;
+    }
+    );
   }
+
+  onSortByRating() {
+    this.shows.sort((showA, showB) => {
+
+      if (showA.rating === showB.rating) {
+        if (showA.title === showB.title) {
+          return 0;
+        }
+
+        return showA.title < showB.title ? -1 : 1;
+      }
+
+      return showB.rating - showA.rating;
+    }
+    );
+  }
+
+  onReverse() {
+    this.shows.reverse();
+  }
+
 }

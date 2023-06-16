@@ -1,37 +1,3 @@
-<!-- <div style="justify-content: center;  display: flex;">
-
-  <p>
-    friends-shows-list works!
-  </p>
-
-  <h1> Here will be the friend shows !! @@ $$ && **</h1>
-
-  <app-friend-card [buttonEnabled]="false" [friend]="friend.friendUsername"></app-friend-card>
-
-  <button (click)="getAllFriendShows()"> Reset Friend Shows </button>
-  <button (click)="jointShows()"> Joint Shows </button>
-  <button (click)="differentShows()"> Different Shows </button>
-
-
-  <div>
-
-
-    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' : buttonSelected === buttonAll}"
-      (click)="onClickType(buttonAll)">
-      All
-    </button>
-    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' :  buttonSelected === buttonMovie }"
-      (click)="onClickType(buttonMovie)"> Movies </button>
-    <button mat-stroked-button class="paddingButtons" [ngClass]="{'clickButton' :  buttonSelected === buttonTv}"
-      (click)="onClickType(buttonTv)"> Tv's </button>
-
-  </div>
-
-  <span style="width: 20px; height: 20px; border-radius: 0.5rem; color: blueviolet;"> 📺 🎬 🍿 </span>
-
-
-</div> -->
-
 <div style="justify-content: center;  display: flex; align-items: center; ">
   <app-friend-card [buttonEnabled]="false" [friend]="friend.friendUsername"></app-friend-card>
 
@@ -55,10 +21,8 @@
 
 </div>
 
-<br>
 
 <div style="justify-content: center;  display: flex;">
-
   <div>
     <button mat-stroked-button class="paddingButtons"
       [ngClass]="{'clickButtonOpertion' :  buttonSelectedOpertion === buttonAllOpertion}" (click)="getAllFriendShows()">
@@ -73,16 +37,9 @@
       (click)="differentShows()">
       Different Shows </button>
   </div>
-
-
 </div>
 
-
 <div style="justify-content: center;  display: flex;">
-
-
-
-
 
   <div>
 
@@ -99,18 +56,9 @@
 
     <span style="width: 20px; height: 20px; border-radius: 0.5rem; color: blueviolet;"> 📺 🎬 🍿 </span>
 
-    <!-- <br> -->
-
-    <!-- <div style="justify-content: center; display: flex;">
-
-      <button mat-stroked-button class="paddingButtons" (click)="onClickType(buttonTv)">
-        Tv's </button>
-
-    </div> -->
-
   </div>
 </div>
 
 
-
-<app-show-list-only [shows]="shows" (onPickedShow)="moveToSingleWithFriend($event)"></app-show-list-only>
+<app-show-list-only [shows]="shows" (onPickedShow)="moveToSingleWithFriend($event)"
+  [purple]="false"></app-show-list-only>

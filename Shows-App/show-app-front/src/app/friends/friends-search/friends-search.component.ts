@@ -50,7 +50,7 @@ export class FriendsSearchComponent implements OnInit, OnDestroy {
     this.minchProfilePic = `https://api.dicebear.com/6.x/micah/svg?seed=${this.friendName}`;
   }
 
-  onLogin() {
+  onSearch() {
 
 
     console.log("this.form.get(email).valid", this.form.get("email").valid);

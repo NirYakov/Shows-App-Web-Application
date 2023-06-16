@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AuthService } from '../auth/auth.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Friend } from './friend';
@@ -206,11 +205,6 @@ export class FriendsService {
     this.pickedShow = show;
     console.log("pickedShow ", this.pickedShow);
     this.router.navigate([`friend/show/${showId}`]);
-
-  }
-
-
-  goToFriendShows(friendUsername: string) {
 
   }
 

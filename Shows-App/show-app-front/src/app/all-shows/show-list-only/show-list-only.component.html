@@ -1,9 +1,29 @@
+<div style="display: flex; justify-content: center;">
+  <div>
+
+
+    <button mat-stroked-button class="paddingButtons" (click)="onSortByTitle()">
+      Sort By Title
+    </button>
+    <button mat-stroked-button class="paddingButtons" (click)="onSortByRating()"> Sort By Rating </button>
+
+    <span style="width: 20px; height: 20px; border-radius: 0.5rem; color: blueviolet;"> 🔝🔼 </span>
+
+    <button mat-stroked-button class="paddingButtons" (click)="onReverse()"> Reverse </button>
+
+  </div>
+</div>
+
+
 <div>
   <div class="main-div">
 
     <div *ngFor="let item of shows" style="margin: 1rem;">
 
-      <mat-card class="example-card purple-shadow" style="border-radius: 1rem;">
+      <!-- <mat-card class="example-card purple-shadow" style="border-radius: 1rem;"> -->
+      <!-- <mat-card class="example-card" style="border-radius: 1rem;"> -->
+      <mat-card class="example-card" [ngClass]="{'purple-shadow' :  purple , 'gold-shadow' : !purple }"
+        style="border-radius: 1rem;">
         <mat-card-header>
           <mat-card-title>{{item.title}}</mat-card-title>
           <mat-card-subtitle>{{item.title}}</mat-card-subtitle>
