@@ -4,10 +4,9 @@
 
 //  /\w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)/
 
-
 const emailRegex = /\w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)/;
 
-const isEmailValid = (email) => {
+exports.isEmailValid = (email) => {
     if (!email)
         return false;
 
@@ -30,16 +29,16 @@ const isEmailValid = (email) => {
     return true;
 }
 
-// Validators.pattern(`([A-Za-z0-9\-\_]+)`)
-const usernameRegex = /([A-Za-z0-9\-\_]+)/;
 
-const isUsernameValid = (username) => {
+// Validators.pattern(`([A-Za-z0-9\-\_]+)`)
+const usernameRegex = /^([A-Za-z0-9\-\_]+)$/;
+
+exports.isUsernameValid = (username) => {
     if (!username) {
         return false;
     }
 
-    if (!(4 <= username.length && username.length >= 15)) {
-
+    if ((username.length < 4) || (username.length > 15)) {
         return false;
     }
 

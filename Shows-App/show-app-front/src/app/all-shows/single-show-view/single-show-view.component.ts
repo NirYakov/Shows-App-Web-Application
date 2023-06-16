@@ -9,7 +9,7 @@ import { Show } from '../show.model';
   templateUrl: './single-show-view.component.html',
   styleUrls: ['./single-show-view.component.css']
 })
-export class SingleShowViewComponent implements OnInit {
+export class SingleShowViewComponent {
 
 
   @Input() show: Show =
@@ -27,39 +27,8 @@ export class SingleShowViewComponent implements OnInit {
 
     };
 
-  constructor(private showsService: ShowsService) { }
-
-  visibleHalfMoon = true;
-
-  onClickStar() {
-
-    console.log("Starrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
-
-    this.visibleHalfMoon = !this.visibleHalfMoon;
-
-  }
-
-
-
-
-
-  ngOnInit() {
-
-    // Array.from({length: 10}, (_, i) => i + 1)
-
-    // [...Array(10).keys()]
-
-    const pickedShow = this.showsService.pickedShow;
-
-
-    if (pickedShow) {
-      this.show = pickedShow;
-
-
-    }
-
-    console.log(this.show);
-
-  }
-
+  constructor() { }
 }
+
+// Array.from({length: 10}, (_, i) => i + 1)
+// [...Array(10).keys()]

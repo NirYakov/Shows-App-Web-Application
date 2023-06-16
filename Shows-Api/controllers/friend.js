@@ -145,6 +145,7 @@ exports.GetFriendsShows = async (req, res, next) => {
         const userFriendsShows = await Shows.find({ creator: friendId });
 
         if (userFriendsShows) {
+
             res.status(200).json({
                 message: "Found user friends.",
                 shows: userFriendsShows

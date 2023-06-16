@@ -38,6 +38,7 @@ import { FriendCardComponent } from './friends/friend-card/friend-card.component
 import { FriendsListComponent } from './friends/friends-list/friends-list.component';
 import { FriendsShowsListComponent } from './friends/friends-shows-list/friends-shows-list.component';
 import { ShowListOnlyComponent } from './all-shows/show-list-only/show-list-only.component';
+import { SingleShowViewUserComponent } from './all-shows/single-show-view-user/single-show-view-user.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ShowListOnlyComponent } from './all-shows/show-list-only/show-list-only
     FriendsListComponent,
     FriendsShowsListComponent,
     ShowListOnlyComponent,
+    SingleShowViewUserComponent
 
 
   ],

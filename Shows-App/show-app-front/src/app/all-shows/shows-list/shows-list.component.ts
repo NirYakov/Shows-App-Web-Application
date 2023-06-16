@@ -112,12 +112,4 @@ export class ShowsListComponent implements OnInit, OnDestroy {
     console.log(this.showService.getAllShows());
 
   }
-
-
-  onAddShowClicked() {
-    console.log("onAddShowClicked()");
-
-    // this.router.navigateByUrl('/user');
-  }
-
 }

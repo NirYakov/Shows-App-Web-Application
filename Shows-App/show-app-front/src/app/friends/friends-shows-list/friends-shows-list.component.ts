@@ -110,6 +110,13 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
     console.log("Clicked ... !! on add ... !!");
   }
 
+  // can be with pic of the friend or the logged in user
+  moveToSingleWithFriend($event: Show) {
+
+    const show = $event;
+    // this.showService.moveToSinglePage(show);
+
+  }
 
   // can be with pic of the friend or the logged in user
   // moveToSingleWithFriend($event: Show) {

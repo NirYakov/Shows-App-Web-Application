@@ -65,9 +65,13 @@ export class ShowsService {
 
   moveToSinglePage(show: Show) {
     // showname
-    const showName = show.title;
-    this.router.navigate([`/myshows/${showName}`]);
-    this.pickedShow = show;
+    // const showName = show.title;
+    // this.router.navigate([`/myshows/${showName}`]);
+    // this.pickedShow = show;
+
+    const showId = show.apiId;
+    this.router.navigate([`/myshows/${showId}`]);
+    // this.pickedShow = show;
   }
 
 

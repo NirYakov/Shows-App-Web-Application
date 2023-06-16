@@ -24,7 +24,11 @@ export class FriendsService {
 
   pickedFriend: Friend = { friendUsername: " OnSug ", friendId: "#$56" };
 
-  constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
+  friendShows: Show[] = [];
+
+  private showsFriendStatusListener = new Subject<Show[]>();
+
+  constructor(private http: HttpClient, private router: Router) { }
 
   getSearchStatusListener() {
     return this.searchfriendStatusListener.asObservable();
@@ -76,11 +80,6 @@ export class FriendsService {
 
   }
 
-  goToFriendShows(friendUsername: string) {
-
-  }
-
-
   searchFriend(username: string) {
 
     // const myUserName = localStorage.getItem("username");
@@ -109,7 +108,6 @@ export class FriendsService {
 
   } // of({});
 
-  private showsFriendStatusListener = new Subject<Show[]>();
 
   getFriendShowsStatusListener() {
     return this.showsFriendStatusListener.asObservable();
@@ -131,6 +129,7 @@ export class FriendsService {
           next: responseData => {
             // this.router.navigate(["/"]);
             console.log(responseData);
+            this.friendShows = responseData.shows;
             this.showsFriendStatusListener.next(responseData.shows);
           },
           error: error => {
@@ -189,7 +188,13 @@ export class FriendsService {
 
 
   moveToSingleWithFriend(show: Show) {
+    const showId = show.apiId;
+    this.router.navigate([`friend/show/${showId}`]);
 
+  }
+
+
+  goToFriendShows(friendUsername: string) {
 
   }
 

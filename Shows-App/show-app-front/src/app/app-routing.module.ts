@@ -12,6 +12,7 @@ import { ClipCardComponent } from "./all-shows/clip-card/clip-card.component";
 import { FriendsListComponent } from "./friends/friends-list/friends-list.component";
 import { FriendsSearchComponent } from "./friends/friends-search/friends-search.component";
 import { FriendsShowsListComponent } from "./friends/friends-shows-list/friends-shows-list.component";
+import { SingleShowViewUserComponent } from "./all-shows/single-show-view-user/single-show-view-user.component";
 
 const routes: Routes = [
 
@@ -28,7 +29,9 @@ const routes: Routes = [
 
   { path: "myshows", component: ShowsListComponent, canActivate: [AuthGuard] }, // gurd
 
-  { path: "myshows/:showname", component: SingleShowViewComponent },
+  { path: "myshows/:apiShowId", component: SingleShowViewUserComponent },
+
+  { path: "friend/show/:apiShowId", component: SingleShowViewUserComponent },
 
   { path: "myfriends", component: FriendsListComponent, canActivate: [AuthGuard] }, // gurd
 
