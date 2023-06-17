@@ -50,49 +50,57 @@
               <!-- // 256 chars -->
 
               <br>
+              <br>
+              <br>
 
-              <div class="" style="margin-left: 2rem;">
+              <div *ngIf="!buttonEnabled"><br><br></div>
+
+              <!-- display: flex; align-content: flex-end; -->
+              <div class="" style="margin-left: 1rem;">
 
                 <div *ngIf="show.seasons">
                   <span>
                     seasons :
                   </span>
-                  <a style="margin: 2rem 0 2rem 1rem" class="yellowShadow">
+                  <span style="margin: 2rem 0 2rem 1rem;" class="yellowShadow">
                     {{show.seasons}}
-                  </a>
+                  </span>
                 </div>
 
                 <div *ngIf="show.minutes">
                   <span>
                     minutes :
                   </span>
-                  <a style="margin: 2rem 0 2rem 1rem" class="yellowShadow">
+                  <span style="margin: 2rem 0 2rem 1rem" class="yellowShadow">
                     {{show.minutes}}
-                  </a>
+                  </span>
                 </div>
-
               </div>
+
               <!-- mat-button -->
               <!--
               🎨
 
-            ⌛ -->
+              ⌛ -->
 
-              <br>
-              <br>
-
-              <div>
+              <div *ngIf="buttonEnabled">
 
                 <br>
 
-                <div style="display: flex; justify-content: end; margin: 0  0 1rem 1rem;">
+                <div style="display: flex; justify-content: end; margin-bottom:  1rem;">
                   <!-- <button mat-stroked-button color="primary">Edit</button> -->
-                  <button mat-raised-button color="primary">Edit</button>
-                  <button mat-raised-button color="warn" style="margin-left: 1rem;">Delete</button>
+                  <button mat-raised-button color="primary" (click)="onUpdateWasClicked(show.apiId)">Edit</button>
+                  <button mat-raised-button color="warn" style="margin-left: 1rem;"
+                    (click)="onDeleteWasClicked(show.apiId)">Delete</button>
 
                 </div>
-
               </div>
+
+              <!-- <div *ngIf="!buttonEnabled">
+                <div style="display: flex; justify-content: end; margin: 0  0 1rem 1rem;">
+                  <span> 🎨 🖼 🎭 🗺 🎉 🎶 🚀 🖼 </span>
+                </div>
+              </div> -->
 
               <!-- <br> -->
 

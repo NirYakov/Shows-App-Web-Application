@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ShowsService } from '../shows.service';
 import { Show } from '../show.model';
 
@@ -11,6 +11,18 @@ import { Show } from '../show.model';
 })
 export class SingleShowViewComponent {
 
+  @Input() buttonEnabled: boolean = true;
+
+  @Output() onDelete: EventEmitter<string> = new EventEmitter();
+  @Output() onUpdate: EventEmitter<string> = new EventEmitter();
+
+  onDeleteWasClicked(clickedEntry: string): void {
+    this.onDelete.emit(clickedEntry);
+  }
+
+  onUpdateWasClicked(clickedEntry: string): void {
+    this.onUpdate.emit(clickedEntry);
+  }
 
   @Input() show: Show =
     {
