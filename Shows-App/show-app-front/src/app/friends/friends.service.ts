@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Friend } from './friend';
 import { Show } from '../all-shows/show.model';
 
@@ -21,7 +21,7 @@ export class FriendsService {
   private searchfriendStatusListener = new Subject<{ friendId: string, found: boolean }>();
   private friendsStatusListener = new Subject<{ friendUsername: string, friendId: string }[]>();
 
-  pickedFriend: Friend = { friendUsername: " OnSug ", friendId: "#$56" };
+  pickedFriend: Friend = { friendUsername: " OnSug ", friendId: "21na" };
 
   friendShows: Show[] = [];
   pickedShow: Show =
@@ -41,7 +41,7 @@ export class FriendsService {
 
   private showsFriendStatusListener = new Subject<Show[]>();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
   getSearchStatusListener() {
     return this.searchfriendStatusListener.asObservable();
@@ -97,8 +97,11 @@ export class FriendsService {
 
     // const myUserName = localStorage.getItem("username");
 
+    console.log(username);
+
     if (this.myUserName !== username) {
 
+      console.log("this.myUserName !== username ", this.myUserName !== username);
 
       const url = BACKEND_URL + `search/${username}`;
       console.log(url);
@@ -129,10 +132,14 @@ export class FriendsService {
   getAllFriendShows(friend: Friend) {
 
     const friendId = friend.friendId;
-    console.log(friend);
-
     const url = BACKEND_URL + friendId;
+
+
     console.log(url);
+
+
+    // const friendUsername = this.route.snapshot.routeConfig.path;
+    // if (friend.friendUsername === friendUsername) { }
 
     this.http
       .get<{ message: string; shows: Show[] }>(
@@ -141,14 +148,18 @@ export class FriendsService {
         {
           next: responseData => {
             // this.router.navigate(["/"]);
-            console.log(responseData);
-            this.friendShows = responseData.shows;
-            this.showsFriendStatusListener.next(responseData.shows);
+            if (responseData.shows) {
+
+              console.log(responseData);
+              this.friendShows = responseData.shows;
+              this.showsFriendStatusListener.next(responseData.shows);
+            }
           },
           error: error => {
             console.log(error);
           }
         });
+
   }
 
   getJointFriendShows(friend: Friend) {

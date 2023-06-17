@@ -32,7 +32,7 @@ export class FriendsShowsListComponent implements OnInit, OnDestroy {
 
   shows: Show[] = [];
 
-  friend: Friend = { friendUsername: " OnSug ", friendId: "#$56" };
+  friend: Friend = { friendUsername: " OnSug ", friendId: "21na" };
 
   usernameIn: string = "";
 

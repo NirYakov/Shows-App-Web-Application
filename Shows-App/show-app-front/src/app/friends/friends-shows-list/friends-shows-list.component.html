@@ -4,18 +4,20 @@
   <span>
 
     <h1 *ngIf="actionWithBoth && buttonSelectedOpertion === buttonJointOpertion">
-      <<[ Joint ]>>
+      Join
     </h1>
+    <!-- <<[ Joint ]>> -->
 
-    <h1 *ngIf="actionWithBoth && buttonSelectedOpertion === buttonJointOpertion">
-      <<[ Boing ]>>
-    </h1>
+    <!-- <h1 *ngIf="actionWithBoth && buttonSelectedOpertion === buttonJointOpertion">
+    </h1> -->
+    <!-- <<[ Boing ]>> -->
 
   </span>
 
   <h1 *ngIf="actionWithBoth && buttonSelectedOpertion === buttonDifferentOpertion">
-    <<[ Different ]>>
+    Different
   </h1>
+  <!-- <<[ Different ]>> -->
 
   <app-friend-card *ngIf="actionWithBoth" [buttonEnabled]="false" [friend]="usernameIn"></app-friend-card>
 

@@ -7,30 +7,58 @@ const Shows = require("../models/show");
 
 exports.SearchFindUser = async (req, res, next) => {
 
-    const friendname = req.params.friendname;
+    try {
+        const friendname = req.params.friendname;
 
-    //console.log(friendname);
+        //console.log(friendname);
 
-    const friend = await User.findOne({ username: friendname });
+        const usernameId = req.userData.userId;
 
-    // console.log(friend);
-    // const friend = "";
+        const friend = await User.findOne({ username: friendname });
 
-    console.log("That is the frined idddd ", friend._id);
+        // console.log(friend);
+        // const friend = "";
 
-    if (friend) {
-        res.status(200).json({
-            message: "Found Friend :)",
-            found: true,
-            friendId: friend._id
-        });
-    } else {
-        res.status(400).json({
+        const userFriends = await Friend.findOne({ usernameId });
+
+        console.log(" userFriends ", userFriends);
+
+
+        if (userFriends && friend &&
+            userFriends
+                .friends
+                .findIndex(fri => fri.friendUsername === friendname) >= 0) {
+
+            res.status(400).json({
+                message: "Friend already in your friends list.",
+                found: false,
+            });
+
+            return;
+        }
+
+
+        //        console.log("That is the frined idddd ", friend._id);
+
+        if (friend) {
+            res.status(200).json({
+                message: "Found Friend :)",
+                found: true,
+                friendId: friend._id
+            });
+        } else {
+            res.status(400).json({
+                message: "No Friend Around ...",
+                found: false
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
             message: "No Friend Around ...",
-            found: false
+            found: false,
+            error
         });
     }
-
 
 };
 

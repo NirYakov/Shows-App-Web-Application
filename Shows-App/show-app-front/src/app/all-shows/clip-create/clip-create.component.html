@@ -1,17 +1,12 @@
 <div>
-
   <div class="main-div">
-
     <div style="background-color: azure;" class="innerDiv">
       <mat-card color="primary">
 
-        <h2>
-          Search Show
-        </h2>
+        <h2> Search Show </h2>
 
         <form [formGroup]="form" (ngSubmit)="onSave()">
 
-          <!-- style="border-radius: 1rem;" -->
           <p>
             <mat-form-field class="example-full-width" style="width: 400px; " appearance="outline">
               <mat-label>Outline form field</mat-label>
@@ -27,21 +22,10 @@
             </mat-form-field>
           </p>
 
-
-
           <div>
-
-            <h2>{{form.get("searchShowForm").value}}</h2>
-
+            <!-- <h2>{{form.get("searchShowForm").value}}</h2> -->
             <button mat-stroked-button type="button" (click)="fillDataResults()">Search Show</button>
-
-            <br>
-            <br>
-
-
-            <!-- <h3 *ngFor="let item of fakeSearchRsults"> results: {{item}}</h3> -->
-
-
+            <br><br>
             <div class="main-div">
 
               <div *ngFor="let item of searchResults" style="margin: 1rem;">
@@ -83,16 +67,9 @@
                 </mat-card>
 
               </div>
-
-
             </div>
           </div>
-
-
-
-          <br>
-          <br>
-          <br>
+          <br><br><br>
           <h4>
             My Review
           </h4>
@@ -105,82 +82,25 @@
             <mat-hint align="end">{{form.get("myReviewText").value.length}} / 256</mat-hint>
           </mat-form-field>
 
+          <!-- <p>{{form.get("myReviewText").value}}</p> -->
 
-          <p>{{form.get("myReviewText").value}}</p>
-
-          <br>
-
+          <br><br>
           <h4>My Rating</h4>
-
-          <!-- <span>
-          <button mat-fab disabled style="font-size: x-large; background-color: greenyellow;">⭐</button>
-          <button mat-flat-button>⭐</button>
-          <button style="font-size: x-large; background-color: greenyellow;">⭐</button>
-          <button>⭐</button>
-          <button mat-flat-button style="opacity: 0.4;">⭐</button>
-
-        </span> -->
-
-          <!-- <div class="example-button-container">
-          <button mat-mini-fab aria-label="Example icon button with a home icon">
-            <mat-icon style="color: red; background-color: aquamarine;" color="red">star</mat-icon>
-          </button>
-        </div> -->
-
           <div>
-
-
             <span>
-
-              <span *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i], }"
+              <span *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i] }"
                 (click)="onStarClick(i)" class="stars-class">⭐</span>
-              <span class="stars-class">🌗</span>
-
-              <span class="opacityStar">
-                ⭐⭐
-              </span>
-
-
+              <!-- <span class="stars-class">🌗</span> -->
             </span>
-
           </div>
-
-
-
-
-
-          <br>
-          <br>
-
-          <!-- mat-flat-button -->
-          <!-- mat-stroked-button -->
+          <br><br><br>
           <div style=" justify-content: center; display: flex;">
             <button mat-raised-button class="colorHeader" style="width: 400px;" type="submit">
               SAVE</button>
           </div>
-
-
-          <br>
-          <br>
-
+          <br><br>
         </form>
-
-
-        <button mat-flat-button>Show Preview</button>
-        <h3> Preview </h3>
-
-        <br>
-
-
-
-
-        <!-- <app-single-show>
-
-        </app-single-show> -->
-
       </mat-card>
     </div>
   </div>
 </div>
-
-<!-- <app-clip-card [show]="myShow" style="margin: 2rem;"> </app-clip-card> -->

@@ -79,9 +79,24 @@ exports.CreateUserShow = async (req, res, next) => {
     try {
 
         const apiId = req.body.apiId;
+        const userId = req.userData.userId;
+
+        const showInDb = await Show.findOne({ creator: userId, apiId });
+
+        console.log(" showInDb ", showInDb);
+
+        if (showInDb) {
+            res.status(401).json(
+                {
+                    message: "Show already the showlist.",
+                    error: "Show already the showlist."
+                });
+            return;
+        }
+
 
         const newShow = new Show({
-            creator: req.userData.userId,
+            creator: userId,
 
             title: req.body.title,
             img: req.body.img,
@@ -94,9 +109,9 @@ exports.CreateUserShow = async (req, res, next) => {
         });
 
 
-        console.log(req.body);
-        console.log("Here to be for add");
-        console.log(newShow);
+        // console.log(req.body);
+        // console.log("Here to be for add");
+        // console.log(newShow);
 
         // need the better api !!
 
@@ -110,7 +125,7 @@ exports.CreateUserShow = async (req, res, next) => {
         const showDataCall = await axios.get(urlApi);
         const showData = showDataCall.data;
 
-        console.log("showData ", showData);
+        // console.log("showData ", showData);
 
         const answerType = showData.type === "Movie" ? 'movie' : 'tv';
 
@@ -125,7 +140,7 @@ exports.CreateUserShow = async (req, res, next) => {
             newShow.minutes = minutes;
         }
 
-        console.log(newShow);
+        // console.log(newShow);
 
         newShow.save().then(response => {
 
