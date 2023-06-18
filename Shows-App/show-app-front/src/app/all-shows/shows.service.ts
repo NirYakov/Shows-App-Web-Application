@@ -102,9 +102,30 @@ export class ShowsService {
         });
   }
 
+  updateShow(show: Show) {
+
+    const url = BACKEND_URL + show.apiId;
+
+    console.log("update show , url : ", url);
+    console.log(" show : ", show);
+
+    // this.http.put<{ message: string; show: Show }>(url , show)
+    //   .subscribe(
+    //     {
+    //       next: responseData => {
+    //         console.log(responseData);
+    //         this.router.navigate(["/myshows"]);
+
+    //       },
+    //       error: error => {
+    //         console.log("error on the delete show.");
+    //       }
+    //     });
+  }
+
   deleteShow(apiId: string) {
 
-    const url = BACKEND_URL + "apiId";
+    const url = BACKEND_URL + apiId;
 
     this.http.delete<{ message: string; show: Show }>(url)
       .subscribe(

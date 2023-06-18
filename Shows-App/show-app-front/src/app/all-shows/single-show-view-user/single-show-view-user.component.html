@@ -41,14 +41,14 @@
               <div *ngIf="editMode" style="margin-top: 1.75rem;">
                 <mat-form-field class="textBox" appearance="outline">
                   <mat-label>Message</mat-label>
-                  <textarea matInput maxlength="256" placeholder="Ex. I need help with..."
-                    rows="10">{{show.review}}</textarea>
+                  <textarea [formControl]="myReviewText" matInput maxlength="256" placeholder="Ex. I need help with..."
+                    rows="10"></textarea>
 
                   <!-- <textarea formControlName="myReviewText" matInput maxlength="256"
                   placeholder="Ex. I need help with..."></textarea>
                 -->
 
-                  <mat-hint align="end">{{"200"}} / 256</mat-hint>
+                  <mat-hint align="end">{{myReviewText.value.length }} / 256</mat-hint>
                   <!-- <mat-hint align="end">{{form.get("myReviewText").value.length}} / 256</mat-hint> -->
                 </mat-form-field>
 
@@ -85,7 +85,7 @@
                   <span>
                     minutes :
                   </span>
-                  <span style="margin: 2rem 0 2rem 1rem" class="yellowShadow">
+                  <span style="margin: 2rem 0 2rem 1rem;" class="yellowShadow">
                     {{show.minutes}}
                   </span>
                 </div>
@@ -96,9 +96,12 @@
               <div>
                 <br>
                 <div style="display: flex; justify-content: end; margin-bottom:  1rem;">
-                  <button mat-raised-button color="primary"
-                    (click)="onUpdateWasClicked(show.apiId)">{{editSave}}</button>
-                  <button mat-raised-button color="warn" style="margin-left: 1rem;"
+                  <button mat-raised-button color="primary" (click)="onUpdateWasClicked()">{{editSave}}</button>
+
+                  <!-- <button *ngIf="editMode" mat-raised-button style="margin-left: 1rem;">X Back</button> -->
+
+
+                  <button *ngIf="editMode" mat-raised-button color="warn" style="margin-left: 1rem;"
                     (click)="onDeleteWasClicked(show.apiId)">Delete</button>
                 </div>
               </div>

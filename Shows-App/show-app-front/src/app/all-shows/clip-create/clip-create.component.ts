@@ -14,25 +14,24 @@ import { Show } from '../show.model';
   templateUrl: './clip-create.component.html',
   styleUrls: ['./clip-create.component.css']
 })
-export class ClipCreateComponent implements OnInit, OnDestroy {
+export class ClipCreateComponent implements OnInit {
 
-  subCategories!: Subscription;
-
+  form: FormGroup;
 
   textAreaValue: string = "";
   inputValue: string = "";
 
+  stars = [false, false, false, false, false];
+
+  /////// Some tests
+  searchResults: Show[];
+
+  pickedShow: Show = null;
+
   // searchShowForm: FormControl;
   // myReviewText: FormControl;
 
-  constructor(private clipsService: ClipsService, private route: ActivatedRoute, private http: HttpClient, private showsService: ShowsService) {
-
-  }
-  ngOnDestroy(): void {
-    // throw new Error('Method not implemented.');
-  }
-
-  form: FormGroup;
+  constructor(private clipsService: ClipsService, private route: ActivatedRoute, private http: HttpClient, private showsService: ShowsService) { }
 
   ngOnInit() {
 
@@ -47,13 +46,8 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   }
 
-  stars = [false, false, false, false, false];
-
-  starsNumber = 0;
 
   onStarClick(idx: number) {
-    this.starsNumber = idx;
-
     if (idx === 0 && this.stars[0] === false) {
       this.stars[0] = true;
       return;
@@ -83,14 +77,8 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   }
 
+  value = 'Clear me'; // not in use right now maybe need to delete!!! TD BM
 
-  value = 'Clear me';
-
-
-
-  /////// Some tests
-
-  searchResults: Show[];
 
   fillDataResults() {
 
@@ -131,8 +119,6 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
 
   }
 
-  pickedShow: Show = null;
-
   onPickShow(show: Show) {
 
     const pickedShow = this.searchResults.find(aryShow => show.apiId === aryShow.apiId);
@@ -158,7 +144,6 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
     console.log(this.form.value);
     console.log(this.pickedShow);
 
-    console.log("my rating stars:", this.starsNumber);
 
     let showStars = 0
 
@@ -168,8 +153,6 @@ export class ClipCreateComponent implements OnInit, OnDestroy {
         break;
       }
     }
-
-
 
     console.log("my SHOW STARS rating stars:", showStars);
 
