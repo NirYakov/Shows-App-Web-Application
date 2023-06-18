@@ -17,10 +17,18 @@
       </mat-card-subtitle>
 
       <mat-card-subtitle style="font-size: 1rem;">
-        <span *ngFor="let star of stars">
+        <!-- alot of cd calls and not needed all the calls -->
+        <!-- <span>{{ratingToStarsStringVariation()}}</span>  -->
+        <span>{{ratingString}}</span>
+        <!-- <br>
+        <span *ngFor="let star of ratingToStars(this.show.rating)">
           ⭐
         </span>
-        {{show.rating}} 📺 🎬
+      -->
+        <span>
+          {{show.rating}} 📺 🎬
+        </span>
+
       </mat-card-subtitle>
 
     </mat-card-header>

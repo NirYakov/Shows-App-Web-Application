@@ -101,4 +101,22 @@ export class ShowsService {
           }
         });
   }
+
+  deleteShow(apiId: string) {
+
+    const url = BACKEND_URL + "apiId";
+
+    this.http.delete<{ message: string; show: Show }>(url)
+      .subscribe(
+        {
+          next: responseData => {
+            console.log(responseData);
+            this.router.navigate(["/myshows"]);
+
+          },
+          error: error => {
+            console.log("error on the delete show.");
+          }
+        });
+  }
 }

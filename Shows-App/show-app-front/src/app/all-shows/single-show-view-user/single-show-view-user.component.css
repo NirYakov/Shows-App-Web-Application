@@ -1,0 +1,105 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  /* gap: 200px; */
+  /* box-sizing: border-box; */
+  /* grid-template-columns: auto auto; */
+  /* gap: 2px; */
+  /* background-color: #2196f3; */
+  padding: 10px;
+}
+
+.grid-container > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* text-align: center; */
+  padding: 5px 0;
+  font-size: 20px;
+}
+
+/* /////////////////////////////////// */
+/* /////////////////////////////////// */
+/*             Need to export to anthor componenet                 */
+/* /////////////////////////////////// */
+/* /////////////////////////////////// */
+
+.centerIt {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 1rem; */
+
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+
+.main-div {
+  /* height: 70vh; */
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+
+.innerCard {
+  background-color: rgba(179, 206, 255, 0.705);
+
+  /* background-color: #2196f3; */
+}
+
+img {
+  height: 500px;
+  width: 350px;
+  border-radius: 25px;
+
+  box-shadow: 5px 5px 12px #3d3d3d;
+  -moz-box-shadow: 5px 5px 12px #3d3d3d;
+  -webkit-box-shadow: 5px 5px 12px #3d3d3d;
+  -khtml-box-shadow: 5px 5px 12px #3d3d3d;
+}
+
+.marginPadding {
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.stars-class {
+  font-size: 30px;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.yellowShadow {
+  border-style: solid;
+
+  border-radius: 2rem;
+  padding: 0.5rem;
+
+  /* border-color: red; */
+  /* border-width: 1rem; */
+
+  /* border: rgba(175, 6, 6, 0.705); */
+
+  color: blueviolet;
+
+  box-shadow: 1px 1px 6px #ffe261;
+  -moz-box-shadow: 1px 1px 6px #ffe261;
+  -webkit-box-shadow: 1px 1px 6px #ffe261;
+  -khtml-box-shadow: 1px 1px 6px #ffe261;
+}
+
+.textBox {
+  height: 300px;
+  width: 320px;
+  padding: 0 2rem 0 2rem;
+}
+
+.opacityStar {
+  opacity: 0.4;
+}
+
+.stars-class {
+  font-size: 20px;
+  /* margin: 0.5rem; */
+  cursor: pointer;
+}

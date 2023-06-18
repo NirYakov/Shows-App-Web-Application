@@ -87,3 +87,9 @@ img {
   -webkit-box-shadow: 1px 1px 6px #ffe261;
   -khtml-box-shadow: 1px 1px 6px #ffe261;
 }
+
+.textBox {
+  height: 300px;
+  width: 320px;
+  padding: 0 2rem 0 2rem;
+}

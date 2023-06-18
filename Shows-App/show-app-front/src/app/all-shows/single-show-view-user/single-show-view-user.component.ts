@@ -25,6 +25,8 @@ export class SingleShowViewUserComponent implements OnInit {
 
     };
 
+  editSave = "Edit";
+
   constructor(private route: ActivatedRoute, private showsService: ShowsService) { }
 
   ngOnInit() {
@@ -32,6 +34,73 @@ export class SingleShowViewUserComponent implements OnInit {
     const foundShow = this.showsService.shows.find(show => show.apiId === showId);
     if (foundShow) {
       this.show = foundShow;
+    }
+    else {
+      // search show on the server and give it back to look at
+    }
+
+    console.log("this.show ", this.show);
+    console.log("showId ", showId);
+    console.log("this.showsService.shows ", this.showsService.shows);
+
+  }
+
+  onDeleteWasClicked(apiId: string) {
+    this.showsService.deleteShow(apiId);
+  }
+
+  onUpdateWasClicked(apiId: string) {
+    if (this.editSave === "Edit") {
+      this.inEditMode();
+    } else  // this.editSave === "Save"
+    {
+      this.inSaveMode();
+    }
+
+  }
+
+  inSaveMode() {
+    this.editSave = "Edit";
+  }
+
+  editMode = false;
+
+  inEditMode() {
+    this.editMode = true;
+    // this.show.rating = 1; // tesTing . Nice to have!!
+    this.editSave = "Save";
+    this.onStarClick(this.show.rating - 1);
+
+
+  }
+
+  // stars edit feature !!
+
+  stars = [false, false, false, false, false];
+
+  starsNumber = 0;
+  onStarClick(idx: number) {
+    this.starsNumber = idx;
+
+    if (idx === 0 && this.stars[0] === false) {
+      this.stars[0] = true;
+      return;
+    }
+
+    if (idx === 0 && this.stars[1] === false) {
+      this.stars[0] = false;
+      return;
+    }
+
+
+    for (let i = 0; i < this.stars.length; i++) {
+      if (i <= idx) {
+        this.stars[i] = true;
+
+      } else {
+        this.stars[i] = false;
+
+      }
     }
   }
 

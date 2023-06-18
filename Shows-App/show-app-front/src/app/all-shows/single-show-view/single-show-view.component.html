@@ -6,14 +6,9 @@
     </div>
 
     <div class="item">
-
       <div class="main-div marginPadding">
-
         <mat-card style="border-radius: 1rem;" class="innerCard">
           <mat-card-header>
-            <!-- <h4>Resource URL:</h4>
-          <p>Showing: {{clip.shortUri}}</p> -->
-
             <mat-card-title style="font-size: 2rem;">
               {{show.title}}
             </mat-card-title>
@@ -31,15 +26,13 @@
                 📺 🎬
               </span>
             </mat-card-subtitle>
-
           </mat-card-header>
-
 
           <div class="centerIt">
             <mat-card-content style="height: 500px">
 
               <h1 style="padding: 0 1rem 0 1rem ;">Review</h1>
-              <p style="height: 300px; width: 320px; padding: 0 2rem 0 2rem ;">
+              <p class="textBox">
                 {{show.review}}
               </p>
 
@@ -49,9 +42,7 @@
               scrambled it to make a type specimen book. It has survived not only five centuries, -->
               <!-- // 256 chars -->
 
-              <br>
-              <br>
-              <br>
+              <br><br><br>
 
               <div *ngIf="!buttonEnabled"><br><br></div>
 
@@ -77,16 +68,10 @@
                 </div>
               </div>
 
-              <!-- mat-button -->
-              <!--
-              🎨
-
-              ⌛ -->
+              <!-- mat-button --><!--🎨⌛ -->
 
               <div *ngIf="buttonEnabled">
-
                 <br>
-
                 <div style="display: flex; justify-content: end; margin-bottom:  1rem;">
                   <!-- <button mat-stroked-button color="primary">Edit</button> -->
                   <button mat-raised-button color="primary" (click)="onUpdateWasClicked(show.apiId)">Edit</button>
@@ -104,24 +89,10 @@
 
               <!-- <br> -->
 
-
             </mat-card-content>
           </div>
-
         </mat-card>
       </div>
-
-
-      <div>
-
-      </div>
-
-
-
-
     </div>
-
-
-
   </div>
 </div>
