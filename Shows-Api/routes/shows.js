@@ -16,9 +16,9 @@ router.get("/search/:searchShow", checkAuth, ShowsController.SearchShows);
 
 router.post("/", checkAuth, myTestMiddleware, ShowsController.CreateUserShow);
 
-router.put("/:id", ShowsController.UpdateUserShow);
+router.put("/:id", checkAuth, ShowsController.UpdateUserShow);
 
-router.delete("/:id", ShowsController.deleteUserShow);
+router.delete("/:apiId", checkAuth, ShowsController.deleteUserShow);
 
 
 module.exports = router;

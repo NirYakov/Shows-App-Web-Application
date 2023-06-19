@@ -223,15 +223,52 @@ exports.UpdateUserShow = async (req, res, next) => {
         health: "Online ! :)",
         responseApi
     });
+
+    //     let imagePath = req.body.imagePath;
+    //     if (req.file) {
+    //         const url = req.protocol + "://" + req.get("host");
+    //         imagePath = url + "/images/" + req.file.filename;
+    //     }
+    //     const post = new Post({
+    //         _id: req.body.show,
+    //         title: req.body.title,
+    //         content: req.body.content,
+    //         imagePath: imagePath,
+    //         creator: req.userData.userId
+    //     });
+    //     Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
+    //         .then(result => {
+    //             if (result.n > 0) {
+    //                 res.status(200).json({ message: "Update successful!" });
+    //             } else {
+    //                 res.status(401).json({ message: "Not authorized!" });
+    //             }
+    //         })
+    //         .catch(error => {
+    //             res.status(500).json({
+    //                 message: "Couldn't update post!"
+    //             });
+    //         });
+    // };
 }
 
 exports.deleteUserShow = async (req, res, next) => {
 
-    let responseApi = "not implemented";
+    const apiId = req.params.apiId;
+    const userId = req.userData.userId;
 
-    res.status(200).json({
-        health: "Online ! :)",
-        responseApi
+    console.log("apiId : ", apiId);
+    console.log("userId : ", userId);
+
+    Show.deleteOne({ apiId: req.params.apiId, creator: req.userData.userId }).then(result => {
+        if (result.deletedCount > 0) {
+            res.status(200).json({ message: "Deletion successful!" });
+        }
+        else {
+            res.status(401).json({ message: "Not Authorized!" });
+        }
+    }).catch(error => {
+        res.status(500).json({ message: "Fetcing post failed!" });
     });
 }
 

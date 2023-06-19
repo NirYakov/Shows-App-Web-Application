@@ -33,6 +33,7 @@ export class SingleShowViewUserComponent implements OnInit {
 
   ngOnInit() {
     const showId = this.route.snapshot.paramMap.get('apiShowId');
+
     const foundShow = this.showsService.shows.find(show => show.apiId === showId);
     if (foundShow) {
       this.show = foundShow;
@@ -44,6 +45,8 @@ export class SingleShowViewUserComponent implements OnInit {
     console.log("this.show ", this.show);
     console.log("showId ", showId);
     console.log("this.showsService.shows ", this.showsService.shows);
+
+    this.showsService.getShowByApiId(foundShow);
 
   }
 
