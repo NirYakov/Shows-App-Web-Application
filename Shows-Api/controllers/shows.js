@@ -172,7 +172,57 @@ exports.CreateUserShow = async (req, res, next) => {
 
 }
 
-// // // create user show | old code 
+
+exports.UpdateUserShow = async (req, res, next) => {
+
+    try {
+
+        const apiId = req.params.apiId;
+        const userId = req.userData.userId;
+
+        const filter = { creator: userId, apiId };
+        const update = { review: req.body.show.review, rating: req.body.show.rating };
+
+        const show = await Show.findOneAndUpdate(filter, update, {
+            returnOriginal: false
+        });
+
+        res.status(200).json({
+            health: "Online ! :)",
+            show
+        });
+
+    } catch (error) {
+
+        console.log("error update show ", error);
+
+        res.status(500).json({ message: "Fetcing post failed!" });
+
+    }
+
+}
+
+exports.deleteUserShow = async (req, res, next) => {
+
+    const apiId = req.params.apiId;
+    const userId = req.userData.userId;
+
+    console.log("apiId : ", apiId);
+    console.log("userId : ", userId);
+
+    Show.deleteOne({ apiId: req.params.apiId, creator: req.userData.userId }).then(result => {
+        if (result.deletedCount > 0) {
+            res.status(200).json({ message: "Deletion successful!" });
+        }
+        else {
+            res.status(401).json({ message: "Not Authorized!" });
+        }
+    }).catch(error => {
+        res.status(500).json({ message: "Fetcing post failed!" });
+    });
+}
+
+// // // create user show | old code
 //{
 
 //     let responseApi = "none";
@@ -212,63 +262,3 @@ exports.CreateUserShow = async (req, res, next) => {
 //         responseApi
 //     });
 // }
-
-
-
-exports.UpdateUserShow = async (req, res, next) => {
-
-    let responseApi = "not implemented";
-
-    res.status(200).json({
-        health: "Online ! :)",
-        responseApi
-    });
-
-    //     let imagePath = req.body.imagePath;
-    //     if (req.file) {
-    //         const url = req.protocol + "://" + req.get("host");
-    //         imagePath = url + "/images/" + req.file.filename;
-    //     }
-    //     const post = new Post({
-    //         _id: req.body.show,
-    //         title: req.body.title,
-    //         content: req.body.content,
-    //         imagePath: imagePath,
-    //         creator: req.userData.userId
-    //     });
-    //     Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
-    //         .then(result => {
-    //             if (result.n > 0) {
-    //                 res.status(200).json({ message: "Update successful!" });
-    //             } else {
-    //                 res.status(401).json({ message: "Not authorized!" });
-    //             }
-    //         })
-    //         .catch(error => {
-    //             res.status(500).json({
-    //                 message: "Couldn't update post!"
-    //             });
-    //         });
-    // };
-}
-
-exports.deleteUserShow = async (req, res, next) => {
-
-    const apiId = req.params.apiId;
-    const userId = req.userData.userId;
-
-    console.log("apiId : ", apiId);
-    console.log("userId : ", userId);
-
-    Show.deleteOne({ apiId: req.params.apiId, creator: req.userData.userId }).then(result => {
-        if (result.deletedCount > 0) {
-            res.status(200).json({ message: "Deletion successful!" });
-        }
-        else {
-            res.status(401).json({ message: "Not Authorized!" });
-        }
-    }).catch(error => {
-        res.status(500).json({ message: "Fetcing post failed!" });
-    });
-}
-
