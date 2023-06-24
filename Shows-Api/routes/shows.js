@@ -12,11 +12,13 @@ const router = express.Router();
 
 router.get("/", checkAuth, ShowsController.GetUserShows);
 
+router.get("/:apiId", checkAuth, ShowsController.GetUserShowByApiId);
+
 router.get("/search/:searchShow", checkAuth, ShowsController.SearchShows);
 
 router.post("/", checkAuth, myTestMiddleware, ShowsController.CreateUserShow);
 
-router.put("/:id", checkAuth, ShowsController.UpdateUserShow);
+router.put("/:apiId", checkAuth, ShowsController.UpdateUserShow);
 
 router.delete("/:apiId", checkAuth, ShowsController.deleteUserShow);
 

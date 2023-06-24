@@ -102,8 +102,8 @@ export class ShowsService {
         });
   }
 
-  getShowByApiId(show: Show) {
-    const showId = show.apiId;
+  getShowByApiId(apiId: string) {
+    const showId = apiId;
 
     const url = BACKEND_URL + showId;
 

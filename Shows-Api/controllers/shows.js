@@ -31,6 +31,34 @@ exports.GetUserShows = async (req, res, next) => {
 
 }
 
+exports.GetUserShowByApiId = async (req, res, next) => {
+
+    const creator = req.userData.userId;
+    const apiId = req.params.apiId;
+
+
+    const show = Show.findOne({ creator, apiId });
+
+    console.log({ creator });
+
+    console.log("ping back show get");
+
+    show.then(response => {
+
+        res.status(200).json({
+            message: "show :)",
+            show: response
+        });
+
+    }).catch(error => {
+        res.status(500).json({
+            message: "error !!",
+        });
+
+    });
+
+}
+
 
 exports.SearchShows = async (req, res, next) => {
 
@@ -179,13 +207,21 @@ exports.UpdateUserShow = async (req, res, next) => {
 
         const apiId = req.params.apiId;
         const userId = req.userData.userId;
+        const review = req.body.review;
+        const rating = req.body.rating;
+
+        if (!review || !rating || !apiId || !userId) {
+            res.status(500).json({ message: "Error in parameters!" });
+            return;
+        }
 
         const filter = { creator: userId, apiId };
-        const update = { review: req.body.show.review, rating: req.body.show.rating };
+        const update = { review, rating };
 
         const show = await Show.findOneAndUpdate(filter, update, {
             returnOriginal: false
         });
+
 
         res.status(200).json({
             health: "Online ! :)",

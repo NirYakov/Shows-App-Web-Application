@@ -46,7 +46,7 @@ export class SingleShowViewUserComponent implements OnInit {
     console.log("showId ", showId);
     console.log("this.showsService.shows ", this.showsService.shows);
 
-    this.showsService.getShowByApiId(foundShow);
+    //  this.showsService.getShowByApiId(showId);
 
   }
 
@@ -135,6 +135,27 @@ export class SingleShowViewUserComponent implements OnInit {
   //   return;
   // }
 }
+
+/*
+
+
+title:  " Space raccon :)"
+
+sub title : yet still me ...
+
+review : im nice ' try to find the love of my life , ice cream .
+
+
+What im doing here ?
+
+where ma i ?
+
+what is the meaning to all of this and that ?
+
+just wait a minute and relax :)
+
+
+*/
 
 /*
 
