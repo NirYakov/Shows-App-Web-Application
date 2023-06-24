@@ -14,12 +14,13 @@ import { FriendsSearchComponent } from "./friends/friends-search/friends-search.
 import { FriendsShowsListComponent } from "./friends/friends-shows-list/friends-shows-list.component";
 import { SingleShowViewUserComponent } from "./all-shows/single-show-view-user/single-show-view-user.component";
 import { SingleShowViewFriendComponent } from "./all-shows/single-show-view-friend/single-show-view-friend.component";
+import { InfoPageComponent } from "./info-page/info-page.component";
 
 const routes: Routes = [
 
   // { path: "", component: ShowsListComponent },
 
-  { path: "", component: ShowsGameHighlowComponent },
+  { path: "", component: InfoPageComponent },
 
   { path: "game", component: ShowsGameHighlowComponent },
   { path: "single", component: SingleShowComponent },

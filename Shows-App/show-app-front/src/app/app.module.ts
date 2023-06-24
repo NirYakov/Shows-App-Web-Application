@@ -40,6 +40,7 @@ import { FriendsShowsListComponent } from './friends/friends-shows-list/friends-
 import { ShowListOnlyComponent } from './all-shows/show-list-only/show-list-only.component';
 import { SingleShowViewUserComponent } from './all-shows/single-show-view-user/single-show-view-user.component';
 import { SingleShowViewFriendComponent } from './all-shows/single-show-view-friend/single-show-view-friend.component';
+import { InfoPageComponent } from './info-page/info-page.component';
 
 
 @NgModule({
@@ -62,8 +63,7 @@ import { SingleShowViewFriendComponent } from './all-shows/single-show-view-frie
     ShowListOnlyComponent,
     SingleShowViewUserComponent,
     SingleShowViewFriendComponent,
-
-
+    InfoPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,39 @@
+.mainDiv {
+  background-image: url("https://img.freepik.com/free-vector/background-objects-see-movie_23-2147599681.jpg?w=826&t=st=1687632387~exp=1687632987~hmac=7323e9cce5f7268a3456121d4a02e1028be50a08c3fe19ea3901571ae4b83b22"),
+    url("https://img.freepik.com/free-vector/background-objects-see-movie_23-2147599681.jpg?w=826&t=st=1687632387~exp=1687632987~hmac=7323e9cce5f7268a3456121d4a02e1028be50a08c3fe19ea3901571ae4b83b22");
+  background-color: #cccccc;
+
+  border-radius: 5rem;
+
+  object-fit: cover;
+
+  /* width: 100%;
+  height: 100%; */
+
+  height: 1200px;
+
+  background-size: cover;
+}
+
+.centerClass {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  /* height: 1000px; */
+}
+
+.break {
+  flex-basis: 100%;
+  width: 0;
+}
+
+.backgoundPic {
+  background-image: url("https://img.freepik.com/free-vector/background-objects-see-movie_23-2147599681.jpg?w=826&t=st=1687632387~exp=1687632987~hmac=7323e9cce5f7268a3456121d4a02e1028be50a08c3fe19ea3901571ae4b83b22"),
+    url("https://img.freepik.com/free-vector/background-objects-see-movie_23-2147599681.jpg?w=826&t=st=1687632387~exp=1687632987~hmac=7323e9cce5f7268a3456121d4a02e1028be50a08c3fe19ea3901571ae4b83b22");
+  background-color: #cccccc;
+
+  border-radius: 5rem;
+
+  object-fit: cover;
+}

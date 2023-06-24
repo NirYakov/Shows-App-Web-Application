@@ -78,10 +78,7 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
 
   index = 0;
 
-  constructor(private showsGameService: ShowsGameService,
-    private authService: AuthService,
-    private route: ActivatedRoute,
-    private router: Router
+  constructor(private showsGameService: ShowsGameService
   ) { }
 
   ngOnInit() {
@@ -90,15 +87,7 @@ export class ShowsGameHighlowComponent implements OnInit, OnDestroy {
     // this.initGameShow();
 
 
-    // need to do it better with new landing page that
-    // will route nice
-    if (this.authService.getIsAuth()) {
-      const url = this.route.snapshot.routeConfig.path;
-      console.log("url ", url);
-      if (url.length === 0) {
-        this.router.navigate(["/myshows"]);
-      }
-    }
+
 
 
   }
