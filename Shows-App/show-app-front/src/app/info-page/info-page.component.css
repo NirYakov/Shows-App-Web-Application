@@ -37,3 +37,29 @@
 
   object-fit: cover;
 }
+
+.mainTitle {
+  background: #00c9ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #92fe9d,
+    #00c9ff
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #92fe9d,
+    #00c9ff
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  margin: 3rem;
+  border-radius: 3rem;
+
+  border: whitesmoke;
+  border: gold;
+
+  border-style: solid;
+  /* border-color: #ffe261; */
+  border-width: 2px;
+
+  /* border-width: 2rem; */
+}

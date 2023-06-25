@@ -15,6 +15,9 @@ export class InfoPageComponent implements OnInit {
     private router: Router
   ) { }
 
+  title = "Track Your Shows ( Movies & Tv's )"
+  longText = "alot of text";
+
   ngOnInit() {
     // need to do it better with new landing page that
     // will route nice
