@@ -63,3 +63,16 @@
 
   /* border-width: 2rem; */
 }
+
+.cardOptions {
+  /* max-width: 400px; */
+
+  width: 225px;
+
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: transparent;
+  background: rgba(255, 255, 255, 0.7);
+
+  margin: 3rem;
+}
