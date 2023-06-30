@@ -1,8 +1,35 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const Validators = require("../validators");
 
 exports.createUser = async (req, res, next) => {
+
+    const password = req.body.password;
+    const email = req.body.email;
+    const username = req.body.username;
+
+    if (!Validators.isEmailValid(email)) {
+        res.status(400).json({
+            message: "Invalid authentication credentials! email is not in the right format!"
+        });
+        return;
+    }
+
+    if (!Validators.isUsernameValid(username)) {
+        res.status(400).json({
+            message: "Invalid authentication credentials! username not in the right format!"
+        });
+        return;
+    }
+
+
+    if (!Validators.createPasswordStrengthValidator(password)) {
+        res.status(400).json({
+            message: "Invalid authentication credentials! password too weak!"
+        });
+        return;
+    }
 
     const userLookedByEmail = await User.findOne({ email: req.body.email });
     const userLookedByUsername = await User.findOne({ username: req.body.username });

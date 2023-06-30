@@ -26,25 +26,38 @@ export function createPasswordStrengthValidator(): ValidatorFn {
       }
     } : null;
   }
-
-
-
-
 }
 
 
-
-export function ConfirmedValidator(controlName: string, matchingControlName: string) {
-  return (formGroup: FormGroup) => {
+export function createPasswordStrengthValidatorCONFIRM(controlName, matchingControlName): ValidatorFn {
+  return (formGroup: FormGroup): ValidationErrors | null => {
     const control = formGroup.controls[controlName];
     const matchingControl = formGroup.controls[matchingControlName];
     // if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
     //   return;
     // }
+
+    console.log(control, matchingControl);
+
     if (control.value !== matchingControl.value) {
       matchingControl.setErrors({ confirmedValidator: true });
+      return { passwordConfirm: "password wont match" };
     } else {
       matchingControl.setErrors(null);
+      return null;
     }
+  }
+}
+
+
+export function checkPasswords(controlName: string, matchingControlName: string): ValidatorFn {
+  return (group: FormGroup): ValidationErrors | null => {
+    const control = group.controls[controlName].value;
+    const matchingControl = group.controls[matchingControlName].value;
+
+    let pass = control;// group.get('password').value;
+    let confirmPass = matchingControl;//group.get('confirmPassword').value;
+
+    return pass === confirmPass ? null : { notSame: true }
   }
 }

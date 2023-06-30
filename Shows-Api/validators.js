@@ -49,3 +49,24 @@ exports.isUsernameValid = (username) => {
 
     return true;
 }
+
+
+exports.createPasswordStrengthValidator = (valuePassword) => {
+
+    const value = valuePassword;
+
+    if (!value) {
+        return false;
+    }
+
+    const hasUpperCase = /[A-Z]+/.test(value);
+
+    const hasLowerCase = /[a-z]+/.test(value);
+
+    const hasNumeric = /[0-9]+/.test(value);
+
+    const passwordValid = hasUpperCase && hasLowerCase && hasNumeric;
+
+    return passwordValid;
+}
+

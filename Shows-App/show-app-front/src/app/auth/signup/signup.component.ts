@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, AbstractControlOptions, AbstractFormGroupDirective, FormBuilder, FormControl, FormGroup, UntypedFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
-import { ConfirmedValidator, createPasswordStrengthValidator } from '../passwordValidator';
+import { createPasswordStrengthValidator, createPasswordStrengthValidatorCONFIRM } from '../passwordValidator';
 
 @Component({
   selector: 'app-signup',
@@ -31,14 +31,14 @@ export class SignupComponent implements OnInit, OnDestroy {
     //   confirmPassword: ['']
     // }, { validators: this.checkPasswords })
 
-    this.form = this.fb.group({
+    this.form = new FormGroup({
       // \w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)
       // email: ['', Validators.required, Validators.pattern('\w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)')],
       email: new FormControl(null, [Validators.required, Validators.email]),
       username: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern(`([A-Za-z0-9\-\_]+)`)]),
       password: new FormControl(null, [Validators.required, Validators.minLength(6), createPasswordStrengthValidator()]),
       confirmPassword: new FormControl('', [Validators.required]),
-    }, { validator: ConfirmedValidator("password", "confirmPassword") });
+    }, { validators: createPasswordStrengthValidatorCONFIRM("password", "confirmPassword") });
   }
 
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {

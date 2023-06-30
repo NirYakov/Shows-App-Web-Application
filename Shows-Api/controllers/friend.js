@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Friend = require("../models/friend");
 const Shows = require("../models/show");
+const Validators = require("../validators");
 
 
 
@@ -10,19 +11,17 @@ exports.SearchFindUser = async (req, res, next) => {
     try {
         const friendname = req.params.friendname;
 
-        //console.log(friendname);
+
+        if (!Validators.isUsernameValid(friendname)) {
+            res.status(400).json({
+                message: "username not in the right format!"
+            });
+            return;
+        }
 
         const usernameId = req.userData.userId;
-
         const friend = await User.findOne({ username: friendname });
-
-        // console.log(friend);
-        // const friend = "";
-
         const userFriends = await Friend.findOne({ usernameId });
-
-        console.log(" userFriends ", userFriends);
-
 
         if (userFriends && friend &&
             userFriends
@@ -36,9 +35,6 @@ exports.SearchFindUser = async (req, res, next) => {
 
             return;
         }
-
-
-        //        console.log("That is the frined idddd ", friend._id);
 
         if (friend) {
             res.status(200).json({
@@ -67,24 +63,10 @@ exports.AddFriend = async (req, res, next) => {
 
     try {
         const friendUsername = req.params.friendname;
-
         const usernameId = req.userData.userId;
-
         const friendId = req.body.friendId;
 
-        // const friend = await friends.findOne({ username: friendname });
-
-        // if (friend) {
-
-        // } else {
-
-        // }
-
-        // for now not checking for dup and like this
-
         console.log("Here in the Addfriend controller ");
-
-
         const userHaveInitFriends = await Friend.findOne({ usernameId });
 
         if (userHaveInitFriends) {
