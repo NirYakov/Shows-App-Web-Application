@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
+  // need to insert a valid email/username
+
 
   onLogin() {
     if (!this.form.valid) {

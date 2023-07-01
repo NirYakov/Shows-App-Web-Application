@@ -15,6 +15,7 @@ export class AuthService {
   private tokenTimer: any;
   private userId: string;
   private authStatusListener = new Subject<{ isAuthenticated: boolean, username: string }>();
+  private authPasswordChangedListener = new Subject<boolean>(); // isPasswordChanged
   private username: string;
 
   constructor(private http: HttpClient, private router: Router) { }
@@ -39,9 +40,12 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
+  getauthPasswordChangedListener() {
+    return this.authPasswordChangedListener.asObservable();
+  }
+
   createUser(email: string, username: string, password: string) {
     const authData: AuthData = { email: email, username: username, password: password };
-    console.log(authData);
     this.http.post(BACKEND_URL + "signup", authData).subscribe({
       next: res => {
         console.log("next >>> res ", res);
@@ -157,5 +161,26 @@ export class AuthService {
       userId: userId,
       username: username
     };
+  }
+
+  SaveNewPassword(email: string, password: string, newPassword: string) {
+
+    const newPasswordObj = { email, password, newPassword };
+
+    console.log("newPasswordObj", newPasswordObj);
+
+    this.http.post(BACKEND_URL + "changepassword", newPasswordObj).subscribe({
+      next: res => {
+        console.log("next >>> res ", res);
+      },
+      error: error => {
+        this.authPasswordChangedListener.next(false);
+      },
+      complete: () => {
+        this.router.navigate(["/"]);
+        console.log("complete??");
+      }
+    });
+
   }
 }

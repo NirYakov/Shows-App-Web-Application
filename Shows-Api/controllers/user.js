@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const Validators = require("../validators");
 
+
 exports.createUser = async (req, res, next) => {
 
     const password = req.body.password;
@@ -26,7 +27,7 @@ exports.createUser = async (req, res, next) => {
 
     if (!Validators.createPasswordStrengthValidator(password)) {
         res.status(400).json({
-            message: "Invalid authentication credentials! password too weak!"
+            message: "Invalid authentication credentials! password is too weak!"
         });
         return;
     }
@@ -75,7 +76,17 @@ exports.createUser = async (req, res, next) => {
 exports.userLogin = (req, res, next) => {
     let fetchedUser;
     let isUserFound = false;
-    User.findOne({ email: req.body.email })
+
+    const email = req.body.email;
+
+    if (!Validators.isEmailValid(email)) {
+        res.status(400).json({
+            message: "Invalid authentication credentials! email is not in the right format!"
+        });
+        return;
+    }
+
+    User.findOne({ email })
         .then(user => {
 
             if (!user) {
@@ -93,6 +104,7 @@ exports.userLogin = (req, res, next) => {
                 if (isUserFound) {
                     res.status(401).json({
                         message: "Auth failed"
+                        // message: "Invalid authentication credentials! email/password must be wrong ..."
                     });
                 }
                 return res;
@@ -113,4 +125,71 @@ exports.userLogin = (req, res, next) => {
         }).catch(error => {
             res.status(400).json({ error });
         });
+}
+
+exports.userChangePassword = async (req, res, next) => {
+
+    const email = req.body.email;
+    const password = req.body.password;
+    const newPassword = req.body.newPassword;
+
+    console.log(password, email, newPassword);
+
+    if (!Validators.isEmailValid(email)) {
+        res.status(400).json({
+            message: "Invalid authentication credentials! email is not in the right format!"
+        });
+        return;
+    }
+
+    if (!Validators.createPasswordStrengthValidator(newPassword)) {
+        res.status(400).json({
+            message: "Invalid authentication credentials!" // new password is too weak!
+        });
+        return;
+    }
+
+    try {
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            res.status(401).json({
+                message: "Invalid authentication credentials! email/password must be wrong ..."
+            });
+            return;
+        }
+
+        const checkThePassword = await bcrypt.compare(password, user.password);
+
+        if (!checkThePassword) {
+            res.status(400).json({
+                message: "Failed to change password! password is wrong ..."
+            });
+            return;
+        }
+
+        const hash = await bcrypt.hash(newPassword, 10);
+
+        const filter = { email };
+        const update = { password: hash };
+
+        const userFoundAndUpdated = await User.findOneAndUpdate(filter, update, {
+            returnOriginal: false
+        });
+
+        if (!userFoundAndUpdated) {
+            res.status(400).json({
+                message: "Failed to change password!"
+            });
+            return;
+        }
+
+        res.status(200).json({
+            message: "password is changed!"
+        });
+    }
+    catch (error) {
+        res.status(500).json({ message: "Failed to change password!", error });
+    }
 }

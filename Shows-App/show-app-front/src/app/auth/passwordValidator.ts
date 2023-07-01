@@ -37,7 +37,7 @@ export function createPasswordStrengthValidatorCONFIRM(controlName, matchingCont
     //   return;
     // }
 
-    console.log(control, matchingControl);
+    //console.log(control, matchingControl);
 
     if (control.value !== matchingControl.value) {
       matchingControl.setErrors({ confirmedValidator: true });

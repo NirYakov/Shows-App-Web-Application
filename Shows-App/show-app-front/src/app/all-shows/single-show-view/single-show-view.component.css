@@ -93,3 +93,9 @@ img {
   width: 320px;
   padding: 0 2rem 0 2rem;
 }
+
+.rightSide {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}

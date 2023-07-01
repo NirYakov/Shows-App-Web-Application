@@ -22,8 +22,8 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-      authStatus => {
+    this.authStatusSub = this.authService.getauthPasswordChangedListener().subscribe(
+      authPasswordChanged => {
         this.isLoading = false;
       });
 
@@ -36,10 +36,10 @@ export class ChangePasswordComponent implements OnInit {
       // \w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)
       // email: ['', Validators.required, Validators.pattern('\w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)')],
       email: new FormControl(null, [Validators.required, Validators.email]),
-      username: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.pattern(`([A-Za-z0-9\-\_]+)`)]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(6), createPasswordStrengthValidator()]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      newPassword: new FormControl(null, [Validators.required, Validators.minLength(6), createPasswordStrengthValidator()]),
       confirmPassword: new FormControl('', [Validators.required]),
-    }, { validators: createPasswordStrengthValidatorCONFIRM("password", "confirmPassword") });
+    }, { validators: createPasswordStrengthValidatorCONFIRM("newPassword", "confirmPassword") });
   }
 
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
@@ -48,7 +48,7 @@ export class ChangePasswordComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }
   }
 
-  onSignup() {
+  onSave() {
     if (!this.form.valid) {
       return;
     }
@@ -56,7 +56,7 @@ export class ChangePasswordComponent implements OnInit {
     console.log(this.form);
 
     this.isLoading = true;
-    this.authService.createUser(this.form.value.email, this.form.value.username, this.form.value.password);
+    this.authService.SaveNewPassword(this.form.value.email, this.form.value.password, this.form.value.newPassword);
   }
 
 

@@ -16,9 +16,15 @@
       <mat-error *ngIf="form.invalid">Please enter a valid password.</mat-error>
     </mat-form-field>
     <br>
-    <div style="display: flex; justify-content: end; margin-bottom:  1rem;">
+    <div class="rightSide">
       <a href="">forgot password?</a>
     </div>
     <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Login</button>
+    <br>
+    <br>
+    <div class="rightSide">
+      <button mat-raised-button color="primary" routerLink="/auth/signup" routerLinkActive="mat-accent"
+        type="button">Signup</button>
+    </div>
   </form>
 </mat-card>

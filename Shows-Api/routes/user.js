@@ -9,4 +9,6 @@ router.post("/signup", myTestMiddleware, UserController.createUser);
 
 router.post("/login", myTestMiddleware, UserController.userLogin);
 
+router.post("/changepassword", myTestMiddleware, UserController.userChangePassword);
+
 module.exports = router;

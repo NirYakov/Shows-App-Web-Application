@@ -30,7 +30,9 @@ const routes: Routes = [
   { path: "testtcomnponent44", component: SingleShowViewComponent },
 
 
-  { path: "changepassword", component: ChangePasswordComponent },
+  { path: "changepassword", component: ChangePasswordComponent, canActivate: [AuthGuard] }, // remove the gruard for my testing
+
+  { path: "settings", component: ChangePasswordComponent, canActivate: [AuthGuard] }, // remove the gruard for my testing
 
 
   { path: "myshows", component: ShowsListComponent, canActivate: [AuthGuard] }, // gurd
