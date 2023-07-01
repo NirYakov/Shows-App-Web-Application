@@ -15,6 +15,7 @@ import { FriendsShowsListComponent } from "./friends/friends-shows-list/friends-
 import { SingleShowViewUserComponent } from "./all-shows/single-show-view-user/single-show-view-user.component";
 import { SingleShowViewFriendComponent } from "./all-shows/single-show-view-friend/single-show-view-friend.component";
 import { InfoPageComponent } from "./info-page/info-page.component";
+import { ChangePasswordComponent } from "./auth/change-password/change-password.component";
 
 const routes: Routes = [
 
@@ -27,6 +28,9 @@ const routes: Routes = [
   { path: "testtcomnponent", component: CardShowComponent },
   { path: "testtcomnponent22", component: ClipCardComponent },
   { path: "testtcomnponent44", component: SingleShowViewComponent },
+
+
+  { path: "changepassword", component: ChangePasswordComponent },
 
 
   { path: "myshows", component: ShowsListComponent, canActivate: [AuthGuard] }, // gurd

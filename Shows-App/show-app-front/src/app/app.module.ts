@@ -41,6 +41,7 @@ import { ShowListOnlyComponent } from './all-shows/show-list-only/show-list-only
 import { SingleShowViewUserComponent } from './all-shows/single-show-view-user/single-show-view-user.component';
 import { SingleShowViewFriendComponent } from './all-shows/single-show-view-friend/single-show-view-friend.component';
 import { InfoPageComponent } from './info-page/info-page.component';
+import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { InfoPageComponent } from './info-page/info-page.component';
     ShowListOnlyComponent,
     SingleShowViewUserComponent,
     SingleShowViewFriendComponent,
-    InfoPageComponent
+    InfoPageComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
