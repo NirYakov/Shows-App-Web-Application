@@ -42,10 +42,11 @@ import { SingleShowViewUserComponent } from './all-shows/single-show-view-user/s
 import { SingleShowViewFriendComponent } from './all-shows/single-show-view-friend/single-show-view-friend.component';
 import { InfoPageComponent } from './info-page/info-page.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     MyTestComponent,
     HeaderComponent,
@@ -66,7 +67,8 @@ import { ChangePasswordComponent } from './auth/change-password/change-password.
     SingleShowViewFriendComponent,
     InfoPageComponent,
     ChangePasswordComponent,
-  ],
+      SettingsComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

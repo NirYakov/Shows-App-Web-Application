@@ -1,26 +1,28 @@
-<div style="background-color: brown;">
+<div class="centerClass">
+  <div class="widthForm">
+    <div style="background-color: brown;">
 
-  <div *ngIf="!friendFound">
-    <h1> Search Friend</h1>
-    <mat-card>
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
-      <form (ngSubmit)="onSearch()" *ngIf="!isLoading" [formGroup]="form">
-        <!-- <mat-form-field>
+      <div *ngIf="!friendFound">
+        <h1> Search Friend</h1>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <form (ngSubmit)="onSearch()" *ngIf="!isLoading" [formGroup]="form">
+          <!-- <mat-form-field>
           <input matInput name="email" type="email" placeholder="Email" formControlName="email">
           <mat-error *ngIf="form.invalid">Please enter a valid email.</mat-error>
         </mat-form-field> -->
 
-        <mat-form-field>
-          <input matInput name="username" type="text" placeholder="Username" formControlName="username">
-          <mat-error *ngIf="form.invalid">Please enter a valid username (letters, numbers, -, _) min 4
-            chars.</mat-error>
-        </mat-form-field>
-        <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Search</button>
-      </form>
-    </mat-card>
-  </div>
+          <mat-form-field>
+            <input matInput name="username" type="text" placeholder="Username" formControlName="username">
+            <mat-error *ngIf="form.invalid">Please enter a valid username (letters, numbers, -, _) min 4
+              chars.</mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Search</button>
+        </form>
+      </div>
 
-  <div *ngIf="friendFound">
-    <app-friend-card [friend]="friendName" (onSuggest)="addFriend(friendName)" buttonLabel="Add"></app-friend-card>
+      <div *ngIf="friendFound">
+        <app-friend-card [friend]="friendName" (onSuggest)="addFriend(friendName)" buttonLabel="Add"></app-friend-card>
+      </div>
+    </div>
   </div>
 </div>

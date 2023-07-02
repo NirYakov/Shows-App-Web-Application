@@ -1,0 +1,30 @@
+.main-div {
+  /* height: 70vh; */
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+}
+
+.main-size {
+  width: 500px;
+}
+
+.break {
+  flex-basis: 100%;
+  width: 0;
+}
+
+button {
+  margin: 2rem;
+}
+
+.widthForm {
+  width: 500px;
+  margin: 2rem;
+}
+
+.centerClass {
+  display: flex;
+  justify-content: center;
+}

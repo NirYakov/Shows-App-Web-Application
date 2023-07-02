@@ -16,6 +16,7 @@ import { SingleShowViewUserComponent } from "./all-shows/single-show-view-user/s
 import { SingleShowViewFriendComponent } from "./all-shows/single-show-view-friend/single-show-view-friend.component";
 import { InfoPageComponent } from "./info-page/info-page.component";
 import { ChangePasswordComponent } from "./auth/change-password/change-password.component";
+import { SettingsComponent } from "./settings/settings.component";
 
 const routes: Routes = [
 
@@ -30,9 +31,10 @@ const routes: Routes = [
   { path: "testtcomnponent44", component: SingleShowViewComponent },
 
 
-  { path: "changepassword", component: ChangePasswordComponent, canActivate: [AuthGuard] }, // remove the gruard for my testing
+  // { path: "changepassword", component: ChangePasswordComponent, canActivate: [AuthGuard] }, // remove the gruard for my testing
+  { path: "changepassword", component: ChangePasswordComponent }, // remove the gruard for my testing
 
-  { path: "settings", component: ChangePasswordComponent, canActivate: [AuthGuard] }, // remove the gruard for my testing
+  { path: "settings", component: SettingsComponent }, // remove the gruard for my testing
 
 
   { path: "myshows", component: ShowsListComponent, canActivate: [AuthGuard] }, // gurd
