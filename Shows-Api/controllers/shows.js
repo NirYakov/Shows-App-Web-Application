@@ -62,33 +62,43 @@ exports.GetUserShowByApiId = async (req, res, next) => {
 
 exports.SearchShows = async (req, res, next) => {
 
-    let responseApi = "none";
-
-    // const searchShow = "inception 2010";
     const searchShow = req.params.searchShow;
 
-    const urlApi = `https://imdb-api.com/en/API/Search/${process.env.ApiKey}/${searchShow}`;
+    // const urlApiNotWork = `https://imdb-api.com/en/API/Search/${process.env.ApiKey}/${searchShow}`;
 
-    // console.log(urlApi);
+    const urlApi = `https://api.collectapi.com/imdb/imdbSearchByName?query=${searchShow}`;
+
+    const config = {
+        headers: {
+            'Authorization': `${process.env.ApiKey}`,
+        }
+    };
 
     // req from rate api
-    await axios({
-        method: 'get',
-        url: urlApi,
-    })
+    await axios.get(urlApi, config)
         .then((response) => {
-            // rateCAN = response.data.rates.CAD;
-            // rateEuro = response.data.rates.EUR;
 
-            responseApi = response.data;
-
+            const responseApi = response.data;
             console.log("Response?");
             console.log(responseApi);
 
-            res.status(200).json({
-                health: "Online ! :)",
-                responseApi
-            });
+            // if(responseApi.result && responseApi.result.length > 0) {}
+
+            if (responseApi.success) {
+                res.status(200).json({
+                    health: "Online ! :)",
+                    success: responseApi.success,
+                    responseApi
+                });
+
+            }
+            else {
+                res.status(200).json({
+                    health: "Online ! :)",
+                    success: responseApi.success,
+                    responseApi: []
+                });
+            }
 
 
         }).catch(e => {
@@ -97,8 +107,6 @@ exports.SearchShows = async (req, res, next) => {
                 error: e,
             })
         });
-
-
 }
 
 
@@ -122,10 +130,8 @@ exports.CreateUserShow = async (req, res, next) => {
             return;
         }
 
-
         const newShow = new Show({
             creator: userId,
-
             title: req.body.title,
             img: req.body.img,
             rating: req.body.rating,
@@ -136,39 +142,34 @@ exports.CreateUserShow = async (req, res, next) => {
             apiId: apiId,
         });
 
+        const urlApi = `https://api.collectapi.com/imdb/imdbSearchById?movieId=${apiId}`;
 
-        // console.log(req.body);
-        // console.log("Here to be for add");
-        // console.log(newShow);
-
-        // need the better api !!
-
-        const urlApi = `https://imdb-api.com/en/API/Title/${process.env.ApiKey}/${apiId}`;
-
-
-
-        // console.log(urlApi);
+        const config = {
+            headers: {
+                'Authorization': `${process.env.ApiKey}`,
+                //'Content-Type': 'application/json'
+            }
+        };
 
         // req from rate api
-        const showDataCall = await axios.get(urlApi);
-        const showData = showDataCall.data;
+        const showDataCall = await axios.get(urlApi, config);
+        const showData = showDataCall.data.result;
 
-        // console.log("showData ", showData);
+        console.log("showData ", showData);
+        //newShow.type = answerType;
 
-        const answerType = showData.type === "Movie" ? 'movie' : 'tv';
+        if (newShow.type === 'movie') {
+            const minutes = +showData.Runtime.split(" ")[0];;
 
-        newShow.type = answerType;
-
-        if (answerType === 'tv') {
-            const seasons = showData.tvSeriesInfo.seasons.length;
-            newShow.seasons = seasons;
-
-        } else {
-            const minutes = showData.runtimeMins;
             newShow.minutes = minutes;
+        } else {
+            const seasons = showData.totalSeasons;
+            newShow.seasons = seasons;
+            newShow.type = "tv";
         }
 
-        // console.log(newShow);
+
+        console.log(newShow);
 
         newShow.save().then(response => {
 

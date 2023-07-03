@@ -1,108 +1,112 @@
+<!-- <div class="centerClass">
+  <div class="widthForm"> -->
 <div class="centerClass">
-  <div class="widthForm">
 
+  <form [formGroup]="form" (ngSubmit)="onSave()">
     <h2> Search Show </h2>
 
-    <form [formGroup]="form" (ngSubmit)="onSave()">
+    <p>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Search show</mat-label>
+        <input formControlName="searchShowForm" matInput placeholder="Breaking Bad">
+        <!-- <button *ngIf="searchShowForm.value" matSuffix mat-icon-button aria-label="Clear" -->
+        <button *ngIf="" matSuffix mat-icon-button aria-label="Clear" (click)="clearValueFunc()">
+          <!-- <mat-icon *ngIf="(searchShowForm.value !== '')">close</mat-icon> -->
+          <mat-icon *ngIf="">close</mat-icon>
+        </button>
+        <!-- <mat-icon matSuffix *ngIf="(searchShowForm.value === '')">sentiment_very_satisfied</mat-icon> -->
+        <mat-icon matSuffix *ngIf="true">sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
 
-      <p>
-        <mat-form-field class="example-full-width" appearance="outline">
-          <mat-label>Outline form field</mat-label>
-          <input formControlName="searchShowForm" matInput placeholder="Breaking Bad">
-          <!-- <button *ngIf="searchShowForm.value" matSuffix mat-icon-button aria-label="Clear" -->
-          <button *ngIf="" matSuffix mat-icon-button aria-label="Clear" (click)="clearValueFunc()">
-            <!-- <mat-icon *ngIf="(searchShowForm.value !== '')">close</mat-icon> -->
-            <mat-icon *ngIf="">close</mat-icon>
-          </button>
-          <!-- <mat-icon matSuffix *ngIf="(searchShowForm.value === '')">sentiment_very_satisfied</mat-icon> -->
-          <mat-icon matSuffix *ngIf="true">sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-      </p>
+    <br>
 
-      <br>
+    <div>
+      <!-- <h2>{{form.get("searchShowForm").value}}</h2> -->
+      <button mat-stroked-button type="button" (click)="fillDataResults()">Search Show</button>
+      <br><br>
+      <div class="main-div">
 
-      <div>
-        <!-- <h2>{{form.get("searchShowForm").value}}</h2> -->
-        <button mat-stroked-button type="button" (click)="fillDataResults()">Search Show</button>
-        <br><br>
-        <div class="main-div">
+        <div *ngFor="let item of searchResults" style="margin: 1rem;">
 
-          <div *ngFor="let item of searchResults" style="margin: 1rem;">
+          <mat-card class="example-card" style="border-radius: 1rem;">
+            <mat-card-header>
+              <mat-card-title>{{item.title}}</mat-card-title>
+              <mat-card-subtitle>{{item.review}}</mat-card-subtitle>
+              <!-- <mat-card-subtitle>Rating ⭐ {{item.rating}}</mat-card-subtitle> -->
+              <mat-card-subtitle>{{item.type}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image class="" [src]="item.img" [alt]="item.title"
+              style="margin-top: 0.5rem; margin-bottom: 0rem;">
+            <mat-card-content>
 
-            <mat-card class="example-card" style="border-radius: 1rem;">
-              <mat-card-header>
-                <mat-card-title>{{item.title}}</mat-card-title>
-                <mat-card-subtitle>{{item.review}}</mat-card-subtitle>
-                <mat-card-subtitle>Rating ⭐ {{item.rating}}</mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image class="" [src]="item.img" [alt]="item.title"
-                style="margin-top: 0.5rem; margin-bottom: 0rem;">
-              <mat-card-content>
+            </mat-card-content>
+            <mat-card-actions style="justify-content: center;">
+              <button mat-button type="button" (click)="onPickShow(item)">PICK ME</button>
+            </mat-card-actions>
+          </mat-card>
 
-              </mat-card-content>
-              <mat-card-actions style="justify-content: center;">
-                <button mat-button type="button" (click)="onPickShow(item)">PICK ME</button>
-              </mat-card-actions>
-            </mat-card>
+        </div>
 
-          </div>
+        <div *ngIf="pickedShow !== null" style="margin: 1rem;">
 
-          <div *ngIf="pickedShow !== null" style="margin: 1rem;">
+          <mat-card class="example-card" style="border-radius: 1rem;">
+            <mat-card-header>
+              <mat-card-title>{{pickedShow.title}}</mat-card-title>
+              <mat-card-subtitle>{{pickedShow.review}}</mat-card-subtitle>
+              <mat-card-subtitle>Rating ⭐ {{pickedShow.rating}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image class="" [src]="pickedShow.img" [alt]="pickedShow.title"
+              style="margin-top: 0.5rem; margin-bottom: 0rem;">
+            <mat-card-content>
 
-            <mat-card class="example-card" style="border-radius: 1rem;">
-              <mat-card-header>
-                <mat-card-title>{{pickedShow.title}}</mat-card-title>
-                <mat-card-subtitle>{{pickedShow.review}}</mat-card-subtitle>
-                <mat-card-subtitle>Rating ⭐ {{pickedShow.rating}}</mat-card-subtitle>
-              </mat-card-header>
-              <img mat-card-image class="" [src]="pickedShow.img" [alt]="pickedShow.title"
-                style="margin-top: 0.5rem; margin-bottom: 0rem;">
-              <mat-card-content>
+            </mat-card-content>
+            <mat-card-actions style="justify-content: center;">
+              <button mat-button type="button" (click)="onPickShow(pickedShow)">PICK ME</button>
+            </mat-card-actions>
+          </mat-card>
 
-              </mat-card-content>
-              <mat-card-actions style="justify-content: center;">
-                <button mat-button type="button" (click)="onPickShow(pickedShow)">PICK ME</button>
-              </mat-card-actions>
-            </mat-card>
-
-          </div>
         </div>
       </div>
-      <br><br><br>
-      <h4>
-        My Review
-      </h4>
+    </div>
+    <br><br><br>
+    <h4>
+      My Review
+    </h4>
 
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Message</mat-label>
-        <textarea formControlName="myReviewText" matInput maxlength="256"></textarea>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Message</mat-label>
+      <textarea formControlName="myReviewText" matInput maxlength="256"></textarea>
 
 
 
 
-        <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
-        <mat-hint align="end">{{form.get("myReviewText").value.length}} / 256</mat-hint>
-      </mat-form-field>
+      <!-- <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint> -->
+      <mat-hint align="end">{{form.get("myReviewText").value.length}} / 256</mat-hint>
+    </mat-form-field>
 
-      <!-- <p>{{form.get("myReviewText").value}}</p> -->
+    <!-- <p>{{form.get("myReviewText").value}}</p> -->
 
-      <br><br>
-      <br><br>
-      <h4>My Rating</h4>
-      <div>
-        <span>
-          <span *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i] }"
-            (click)="onStarClick(i)" class="stars-class">⭐</span>
-          <!-- <span class="stars-class">🌗</span> -->
-        </span>
-      </div>
-      <br><br><br>
-      <div style=" justify-content: center; display: flex;">
-        <button mat-raised-button class="colorHeader" style="width: 400px;" type="submit">
-          SAVE</button>
-      </div>
-      <br><br>
-    </form>
-  </div>
+    <br><br>
+    <br><br>
+    <h4>My Rating</h4>
+    <div>
+      <span>
+        <span *ngFor="let item of stars; let i = index" [ngClass]="{'opacityStar': !stars[i] }" (click)="onStarClick(i)"
+          class="stars-class">⭐</span>
+        <!-- <span class="stars-class">🌗</span> -->
+      </span>
+    </div>
+    <br><br><br>
+    <div style="display: flex; justify-content: center;">
+      <button mat-raised-button class="colorHeader" style="width: 400px;" type="submit">
+        SAVE</button>
+    </div>
+    <br><br>
+  </form>
+
+
 </div>
+<!-- </div>
+</div> -->

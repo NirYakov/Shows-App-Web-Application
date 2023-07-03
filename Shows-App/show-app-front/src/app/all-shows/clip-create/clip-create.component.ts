@@ -87,19 +87,23 @@ export class ClipCreateComponent implements OnInit {
 
     console.log("Search Show : ", searchShow);
 
-    this.http.get<{ health: string, responseApi: { results } }>(`http://localhost:3000/api/shows/search/${searchShow}`).subscribe(
+    this.http.get<{ health: string, responseApi: { result } }>(`http://localhost:3000/api/shows/search/${searchShow}`).subscribe(
       {
         next: result => {
-          this.searchResults = result.responseApi.results.map(show => {
+          console.log(result);
+          this.searchResults = result.responseApi.result.map(show => {
+            console.log(show);
             return {
-              title: show.title,
-              rating: show.imDbRating,
-              img: show.image,
-              type: "tv",
-              review: show.description,
+
+
+              title: show.Title,
+              // rating: 5,// show.imDbRating,
+              img: show.Poster,
+              type: show.Type,
+              review: show.Year,
               seasons: show.seasons,
               minutes: show.minutes,
-              apiId: show.id,
+              apiId: show.imdbID,
             };
           });
 

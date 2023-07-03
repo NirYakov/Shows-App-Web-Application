@@ -79,12 +79,8 @@ img {
   cursor: pointer;
 }
 
-.widthForm {
-  width: 700px;
-  margin: 2rem;
-}
-
 .centerClass {
   display: flex;
   justify-content: center;
+  margin: 6rem;
 }
