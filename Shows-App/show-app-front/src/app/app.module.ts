@@ -43,10 +43,11 @@ import { SingleShowViewFriendComponent } from './all-shows/single-show-view-frie
 import { InfoPageComponent } from './info-page/info-page.component';
 import { ChangePasswordComponent } from './auth/change-password/change-password.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     MyTestComponent,
     HeaderComponent,
@@ -67,8 +68,10 @@ import { SettingsComponent } from './settings/settings.component';
     SingleShowViewFriendComponent,
     InfoPageComponent,
     ChangePasswordComponent,
-      SettingsComponent
-   ],
+    SettingsComponent,
+    ForgetPasswordComponent,
+
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

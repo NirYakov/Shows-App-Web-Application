@@ -27,11 +27,6 @@ export class ChangePasswordComponent implements OnInit {
         this.isLoading = false;
       });
 
-    // this.myForm = this.fb.group({
-    //   password: ['', [Validators.required]],
-    //   confirmPassword: ['']
-    // }, { validators: this.checkPasswords })
-
     this.form = new FormGroup({
       // \w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)
       // email: ['', Validators.required, Validators.pattern('\w+(\w|\d)*@\w+(\w|\d)*\.\w+(\w|\d)')],
@@ -40,12 +35,6 @@ export class ChangePasswordComponent implements OnInit {
       newPassword: new FormControl(null, [Validators.required, Validators.minLength(6), createPasswordStrengthValidator()]),
       confirmPassword: new FormControl('', [Validators.required]),
     }, { validators: createPasswordStrengthValidatorCONFIRM("newPassword", "confirmPassword") });
-  }
-
-  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
-    let pass = group.get('password').value;
-    let confirmPass = group.get('confirmPassword').value
-    return pass === confirmPass ? null : { notSame: true }
   }
 
   onSave() {

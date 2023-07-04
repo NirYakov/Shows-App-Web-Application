@@ -17,6 +17,7 @@ import { SingleShowViewFriendComponent } from "./all-shows/single-show-view-frie
 import { InfoPageComponent } from "./info-page/info-page.component";
 import { ChangePasswordComponent } from "./auth/change-password/change-password.component";
 import { SettingsComponent } from "./settings/settings.component";
+import { ForgetPasswordComponent } from "./auth/forget-password/forget-password.component";
 
 const routes: Routes = [
 
@@ -32,6 +33,8 @@ const routes: Routes = [
 
 
   // { path: "changepassword", component: ChangePasswordComponent, canActivate: [AuthGuard] }, // remove the gruard for my testing
+  { path: "fogotpassword", component: ForgetPasswordComponent },
+
   { path: "changepassword", component: ChangePasswordComponent }, // remove the gruard for my testing
 
   { path: "settings", component: SettingsComponent }, // remove the gruard for my testing
