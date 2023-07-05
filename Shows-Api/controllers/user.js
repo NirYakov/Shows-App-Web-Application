@@ -193,3 +193,26 @@ exports.userChangePassword = async (req, res, next) => {
         res.status(500).json({ message: "Failed to change password!", error });
     }
 }
+
+exports.userForgotPassword = async (req, res, next) => {
+
+    const email = req.body.email;
+    const username = req.body.username;
+
+    console.log(email, username);
+
+    const user = await User.findOne({ email, username });
+
+    if (!user) {
+        res.status(400).json({
+            message: "Failed to find the user!"
+        });
+        return;
+    }
+
+
+    res.status(200).json({
+        message: "user found, sending mail ..."
+    });
+
+}

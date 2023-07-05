@@ -183,4 +183,26 @@ export class AuthService {
     });
 
   }
+
+  forgotPassword(email, username) {
+
+    const forgotPasswordObj = { email, username };
+
+    console.log("forgotPasswordObj", forgotPasswordObj);
+
+    this.http.post(BACKEND_URL + "forgotpassword", forgotPasswordObj).subscribe({
+      next: res => {
+        console.log("next >>> res , send to the mail", res);
+      },
+      error: error => {
+        this.authPasswordChangedListener.next(false);
+        console.log(error);
+      },
+      complete: () => {
+        this.router.navigate(["/"]);
+        console.log("complete??");
+      }
+    });
+
+  }
 }

@@ -11,4 +11,6 @@ router.post("/login", myTestMiddleware, UserController.userLogin);
 
 router.post("/changepassword", myTestMiddleware, UserController.userChangePassword);
 
+router.post("/forgotpassword", myTestMiddleware, UserController.userForgotPassword);
+
 module.exports = router;

@@ -42,7 +42,7 @@ export class ForgetPasswordComponent implements OnInit {
     console.log(this.form);
 
     this.isLoading = true;
-    // this.authService.createUser(this.form.value.email, this.form.value.username);
+    this.authService.forgotPassword(this.form.value.email, this.form.value.username);
   }
 
 
