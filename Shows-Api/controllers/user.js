@@ -2,6 +2,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const Validators = require("../validators");
+const sendMail = require("../sendmail");
+const createPassword = require("../makePassword");
 
 
 exports.createUser = async (req, res, next) => {
@@ -169,14 +171,7 @@ exports.userChangePassword = async (req, res, next) => {
             return;
         }
 
-        const hash = await bcrypt.hash(newPassword, 10);
-
-        const filter = { email };
-        const update = { password: hash };
-
-        const userFoundAndUpdated = await User.findOneAndUpdate(filter, update, {
-            returnOriginal: false
-        });
+        const userFoundAndUpdated = await ChangePasswordfindAndUpate(email, newPassword);
 
         if (!userFoundAndUpdated) {
             res.status(400).json({
@@ -194,25 +189,64 @@ exports.userChangePassword = async (req, res, next) => {
     }
 }
 
-exports.userForgotPassword = async (req, res, next) => {
+const ChangePasswordfindAndUpate = async (email, newPassword) => {
+    const hash = await bcrypt.hash(newPassword, 10);
 
-    const email = req.body.email;
-    const username = req.body.username;
+    const filter = { email };
+    const update = { password: hash };
 
-    console.log(email, username);
-
-    const user = await User.findOne({ email, username });
-
-    if (!user) {
-        res.status(400).json({
-            message: "Failed to find the user!"
-        });
-        return;
-    }
-
-
-    res.status(200).json({
-        message: "user found, sending mail ..."
+    const userFoundAndUpdated = await User.findOneAndUpdate(filter, update, {
+        returnOriginal: false
     });
 
+    return userFoundAndUpdated;
+};
+
+exports.userForgotPassword = async (req, res, next) => {
+
+    try {
+
+        const email = req.body.email;
+        const username = req.body.username;
+
+        // console.log(email, username);
+
+        const user = await User.findOne({ email, username });
+
+        if (!user) {
+            res.status(400).json({
+                message: "Failed to find the user!"
+            });
+            return;
+        }
+
+        const newPassword = createPassword.GetPassword();
+        const acceptedMail = await sendMail.sendMail(email, username, newPassword);
+
+        if (acceptedMail <= 0) {
+            res.status(500).json({
+                message: "Internal server error, please try in other time.",
+                error: "Error with email server, please try in other time."
+            });
+            return;
+        }
+
+        const userUpdated = await await ChangePasswordfindAndUpate(email, newPassword);
+
+        if (!userUpdated) {
+            res.status(500).json({
+                message: "Internal server error, please try in other time.",
+                error: "Error with email server, please try in other time."
+            });
+            return;
+        }
+
+        res.status(200).json({
+            message: "user found, sending/sent mail ..."
+        });
+
+    }
+    catch (error) {
+        res.status(500).json({ message: "Failed to change password!", error });
+    }
 }
