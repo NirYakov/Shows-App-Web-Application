@@ -44,5 +44,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.authStatusSub.unsubscribe();
   }
 
+  quickEnter() {
+    this.authService.quickEnter();
+  }
+
 }
 

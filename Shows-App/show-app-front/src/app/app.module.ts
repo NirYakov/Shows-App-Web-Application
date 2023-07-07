@@ -17,12 +17,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HeaderComponent } from './header/header.component';
 import { AuthModule } from './auth/auth.module';
 import { ShowsGameHighlowComponent } from './shows-game/shows-game-highlow/shows-game-highlow.component';
-import { SingleShowComponent } from './cards/single-show/single-show.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from "./error/error.component";
 import { ClipCardComponent } from './all-shows/clip-card/clip-card.component';
-import { CardShowComponent } from './cards/cardShow/cardShow.component';
 import { ClipCreateComponent } from './all-shows/clip-create/clip-create.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -52,10 +50,8 @@ import { ForgetPasswordComponent } from './auth/forget-password/forget-password.
     MyTestComponent,
     HeaderComponent,
     ShowsGameHighlowComponent,
-    SingleShowComponent,
     ErrorComponent,
     ClipCardComponent,
-    CardShowComponent,
     ClipCreateComponent,
     ShowsListComponent,
     SingleShowViewComponent,

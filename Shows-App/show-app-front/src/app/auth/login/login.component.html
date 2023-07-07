@@ -27,6 +27,10 @@
           type="button">Signup</button>
       </div>
 
+      <div class="rightSide">
+        <button mat-raised-button type="button" *ngIf="!isLoading" (click)="quickEnter()">Quick Enter</button>
+      </div>
+
     </form>
   </div>
 </div>

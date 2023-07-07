@@ -205,4 +205,18 @@ export class AuthService {
     });
 
   }
+
+  quickEnter() {
+    this.http.get(BACKEND_URL + "quickenter").subscribe({
+      next: res => {
+        // need to like the login.
+      },
+      error: error => {
+        // need to like the login.
+      },
+      complete: () => {
+        // need to like the login.
+      }
+    });
+  }
 }
