@@ -84,3 +84,8 @@ img {
   justify-content: center;
   margin: 6rem;
 }
+
+.widthForm {
+  width: 700px;
+  margin: 2rem;
+}
